@@ -5,22 +5,18 @@ import { useNavigate } from "react-router-dom";
 export const authContext = createContext();
 
 export const useAuth = () => useContext(authContext);
-
 const AuthContextProvider = ({ children }) => {
-  const API = "http://34.89.140.26";
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const API = "http://34.89.140.26";
 
   const navigate = useNavigate();
 
   const handleRegister = async (formData) => {
     setLoading(true);
     try {
-      const res = await axios.post(
-        `http://34.89.140.26/accounts/register/`,
-        formData
-      );
+      const res = await axios.post(`${API}/accounts/register/`, formData);
       navigate("/");
     } catch (error) {
       setError(Object.values(error.response.data).flat()[0]);
