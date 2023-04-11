@@ -7,13 +7,11 @@ import Footer from "./components/Footer/Footer";
 
 const App = () => {
   return (
-    <div>
-      <AuthContextProvider>
-        <Navbar />
-        <MainRoutes />
-      </AuthContextProvider>
+    <AuthContextProvider>
+      <Navbar />
+      <MainRoutes />
       <Footer />
-    </div>
+    </AuthContextProvider>
   );
 };
 
