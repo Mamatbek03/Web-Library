@@ -1,46 +1,60 @@
-import React, { useState } from "react";
+import * as React from "react";
 import { useAuth } from "../../../contexts/AuthContextProvider";
 
-const Register = () => {
-  const { handleRegister } = useAuth();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [passwordConfirm, setPasswordConfirm] = useState("");
+export default function RegisterList() {
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const [passwordConfirm, setPasswordConfirm] = React.useState("");
+  const [userName, setUserName] = React.useState("");
 
-  function handleSave() {
+  const { handleRegister, loading, error, setError } = useAuth();
+
+  const handleSave = (e) => {
+    e.preventDefault();
+
     if (!email.trim() || !password.trim() || !passwordConfirm.trim()) {
-      alert("Enter all inputs");
+      alert("заполните все поля!");
     } else {
-      console.log(email, password, passwordConfirm);
-      const formData = new FormData();
+      let formData = new FormData();
       formData.append("email", email);
       formData.append("password", password);
-      formData.append("activation_code", passwordConfirm);
-      console.log(formData);
+      formData.append("password2", passwordConfirm);
+      formData.append("username", userName);
       handleRegister(formData);
     }
-  }
+  };
+
+  React.useEffect(() => {
+    setError(false);
+  }, []);
+
   return (
     <div>
       <h1>Register</h1>
-      <input
-        onClick={(e) => setEmail(e.target.value)}
-        type="text"
-        placeholder="email"
-      />
-      <input
-        onClick={(e) => setPassword(e.target.value)}
-        type="password"
-        placeholder="password"
-      />
-      <input
-        onClick={(e) => setPasswordConfirm(e.target.value)}
-        type="password"
-        placeholder="password confirm"
-      />
-      <button onClick={handleSave}>register</button>
+      {error ? <h2>{error}</h2> : null}
+      <form action="submit" onSubmit={handleSave}>
+        <input
+          onChange={(e) => setEmail(e.target.value)}
+          type="email"
+          placeholder="email"
+        />
+        <input
+          onChange={(e) => setPassword(e.target.value)}
+          type="password"
+          placeholder="password"
+        />
+        <input
+          onChange={(e) => setPasswordConfirm(e.target.value)}
+          type="password"
+          placeholder="password confirm"
+        />
+        <input
+          onChange={(e) => setUserName(e.target.value)}
+          type="name"
+          placeholder="username"
+        />
+        <button>register</button>
+      </form>
     </div>
   );
-};
-
-export default Register;
+}

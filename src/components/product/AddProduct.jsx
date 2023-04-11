@@ -1,64 +1,113 @@
 import React, { useEffect, useState } from "react";
 import { useProducts } from "../../contexts/ProductContextProvider";
+import TextField from "@mui/material/TextField";
+import { useNavigate } from "react-router-dom";
+import { Box } from "@mui/system";
+import { Button } from "@mui/material";
 
 const AddProduct = () => {
-  const { getCategories, categories, createProduct } = useProducts();
-  useEffect(() => {
-    getCategories();
-  }, []);
+  const navigate = useNavigate();
+  const [products, setProducts] = useState({
+    name: "",
+    description: "",
+    price: "",
+    image: "",
+    type: "",
+  });
 
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [price, setPrice] = useState("");
-  const [category, setCategory] = useState("");
-  const [image, setImage] = useState("");
-
-  function handleSave() {
-    let newProduct = new FormData();
-    newProduct.append("title", title);
-    newProduct.append("description", description);
-    newProduct.append("price", price);
-    newProduct.append("category", category);
-    newProduct.append("image", image);
-    createProduct(newProduct);
-  }
-
+  const { createProduct } = useProducts();
+  const handleInp = (e) => {
+    if (e.target.name === "price") {
+      let obj = {
+        ...products,
+        [e.target.name]: Number(e.target.value),
+      };
+      setProducts(obj);
+    } else {
+      let obj = {
+        ...products,
+        [e.target.name]: e.target.value,
+      };
+      setProducts(obj);
+    }
+  };
+  // console.log(cosmetics);
   return (
-    <div className="d-flex flex-column w-50 m-auto">
-      <h1>Add product</h1>
-      <select value={category} onChange={(e) => setCategory(e.target.value)}>
-        <option>choose category</option>
-        {categories.map((item) => (
-          <option key={item.id} value={item.id}>
-            {item.title}
-          </option>
-        ))}
-      </select>
-      <input
-        type="text"
-        placeholder="title"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
+    <Box
+      sx={{
+        width: "40vw",
+        margin: "5vh auto",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "column",
+        // background: "rgb(254, 249, 239)",
+        gap: "30px",
+        padding: "20px",
+      }}
+    >
+      <h1>ADD BOOK</h1>
+      <TextField
+        id="outlined-basic"
+        label="Name"
+        variant="outlined"
+        color="grey"
+        name="name"
+        size="small"
+        onChange={handleInp}
       />
-      <input
-        type="text"
-        placeholder="description"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
+      <TextField
+        id="outlined-basic"
+        label="Description"
+        variant="outlined"
+        color="grey"
+        name="description"
+        size="small"
+        onChange={handleInp}
       />
-      <input
-        type="text"
-        placeholder="price"
-        value={price}
-        onChange={(e) => setPrice(e.target.value)}
+      <TextField
+        id="outlined-basic"
+        label="Price"
+        variant="outlined"
+        color="grey"
+        name="price"
+        size="small"
+        onChange={handleInp}
       />
-      <input
-        type="file"
-        accept="image/*"
-        onChange={(e) => setImage(e.target.files[0])}
+      <TextField
+        id="outlined-basic"
+        label="Image"
+        variant="outlined"
+        color="grey"
+        name="image"
+        size="small"
+        onChange={handleInp}
       />
-      <button onClick={handleSave}> add product</button>
-    </div>
+      <TextField
+        id="outlined-basic"
+        label="Type"
+        variant="outlined"
+        color="grey"
+        name="type"
+        size="small"
+        onChange={handleInp}
+      />
+      <Button
+        onClick={() => {
+          createProduct(products);
+          navigate("/");
+        }}
+        variant="contained"
+        size="large"
+        sx={{
+          border: "1px solid black",
+          color: "white",
+          backgroundColor: "black",
+        }}
+      >
+        ADD BOOK
+      </Button>
+    </Box>
   );
 };
 

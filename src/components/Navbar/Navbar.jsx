@@ -127,23 +127,6 @@ export default function Navbar() {
       >
         Logout
       </MenuItem>
-      <MenuItem
-        onClick={() => {
-          handleMenuClose();
-          navigate("/addBook");
-        }}
-      >
-        Add Book
-      </MenuItem>
-
-      <MenuItem
-        onClick={() => {
-          handleMenuClose();
-          navigate("/products");
-        }}
-      >
-        Book List
-      </MenuItem>
     </Menu>
   );
 
@@ -230,6 +213,15 @@ export default function Navbar() {
             sx={{ display: { xs: "none", sm: "block" } }}
           >
             Add Book
+          </Typography>
+          <Typography
+            onClick={() => navigate("/product-list")}
+            variant="h6"
+            noWrap
+            component="div"
+            sx={{ display: { xs: "none", sm: "block" } }}
+          >
+            Library
           </Typography>
           <Typography
             variant="h6"
