@@ -17,6 +17,7 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContextProvider";
+import AutoStoriesIcon from "@mui/icons-material/AutoStories";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -126,6 +127,23 @@ export default function Navbar() {
       >
         Logout
       </MenuItem>
+      <MenuItem
+        onClick={() => {
+          handleMenuClose();
+          navigate("/addBook");
+        }}
+      >
+        Add Book
+      </MenuItem>
+
+      <MenuItem
+        onClick={() => {
+          handleMenuClose();
+          navigate("/products");
+        }}
+      >
+        Book List
+      </MenuItem>
     </Menu>
   );
 
@@ -154,6 +172,7 @@ export default function Navbar() {
         </IconButton>
         <p>Messages</p>
       </MenuItem>
+
       <MenuItem>
         <IconButton
           size="large"
