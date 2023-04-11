@@ -4,6 +4,7 @@ import HomePage from "../Pages/HomePage/HomePage";
 import ProductsPage from "../Pages/ProductsPage/ProductsPage";
 import Register from "../components/auth/Register/Register";
 import Login from "../components/auth/Login/Login";
+import EditPassword from "../components/auth/EditPassword/EditPassword";
 
 const MainRoutes = () => {
   return (
@@ -15,6 +16,7 @@ const MainRoutes = () => {
         <Route path="/products" element={<ProductsPage />} />
         <Route path="/add" element={<ProductsPage />} />
         <Route path="/edit/:id" element={<ProductsPage />} />
+        <Route path="/edit-password" element={<EditPassword />} />
       </Routes>
     </div>
   );
