@@ -25,6 +25,7 @@
       "id": 5
     },
     {
+<<<<<<< HEAD
       "name": "rtwt",
       "description": "twet",
       "price": null,
@@ -39,6 +40,14 @@
       "image": "укн",
       "type": "кн",
       "id": 8
+=======
+      "name": "sdfvf",
+      "description": "dvb zdv",
+      "price": 345,
+      "image": "FBDF",
+      "type": "FBSDF",
+      "id": 6
+>>>>>>> 71dc965c904fe5378fd36e8a4f8ed17696c29277
     }
   ]
 }
