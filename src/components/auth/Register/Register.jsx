@@ -31,7 +31,6 @@ export default function RegisterList() {
   return (
     <div>
       <h1>Register</h1>
-      {error ? <h2>{error}</h2> : null}
       <form action="submit" onSubmit={handleSave}>
         <input
           onChange={(e) => setEmail(e.target.value)}
@@ -54,6 +53,7 @@ export default function RegisterList() {
           placeholder="username"
         />
         <button>register</button>
+        {error ? <p>{error}</p> : null}
       </form>
     </div>
   );
