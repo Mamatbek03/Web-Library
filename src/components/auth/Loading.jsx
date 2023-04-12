@@ -5,7 +5,11 @@ import Box from "@mui/material/Box";
 export default function Loading() {
   return (
     <Box
-      sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        marginTop: "45vh",
+      }}
     >
       <CircularProgress />
     </Box>

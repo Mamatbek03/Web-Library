@@ -57,11 +57,14 @@ const AuthContextProvider = ({ children }) => {
     }
   };
   const saveNewPassword = async (formData) => {
+    setLoading(true);
     try {
       await axios.put(`${API}/accounts/forgot/`, formData);
       navigate("/");
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
   const values = {
