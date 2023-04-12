@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import { Document, Page } from "react-pdf/dist/esm/entry.webpack";
+<<<<<<< HEAD
+import book from "./fistBook.pdf";
+
+=======
 import book from "./secondBook.pdf";
 import { Button } from "@mui/material";
+>>>>>>> 71dc965c904fe5378fd36e8a4f8ed17696c29277
 const ProductsPage = () => {
   const [totalPages, setTotalPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
