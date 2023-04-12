@@ -25,20 +25,20 @@
       "id": 5
     },
     {
-      "name": "dfrg",
-      "description": "dfg",
-      "price": null,
-      "image": "dfg",
-      "type": "dg",
-      "id": 6
-    },
-    {
       "name": "rtwt",
       "description": "twet",
       "price": null,
       "image": "e",
       "type": "et",
       "id": 7
+    },
+    {
+      "name": "кн",
+      "description": "кун",
+      "price": null,
+      "image": "укн",
+      "type": "кн",
+      "id": 8
     }
   ]
 }
