@@ -7,6 +7,8 @@ import Login from "../components/auth/Login/Login";
 import EditPassword from "../components/auth/EditPassword/EditPassword";
 import AddProduct from "../components/product/AddProduct";
 import ProductList from "../components/product/ProductList";
+import EditProduct from "../components/product/EditProduct";
+import DetailsProduct from "../components/product/DetailsProduct";
 
 const MainRoutes = () => {
   return (
@@ -18,7 +20,8 @@ const MainRoutes = () => {
         <Route path="/products" element={<ProductsPage />} />
         <Route path="/add" element={<AddProduct />} />
         <Route path="/product-list" element={<ProductList />} />
-        <Route path="/edit/:id" element={<ProductsPage />} />
+        <Route path="/edit/:id" element={<EditProduct />} />
+        <Route path="/details/:id" element={<DetailsProduct />} />
         <Route path="/edit-password" element={<EditPassword />} />
       </Routes>
     </div>
