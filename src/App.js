@@ -12,6 +12,7 @@ const App = () => {
       <AuthContextProvider>
         <Navbar />
         <MainRoutes />
+        <Footer />
       </AuthContextProvider>
     </ProductContextProvider>
   );
