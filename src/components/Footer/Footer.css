@@ -1,9 +1,9 @@
 #footer {
   font-size: 2rem;
-  background-color: beige;
-  height: 100px;
+  background-color: rgba(65, 65, 65, 0.745);
+  height: 300px;
   width: 100%;
-  color: rgb(36, 35, 35);
+  color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -22,12 +22,35 @@
 }
 
 #footer_right {
-  margin-right: 50px;
+  margin-right: 30px;
 }
 
 #footer_center {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   flex-direction: row;
   width: 40em;
+}
+
+#footer_media {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+
+.footer_link:hover {
+  cursor: pointer;
+}
+
+.footer_link > p {
+  font-size: 1rem;
+}
+
+.footer_link > input {
+  text-align: center;
+}
+
+#footer_email {
+  width: 15rem;
+  height: 30px;
 }
