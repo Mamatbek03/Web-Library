@@ -8,7 +8,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
-
+  // const [location, setLocation] = useState(null);
   const navigate = useNavigate();
 
   function handleSave() {
@@ -23,7 +23,7 @@ const Login = () => {
     <>
       <div>
         <h1>Login </h1>
-        {error ? <p>{}</p> : null}
+        {error ? <p>{error}</p> : null}
         <input
           onChange={(e) => setEmail(e.target.value)}
           type="text"
