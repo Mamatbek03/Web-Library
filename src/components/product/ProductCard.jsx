@@ -9,7 +9,7 @@ const ProductCard = ({ item }) => {
   return (
     <div className="border border-dark m-3">
       <img src={item.image} width={200} alt="" />
-      <h3>{item.name}</h3>
+      <h3>{item.title}</h3>
       <p>{item.price}</p>
       <p>{item.description}</p>
       <p>{item.type}</p>
