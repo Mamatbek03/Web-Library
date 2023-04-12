@@ -11,6 +11,10 @@ import Partnership from "../Pages/FootersPage/Partnership/Partnership";
 import Services from "../Pages/FootersPage/Services/Services";
 import AboutUs from "../Pages/FootersPage/AboutUs/AboutUs";
 
+import EditProduct from "../components/product/EditProduct";
+import DetailsProduct from "../components/product/DetailsProduct";
+
+
 const MainRoutes = () => {
   return (
     <div>
@@ -21,7 +25,8 @@ const MainRoutes = () => {
         <Route path="/products" element={<ProductsPage />} />
         <Route path="/add" element={<AddProduct />} />
         <Route path="/product-list" element={<ProductList />} />
-        <Route path="/edit/:id" element={<ProductsPage />} />
+        <Route path="/edit/:id" element={<EditProduct />} />
+        <Route path="/details/:id" element={<DetailsProduct />} />
         <Route path="/edit-password" element={<EditPassword />} />
         <Route path="/Partnership" element={<Partnership />} />
         <Route path="/Services" element={<Services />} />

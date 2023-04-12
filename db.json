@@ -24,13 +24,6 @@
       "type": "dfh",
       "id": 5
     },
-    {
-      "name": "dfrg",
-      "description": "dfg",
-      "price": null,
-      "image": "dfg",
-      "type": "dg",
-      "id": 6
-    }
+
   ]
 }
