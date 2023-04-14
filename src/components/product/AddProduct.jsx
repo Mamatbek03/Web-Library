@@ -17,6 +17,12 @@ const AddProduct = () => {
   const [price, setPrice] = useState("");
   const [category, setCategory] = useState("");
   const [image, setImage] = useState("");
+  const [pdf, getPdf] = useState(null);
+  // const [comment, getPdf] = useState(null);
+  // const [likesCount, getPdf] = useState(null);
+  // const [like, getPdf] = useState(null);
+  // const [favorite, getPdf] = useState(null);
+  // const [favorite, getPdf] = useState(null);
 
   function handleSave() {
     let newProduct = new FormData();
@@ -25,9 +31,12 @@ const AddProduct = () => {
     newProduct.append("price", price);
     newProduct.append("category", category);
     newProduct.append("image", image);
+    newProduct.append("pdf", pdf);
     createProduct(newProduct);
   }
-
+  // useEffect(() => {
+  //   if (!categories.length === 0) console.log(categories);
+  // }, [categories]);
   console.log(title, description, price, image, category);
   return (
     <Box
@@ -47,9 +56,9 @@ const AddProduct = () => {
       <select value={category} onChange={(e) => setCategory(e.target.value)}>
         <option>choose category</option>
 
-        {categories.map((item) => (
+        {categories?.map((item) => (
           <option key={item.id} value={item.id}>
-            {item.title}
+            {item.name}
           </option>
         ))}
       </select>
@@ -82,13 +91,22 @@ const AddProduct = () => {
       />
       <TextField
         id="outlined-basic"
+        label="image"
+        variant="outlined"
+        color="grey"
+        name="price"
+        size="small"
+        onChange={(e) => setImage(e.target.value)}
+      />
+      <TextField
+        id="outlined-basic"
         variant="outlined"
         color="grey"
         name="image"
         size="small"
         type="file"
         accept="image/*"
-        onChange={(e) => setImage(e.target.files[0])}
+        onChange={(e) => getPdf(e.target.files[0])}
       />
 
       <Button

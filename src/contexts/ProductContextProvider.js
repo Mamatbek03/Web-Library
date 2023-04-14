@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { createContext, useContext, useReducer } from "react";
+import React, { createContext, useContext, useEffect, useReducer } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const productContext = createContext();
@@ -7,7 +7,7 @@ export const productContext = createContext();
 export const useProducts = () => useContext(productContext);
 
 const ProductContextProvider = ({ children }) => {
-  const API = "http://localhost:8000/product";
+  const API = "http://34.107.92.21";
   const navigate = useNavigate();
 
   const INIT_STATE = {
@@ -33,6 +33,7 @@ const ProductContextProvider = ({ children }) => {
         return state;
     }
   }
+
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
   const getProducts = async () => {
     try {
@@ -60,7 +61,7 @@ const ProductContextProvider = ({ children }) => {
           Authorization,
         },
       };
-      const res = await axios.get(`${API}/category/list/`, config);
+      const res = await axios.get(`${API}/category/`, config);
       console.log(res);
       dispatch({ type: "GET_CATEGORIES", payload: res.data.results });
     } catch (error) {
@@ -72,13 +73,12 @@ const ProductContextProvider = ({ children }) => {
     try {
       const tokens = JSON.parse(localStorage.getItem("tokens"));
       const Authorization = `Bearer ${tokens.access}`;
-
       const config = {
         headers: {
           Authorization,
         },
       };
-      await axios.post(`${API}/products/`, newProduct, config);
+      await axios.post(`${API}/posts/`, newProduct, config);
       navigate("/products");
     } catch (error) {}
   };
@@ -86,13 +86,12 @@ const ProductContextProvider = ({ children }) => {
     try {
       const tokens = JSON.parse(localStorage.getItem("tokens"));
       const Authorization = `Bearer ${tokens.access}`;
-
       const config = {
         headers: {
           Authorization,
         },
       };
-      await axios.delete(`${API}/products/${id}/`, config);
+      await axios.delete(`${API}/posts/${id}/`, config);
       getProducts();
     } catch (error) {
       console.log(error);
@@ -102,13 +101,12 @@ const ProductContextProvider = ({ children }) => {
     try {
       const tokens = JSON.parse(localStorage.getItem("tokens"));
       const Authorization = `Bearer ${tokens.access}`;
-
       const config = {
         headers: {
           Authorization,
         },
       };
-      const res = await axios.get(`${API}/products/${id}/`, config);
+      const res = await axios.get(`${API}/posts/${id}/`, config);
       dispatch({ type: "GET_ONE_PRODUCT", payload: res.data });
       console.log(res);
     } catch (error) {
@@ -119,13 +117,12 @@ const ProductContextProvider = ({ children }) => {
     try {
       const tokens = JSON.parse(localStorage.getItem("tokens"));
       const Authorization = `Bearer ${tokens.access}`;
-
       const config = {
         headers: {
           Authorization,
         },
       };
-      await axios.patch(`${API}/products/${id}/`, editedProduct, config);
+      await axios.patch(`${API}/posts/${id}/`, editedProduct, config);
       navigate("/products");
     } catch (error) {
       console.log(error);

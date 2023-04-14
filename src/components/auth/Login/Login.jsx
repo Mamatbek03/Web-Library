@@ -41,7 +41,7 @@ const Login = () => {
         />
         <button onClick={handleSave}>login </button>
       </div>
-      <p onClick={() => navigate("/edit-password")}>forget Password?</p>
+      <p onClick={() => navigate("/edit-password")}>forgot Password?</p>
     </>
   );
 };
