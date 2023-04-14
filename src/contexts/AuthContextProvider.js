@@ -82,18 +82,18 @@ const AuthContextProvider = ({ children }) => {
         },
       };
       console.log(tokens.refresh);
-      await axios.post(`${API}/accounts/refresh/`, {
+      const res = await axios.post(`${API}/accounts/refresh/`, {
         refresh: tokens.refresh,
-        // config,
+        config,
       });
       localStorage.setItem(
         "tokens",
         JSON.stringify({
-          access: tokens.access,
-          refresh: tokens.refresh,
+          access: res.data.access,
+          refresh: res.data.refresh,
         })
       );
-      const email = JSON.parse(localStorage.getItem("email"));
+      const email = localStorage.getItem("email");
       setUser(email);
     } catch (error) {
       handleLogout();

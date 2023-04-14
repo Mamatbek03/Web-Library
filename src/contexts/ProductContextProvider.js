@@ -45,7 +45,7 @@ const ProductContextProvider = ({ children }) => {
         },
       };
       const res = await axios.get(
-        `${API}/products/${window.location.search}`,
+        `${API}/posts/${window.location.search}`,
         config
       );
       console.log(res);
@@ -63,7 +63,8 @@ const ProductContextProvider = ({ children }) => {
       };
       const res = await axios.get(`${API}/category/`, config);
       console.log(res);
-      dispatch({ type: "GET_CATEGORIES", payload: res.data.results });
+
+      dispatch({ type: "GET_CATEGORIES", payload: res.data });
     } catch (error) {
       console.log(error);
     }
@@ -79,8 +80,10 @@ const ProductContextProvider = ({ children }) => {
         },
       };
       await axios.post(`${API}/posts/`, newProduct, config);
-      navigate("/products");
-    } catch (error) {}
+      navigate("/product-list");
+    } catch (error) {
+      console.log(error);
+    }
   };
   const deleteProduct = async (id) => {
     try {
