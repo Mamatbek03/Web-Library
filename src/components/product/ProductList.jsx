@@ -10,7 +10,9 @@ const ProductList = () => {
   const { getProducts, products, pages } = useProducts();
   const [currentPage, setCurrentPage] = useState(1);
   const [searchParams, setSearchParams] = useSearchParams();
+
   console.log(products);
+  console.log(products.is_liked);
 
   useEffect(() => {
     setSearchParams({

@@ -16,7 +16,7 @@ const AddProduct = () => {
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [category, setCategory] = useState("");
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState(null);
   const [pdf, getPdf] = useState(null);
   // const [comment, getPdf] = useState(null);
   // const [likesCount, getPdf] = useState(null);
@@ -30,7 +30,7 @@ const AddProduct = () => {
     newProduct.append("body", description);
     newProduct.append("price", price);
     newProduct.append("category", category);
-    newProduct.append("photo", image);
+    newProduct.append("images", image);
     newProduct.append("pdf", pdf);
     createProduct(newProduct);
   }
@@ -87,20 +87,22 @@ const AddProduct = () => {
         size="small"
         onChange={(e) => setPrice(e.target.value)}
       />
-      <TextField
-        id="outlined-basic"
-        label="image"
-        variant="outlined"
-        color="grey"
-        name="price"
-        size="small"
-        onChange={(e) => setImage(e.target.value)}
-      />
+
       <TextField
         id="outlined-basic"
         variant="outlined"
         color="grey"
         name="image"
+        size="small"
+        type="file"
+        accept="image/*"
+        onChange={(e) => setImage(e.target.files[0])}
+      />
+      <TextField
+        id="outlined-basic"
+        variant="outlined"
+        color="grey"
+        name="pdf"
         size="small"
         type="file"
         accept="image/*"
