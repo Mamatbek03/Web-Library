@@ -20,9 +20,11 @@ const EditProduct = () => {
   useEffect(() => {
     if (oneProduct) {
       setTitle(oneProduct.title);
-      setDescription(oneProduct.description);
+      setDescription(oneProduct.body);
       setPrice(oneProduct.price);
-      setCategory(oneProduct.category.id);
+      setImage(oneProduct.photo);
+      setCategory(oneProduct.category);
+      console.log(oneProduct);
     }
   }, [oneProduct]);
 
@@ -35,25 +37,22 @@ const EditProduct = () => {
   function handleSave() {
     let newProduct = new FormData();
     newProduct.append("title", title);
-    newProduct.append("description", description);
+    newProduct.append("body", description);
     newProduct.append("price", price);
     newProduct.append("category", category);
+    newProduct.append("photo", image);
 
-    if (image) {
-      newProduct.append("image", image);
-    }
     updateProduct(id, newProduct);
   }
 
   return (
     <div className="d-flex flex-column w-50 m-auto">
       <h1>EDIT product</h1>
-      <p>CATEGORY BEFORE : {oneProduct?.category.title}</p>
       <select value={category} onChange={(e) => setCategory(e.target.value)}>
         <option>choose category</option>
         {categories.map((item) => (
           <option key={item.id} value={item.id}>
-            {item.title}
+            {item.name}
           </option>
         ))}
       </select>
@@ -76,12 +75,18 @@ const EditProduct = () => {
         onChange={(e) => setPrice(e.target.value)}
       />
       <p>Image before</p>
-      <img src={oneProduct?.image} width="100" alt="" />
+      <img src={oneProduct?.photo} width="100" alt="" />
       <input
+        type="text"
+        placeholder="image"
+        value={image}
+        onChange={(e) => setImage(e.target.value)}
+      />
+      {/* <input
         type="file"
         accept="image/*"
-        onChange={(e) => setImage(e.target.files[0])}
-      />
+        onChange={(e) => setPdf(e.target.files[0])}
+      /> */}
       <button onClick={handleSave}> save changes</button>
     </div>
   );
