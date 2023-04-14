@@ -27,16 +27,14 @@ const AddProduct = () => {
   function handleSave() {
     let newProduct = new FormData();
     newProduct.append("title", title);
-    newProduct.append("description", description);
+    newProduct.append("body", description);
     newProduct.append("price", price);
     newProduct.append("category", category);
-    newProduct.append("image", image);
+    newProduct.append("photo", image);
     newProduct.append("pdf", pdf);
     createProduct(newProduct);
   }
-  // useEffect(() => {
-  //   if (!categories.length === 0) console.log(categories);
-  // }, [categories]);
+
   console.log(title, description, price, image, category);
   return (
     <Box
