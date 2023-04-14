@@ -22,3 +22,8 @@
   background-repeat: no-repeat;
   background-size: 30px 30px;
 }
+
+.hr_line {
+  width: 90%;
+  opacity: 0.5;
+}
