@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const authContext = createContext();
@@ -9,14 +9,16 @@ const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const API = "http://34.89.140.26";
+  // const API = "http://34.89.140.26";
+  const API = "http://34.107.92.21";
 
   const navigate = useNavigate();
 
-  const handleRegister = async (formData) => {
+  const handleRegister = async (formData, email) => {
     setLoading(true);
     try {
       const res = await axios.post(`${API}/accounts/register/`, formData);
+      handleLogin(formData, email);
       navigate("/");
     } catch (error) {
       setError(Object.values(error.response.data).flat()[0]);
@@ -30,10 +32,11 @@ const AuthContextProvider = ({ children }) => {
       console.log(formData);
       const { data } = await axios.post(`${API}/accounts/login/`, formData);
       localStorage.setItem("tokens", JSON.stringify(data));
-      localStorage.setItem("emails", email);
+      localStorage.setItem("email", email);
       setUser(email);
       navigate("/");
     } catch (error) {
+      console.log(error);
       setError(error.respones.data.detail);
     } finally {
       setLoading(false);
@@ -43,7 +46,8 @@ const AuthContextProvider = ({ children }) => {
   const handleLogout = () => {
     setUser(null);
     localStorage.removeItem("tokens");
-    localStorage.removeItem("emails");
+    localStorage.removeItem("email");
+    navigate("/");
   };
   const sendCodeToEmail = async (email) => {
     setLoading(true);
@@ -67,14 +71,46 @@ const AuthContextProvider = ({ children }) => {
       setLoading(false);
     }
   };
+  const updateAuth = async () => {
+    setLoading(true);
+    try {
+      const tokens = JSON.parse(localStorage.getItem("tokens"));
+      const Authorization = `Bearer ${tokens.access}`;
+      const config = {
+        header: {
+          Authorization,
+        },
+      };
+      console.log(tokens.refresh);
+      await axios.post(`${API}/accounts/refresh/`, {
+        refresh: tokens.refresh,
+        // config,
+      });
+      localStorage.setItem(
+        "tokens",
+        JSON.stringify({
+          access: tokens.access,
+          refresh: tokens.refresh,
+        })
+      );
+      const email = JSON.parse(localStorage.getItem("email"));
+      setUser(email);
+    } catch (error) {
+      handleLogout();
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  };
   const values = {
+    updateAuth,
     saveNewPassword,
     sendCodeToEmail,
     handleLogout,
     handleLogin,
     handleRegister,
     setError,
-    // email,
+    user,
     error,
     loading,
   };

@@ -20,7 +20,7 @@ export default function RegisterList() {
       formData.append("password", password);
       formData.append("password2", passwordConfirm);
       formData.append("username", userName);
-      handleRegister(formData);
+      handleRegister(formData, email);
     }
   };
 

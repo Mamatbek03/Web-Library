@@ -7,31 +7,37 @@ import { Button } from "@mui/material";
 
 const AddProduct = () => {
   const navigate = useNavigate();
-  const [products, setProducts] = useState({
-    name: "",
-    description: "",
-    price: "",
-    image: "",
-    type: "",
-  });
+  const { getCategories, categories, createProduct } = useProducts();
+  useEffect(() => {
+    getCategories();
+  }, []);
 
-  const { createProduct } = useProducts();
-  const handleInp = (e) => {
-    if (e.target.name === "price") {
-      let obj = {
-        ...products,
-        [e.target.name]: Number(e.target.value),
-      };
-      setProducts(obj);
-    } else {
-      let obj = {
-        ...products,
-        [e.target.name]: e.target.value,
-      };
-      setProducts(obj);
-    }
-  };
-  // console.log(cosmetics);
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [price, setPrice] = useState("");
+  const [category, setCategory] = useState("");
+  const [image, setImage] = useState("");
+  const [pdf, getPdf] = useState(null);
+  // const [comment, getPdf] = useState(null);
+  // const [likesCount, getPdf] = useState(null);
+  // const [like, getPdf] = useState(null);
+  // const [favorite, getPdf] = useState(null);
+  // const [favorite, getPdf] = useState(null);
+
+  function handleSave() {
+    let newProduct = new FormData();
+    newProduct.append("title", title);
+    newProduct.append("description", description);
+    newProduct.append("price", price);
+    newProduct.append("category", category);
+    newProduct.append("image", image);
+    newProduct.append("pdf", pdf);
+    createProduct(newProduct);
+  }
+  // useEffect(() => {
+  //   if (!categories.length === 0) console.log(categories);
+  // }, [categories]);
+  console.log(title, description, price, image, category);
   return (
     <Box
       sx={{
@@ -46,56 +52,67 @@ const AddProduct = () => {
         padding: "20px",
       }}
     >
-      <h1>ADD BOOK</h1>
+      <h1>Add book</h1>
+      <select value={category} onChange={(e) => setCategory(e.target.value)}>
+        <option>choose category</option>
+
+        {categories?.map((item) => (
+          <option key={item.id} value={item.id}>
+            {item.name}
+          </option>
+        ))}
+      </select>
       <TextField
         id="outlined-basic"
-        label="Name"
+        label="title"
         variant="outlined"
         color="grey"
-        name="name"
+        name="title"
         size="small"
-        onChange={handleInp}
+        onChange={(e) => setTitle(e.target.value)}
       />
       <TextField
         id="outlined-basic"
-        label="Description"
+        label="description"
         variant="outlined"
         color="grey"
         name="description"
         size="small"
-        onChange={handleInp}
+        onChange={(e) => setDescription(e.target.value)}
       />
       <TextField
         id="outlined-basic"
-        label="Price"
+        label="price"
         variant="outlined"
         color="grey"
         name="price"
         size="small"
-        onChange={handleInp}
+        onChange={(e) => setPrice(e.target.value)}
       />
       <TextField
         id="outlined-basic"
-        label="Image"
+        label="image"
+        variant="outlined"
+        color="grey"
+        name="price"
+        size="small"
+        onChange={(e) => setImage(e.target.value)}
+      />
+      <TextField
+        id="outlined-basic"
         variant="outlined"
         color="grey"
         name="image"
         size="small"
-        onChange={handleInp}
+        type="file"
+        accept="image/*"
+        onChange={(e) => getPdf(e.target.files[0])}
       />
-      <TextField
-        id="outlined-basic"
-        label="Type"
-        variant="outlined"
-        color="grey"
-        name="type"
-        size="small"
-        onChange={handleInp}
-      />
+
       <Button
         onClick={() => {
-          createProduct(products);
-          navigate("/");
+          handleSave();
+          navigate("/product-list");
         }}
         variant="contained"
         size="large"
@@ -105,7 +122,7 @@ const AddProduct = () => {
           backgroundColor: "black",
         }}
       >
-        ADD BOOK
+        ADD PRODUCT
       </Button>
     </Box>
   );

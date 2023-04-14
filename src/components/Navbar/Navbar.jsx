@@ -63,8 +63,15 @@ export default function Navbar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
-  const { handleLogout } = useAuth();
+  const { handleLogout, user, updateAuth } = useAuth();
   const navigate = useNavigate();
+
+  React.useEffect(() => {
+    if (localStorage.getItem("tokens")) {
+      updateAuth();
+      console.log(JSON.parse(localStorage.getItem("tokens")));
+    }
+  }, []);
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
@@ -231,6 +238,7 @@ export default function Navbar() {
           >
             MUI
           </Typography>
+
           {/* <Search>
             <SearchIconWrapper>
               <SearchIcon />
@@ -270,7 +278,20 @@ export default function Navbar() {
               onClick={handleProfileMenuOpen}
               color="inherit"
             >
-              <AccountCircle />
+              {user ? (
+                <button
+                  style={{
+                    borderRadius: "90%",
+                    padding: "5px 8px",
+                    backgroundColor: "black",
+                    color: "white",
+                  }}
+                >
+                  {user[0].toUpperCase()}
+                </button>
+              ) : (
+                <AccountCircle />
+              )}
             </IconButton>
           </Box>
           <Box sx={{ display: { xs: "flex", md: "none" } }}>
