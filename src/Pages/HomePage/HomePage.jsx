@@ -13,7 +13,10 @@ const HomePage = () => {
           eius.
         </h2>
         <img id="logo" src={logo} alt="" />
-        <input placeholder="Введите название книги"></input>
+        <input
+          id="homepage_search"
+          placeholder="Введите название книги"
+        ></input>
         <p>Популярные книги</p>
         <div></div>
         <p>Категория: Детектив</p>
