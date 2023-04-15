@@ -1,30 +1,37 @@
 import React, { useState } from "react";
-import { useAuth } from "../../../contexts/AuthContextProvider";
+import { useProducts } from "../../../contexts/ProductContextProvider";
 import Loading from "../Loading";
-import { useNavigate } from "react-router-dom";
 import { Button, IconButton, InputAdornment, TextField } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import "./styles.css";
 
-const Login = () => {
-  const { handleLogin, error, setError, loading } = useAuth();
-  const [email, setEmail] = useState("");
-  const [userName, setUserName] = useState("");
+const EditPassword2 = () => {
+  const { saveNewPassword, loading, error } = useProducts();
+
+  const [showPassword, setShowPassword] = React.useState(false);
+  const [showPasswordConfirm, setShowPasswordConfirm] = React.useState(false);
+
+  const [code, setCode] = useState(null);
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
+  const [password2, setPassword2] = useState("");
 
-  const [showPassword, setShowPassword] = useState(false);
-
-  function handleSave() {
-    const formData = new FormData();
-    formData.append("email", email);
-    formData.append("username", userName);
+  function savePassword() {
+    let formData = new FormData();
+    formData.append("forgot_password_reset", code);
     formData.append("password", password);
-    handleLogin(formData, email);
+    formData.append("password2", password2);
+    saveNewPassword(formData);
   }
   if (loading) return <Loading />;
+
   const handleClickShowPassword = () => setShowPassword(!showPassword);
   const handleMouseDownPassword = () => setShowPassword(!showPassword);
+  const handleClickShowPasswordConfirm = () =>
+    setShowPasswordConfirm(!showPasswordConfirm);
+  const handleMouseDownPasswordConfirm = () =>
+    setShowPasswordConfirm(!showPasswordConfirm);
+
   return (
     <div
       className="register"
@@ -44,18 +51,18 @@ const Login = () => {
         }}
       >
         <center>
-          <h1>Login</h1>
+          <h1>Edit Password</h1>
         </center>
 
         <TextField
           sx={{ margin: "10px" }}
           id="outlined-basic"
-          label="email"
+          label="activate code "
           variant="outlined"
           color="grey"
           name="title"
           size="small"
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e) => setCode(e.target.value)}
         />
 
         <TextField
@@ -82,19 +89,38 @@ const Login = () => {
           }}
           onChange={(e) => setPassword(e.target.value)}
         />
-
+        <TextField
+          sx={{ margin: "15px" }}
+          id="outlined-basic"
+          label="password confirm"
+          variant="outlined"
+          color="grey"
+          name="title"
+          size="small"
+          type={showPasswordConfirm ? "text" : "password"}
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleClickShowPasswordConfirm}
+                  onMouseDown={handleMouseDownPasswordConfirm}
+                >
+                  {showPasswordConfirm ? (
+                    <VisibilityIcon />
+                  ) : (
+                    <VisibilityOffIcon />
+                  )}
+                </IconButton>
+              </InputAdornment>
+            ),
+          }}
+          onChange={(e) => setPassword2(e.target.value)}
+        />
         <center>
-          {error ? (
-            <p style={{ color: "red", margin: "10px 0" }}>{error}</p>
-          ) : null}
-          <p
-            className="forgot-password"
-            onClick={() => navigate("/edit-password")}
-          >
-            forgot password?
-          </p>
+          {error ? <p style={{ color: "red" }}>{error}</p> : null}
           <Button
-            onClick={handleSave}
+            onClick={savePassword}
             variant="contained"
             size="large"
             sx={{
@@ -105,7 +131,7 @@ const Login = () => {
               margin: "20px 0 30px 0",
             }}
           >
-            login
+            save Changes
           </Button>
         </center>
       </div>
@@ -113,4 +139,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default EditPassword2;

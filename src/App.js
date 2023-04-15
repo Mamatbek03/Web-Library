@@ -3,7 +3,6 @@ import Navbar from "./components/Navbar/Navbar";
 import AuthContextProvider from "./contexts/AuthContextProvider";
 import ProductContextProvider from "./contexts/ProductContextProvider";
 import MainRoutes from "./routes/MainRoutes";
-// import "./App.css";
 import Footer from "./components/Footer/Footer";
 
 const App = () => {
@@ -12,7 +11,7 @@ const App = () => {
       <AuthContextProvider>
         <Navbar />
         <MainRoutes />
-        <Footer />
+        {/* <Footer /> */}
       </AuthContextProvider>
     </ProductContextProvider>
   );

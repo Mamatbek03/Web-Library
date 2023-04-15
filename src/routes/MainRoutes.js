@@ -13,7 +13,7 @@ import AboutUs from "../Pages/FootersPage/AboutUs/AboutUs";
 
 import EditProduct from "../components/product/EditProduct";
 import DetailsProduct from "../components/product/DetailsProduct";
-
+import EditPassword2 from "../components/auth/EditPassword/EditPassword2";
 
 const MainRoutes = () => {
   return (
@@ -28,6 +28,7 @@ const MainRoutes = () => {
         <Route path="/edit/:id" element={<EditProduct />} />
         <Route path="/details/:id" element={<DetailsProduct />} />
         <Route path="/edit-password" element={<EditPassword />} />
+        <Route path="/edit-password-page-2" element={<EditPassword2 />} />
         <Route path="/Partnership" element={<Partnership />} />
         <Route path="/Services" element={<Services />} />
         <Route path="/AboutUs" element={<AboutUs />} />

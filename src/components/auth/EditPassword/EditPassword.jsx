@@ -1,53 +1,62 @@
 import React, { useState } from "react";
 import { useAuth } from "../../../contexts/AuthContextProvider";
-
+import Loading from "../Loading";
+import { Button, TextField } from "@mui/material";
+import "./styles.css";
 const EditPassword = () => {
-  const { sendCodeToEmail, saveNewPassword } = useAuth();
-  const [email, setEmail] = useState(null);
-  const [code, setCode] = useState(null);
-  const [password, setPassword] = useState("");
-  const [password2, setPassword2] = useState("");
+  const { sendCodeToEmail, loading } = useAuth();
 
-  //   function sendMessage() {
-  //     let formData = new FormData();
-  //     formData.append("email", email);
-  //     sendCodeToEmail(formData);
-  //   }
-  function savePassword() {
-    let formData = new FormData();
-    formData.append("forgot_password_reset", code);
-    formData.append("password", password);
-    formData.append("password2", password2);
-    saveNewPassword(formData);
-  }
+  const [email, setEmail] = useState(null);
+  if (loading) return <Loading />;
 
   return (
-    <div>
-      <div>
-        <input
+    <div
+      className="register"
+      style={{ height: "1000px", backgroundColor: "gray", padding: "50px 0" }}
+    >
+      <div
+        className="register-places"
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          margin: " 50px auto",
+          backgroundColor: "white",
+          width: "35%",
+          padding: "30px 20px",
+          borderRadius: "30px",
+        }}
+      >
+        <center>
+          <h1>Send activate code to email</h1>
+        </center>
+
+        <TextField
+          sx={{ margin: "30px 10px 20px" }}
+          id="outlined-basic"
+          label="email"
+          variant="outlined"
+          color="grey"
+          name="title"
+          size="small"
           onChange={(e) => setEmail(e.target.value)}
-          type="text"
-          placeholder="email"
         />
-        <button onClick={() => sendCodeToEmail(email)}>send code</button>
-      </div>
-      <div>
-        <input
-          onChange={(e) => setCode(e.target.value)}
-          type="text"
-          placeholder="code from email"
-        />
-        <input
-          onChange={(e) => setPassword(e.target.value)}
-          type="text"
-          placeholder="new password"
-        />
-        <input
-          onChange={(e) => setPassword2(e.target.value)}
-          type="text"
-          placeholder="password confirm"
-        />
-        <button onClick={savePassword}>create New Password</button>
+        <center>
+          <Button
+            onClick={() => sendCodeToEmail(email)}
+            variant="contained"
+            size="large"
+            sx={{
+              border: "1px solid black",
+              color: "white",
+              backgroundColor: "black",
+              width: "80%",
+              margin: "20px 0 30px 0",
+            }}
+          >
+            login
+          </Button>
+        </center>
       </div>
     </div>
   );
