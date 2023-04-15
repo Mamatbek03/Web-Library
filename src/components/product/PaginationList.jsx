@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Pagination } from "@mui/material";
+import { Pagination } from "@mui/material";
 
 const PaginationList = ({ getPagesCount, currentPage, setCurrentPage }) => {
   return (

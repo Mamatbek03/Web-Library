@@ -12,7 +12,6 @@ const ProductList = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   console.log(products);
-  console.log(products.is_liked);
 
   useEffect(() => {
     setSearchParams({

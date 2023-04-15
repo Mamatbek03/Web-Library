@@ -126,13 +126,61 @@ const ProductContextProvider = ({ children }) => {
         },
       };
       await axios.patch(`${API}/posts/${id}/`, editedProduct, config);
-      navigate("/products");
+      navigate("/product-list");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const postLike = async (formData) => {
+    try {
+      const tokens = JSON.parse(localStorage.getItem("tokens"));
+      const Authorization = `Bearer ${tokens.access}`;
+      const config = {
+        headers: {
+          Authorization,
+        },
+      };
+      await axios.post(`${API}/likes/`, formData, config);
+      getProducts();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const deleteLike = async (id) => {
+    try {
+      const tokens = JSON.parse(localStorage.getItem("tokens"));
+      const Authorization = `Bearer ${tokens.access}`;
+      const config = {
+        headers: {
+          Authorization,
+        },
+      };
+      await axios.delete(`${API}/likes/${id}`, config);
+      getProducts();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const showProductDetails = async (formData) => {
+    try {
+      const tokens = JSON.parse(localStorage.getItem("tokens"));
+      const Authorization = `Bearer ${tokens.access}`;
+      const config = {
+        headers: {
+          Authorization,
+        },
+      };
+      await axios.post(`${API}/favorites/`, formData, config);
+      getProducts();
     } catch (error) {
       console.log(error);
     }
   };
 
   const values = {
+    showProductDetails,
+    deleteLike,
+    postLike,
     updateProduct,
     oneProduct: state.oneProduct,
     getOneProduct,
