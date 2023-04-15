@@ -81,7 +81,6 @@ const AuthContextProvider = ({ children }) => {
           Authorization,
         },
       };
-      console.log(tokens.refresh);
       const res = await axios.post(`${API}/accounts/refresh/`, {
         refresh: tokens.refresh,
         config,
