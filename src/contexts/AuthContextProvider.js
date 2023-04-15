@@ -37,7 +37,7 @@ const AuthContextProvider = ({ children }) => {
       navigate("/");
     } catch (error) {
       console.log(error);
-      setError(error.respones.data.detail);
+      setError(Object.values(error.response.data).flat()[0]);
     } finally {
       setLoading(false);
       console.log(error);
@@ -54,6 +54,7 @@ const AuthContextProvider = ({ children }) => {
     try {
       console.log(23523);
       await axios.post(`${API}/accounts/forgot/`, email);
+      navigate("/edit-password-page-2");
     } catch (error) {
       console.log(error);
     } finally {
