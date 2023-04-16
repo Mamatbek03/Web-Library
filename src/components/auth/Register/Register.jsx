@@ -70,6 +70,16 @@ export default function RegisterList() {
           size="small"
           onChange={(e) => setEmail(e.target.value)}
         />
+        <TextField
+          sx={{ margin: "10px" }}
+          id="outlined-basic"
+          label="user name"
+          variant="outlined"
+          color="grey"
+          name="title"
+          size="small"
+          onChange={(e) => setUserName(e.target.value)}
+        />
 
         <TextField
           sx={{ margin: "15px" }}

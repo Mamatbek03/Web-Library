@@ -9,7 +9,6 @@ const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  // const API = "http://34.89.140.26";
   const API = "http://34.107.92.21";
 
   const navigate = useNavigate();

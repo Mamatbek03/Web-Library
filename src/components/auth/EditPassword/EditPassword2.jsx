@@ -68,7 +68,7 @@ const EditPassword2 = () => {
         <TextField
           sx={{ margin: "15px" }}
           id="outlined-basic"
-          label="password"
+          label="new password"
           variant="outlined"
           color="grey"
           name="title"

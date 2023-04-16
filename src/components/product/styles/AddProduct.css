@@ -18,12 +18,6 @@
     width: 70% !important;
     padding: 50px 20px !important;
   }
-  .add-book_rower {
-    flex-direction: column !important;
-  }
-  .unrower {
-    display: none;
-  }
 }
 @media all and (max-width: 376px) {
   .add-book_places {
@@ -32,4 +26,11 @@
   .add-book_header {
     font-size: 27px;
   }
+}
+
+.add-book_rower {
+  flex-direction: column !important;
+}
+.unrower {
+  display: none;
 }
