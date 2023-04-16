@@ -5,11 +5,19 @@ import { useProducts } from "../../contexts/ProductContextProvider";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 import CommentIcon from "@mui/icons-material/Comment";
-import { IconButton, colors } from "@mui/material";
+import { IconButton } from "@mui/material";
 
 const ProductCard = ({ item }) => {
-  const { deleteProduct, postLike, deleteLike, showProductDetails } =
-    useProducts();
+  const {
+    postLike,
+    deleteLike,
+
+    postFavorite,
+    deleteFavorite,
+
+    deleteProduct,
+    getProducts,
+  } = useProducts();
 
   const [isFavorite, setIsFavorite] = useState(item.is_favorite);
   const [isLiked, setIsLiked] = useState(item.is_liked);
@@ -32,6 +40,20 @@ const ProductCard = ({ item }) => {
       deleteLike(id);
     }
   }
+  function handleFavorite() {
+    formData.append("is_favorite", isFavorite);
+    const post = item.id;
+    if (!isFavorite) {
+      setIsLiked(!isFavorite);
+      postFavorite(post);
+    } else {
+      setIsLiked(!isFavorite);
+      deleteFavorite(post);
+    }
+  }
+  useEffect(() => {
+    getProducts();
+  }, [isLiked]);
   const navigate = useNavigate();
   return (
     <div className="border border-dark m-3">
@@ -44,8 +66,8 @@ const ProductCard = ({ item }) => {
           <FavoriteIcon color={isLiked ? "error" : ""} />
           <p>{likesCount}</p>
         </IconButton>
-        <IconButton>
-          <BookmarkIcon />
+        <IconButton onClick={handleFavorite}>
+          <BookmarkIcon color={isFavorite ? "primary" : ""} />
         </IconButton>
         <IconButton>
           <CommentIcon />

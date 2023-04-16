@@ -44,10 +44,7 @@ const ProductContextProvider = ({ children }) => {
           Authorization,
         },
       };
-      const res = await axios.get(
-        `${API}/posts/${window.location.search}`,
-        config
-      );
+      const res = await axios.get(`${API}/posts/`, config);
       console.log(res);
       dispatch({ type: "GET_PRODUCTS", payload: res.data });
     } catch (error) {}
@@ -132,6 +129,7 @@ const ProductContextProvider = ({ children }) => {
     }
   };
   const postLike = async (formData) => {
+    console.log(formData.post);
     try {
       const tokens = JSON.parse(localStorage.getItem("tokens"));
       const Authorization = `Bearer ${tokens.access}`;
@@ -141,6 +139,7 @@ const ProductContextProvider = ({ children }) => {
         },
       };
       await axios.post(`${API}/likes/`, formData, config);
+
       getProducts();
     } catch (error) {
       console.log(error);
@@ -161,7 +160,8 @@ const ProductContextProvider = ({ children }) => {
       console.log(error);
     }
   };
-  const showProductDetails = async (formData) => {
+  const postFavorite = async (post) => {
+    console.log(post);
     try {
       const tokens = JSON.parse(localStorage.getItem("tokens"));
       const Authorization = `Bearer ${tokens.access}`;
@@ -170,7 +170,23 @@ const ProductContextProvider = ({ children }) => {
           Authorization,
         },
       };
-      await axios.post(`${API}/favorites/`, formData, config);
+      await axios.post(`${API}/favorites/`, post, config);
+
+      getProducts();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const deleteFavorite = async (id) => {
+    try {
+      const tokens = JSON.parse(localStorage.getItem("tokens"));
+      const Authorization = `Bearer ${tokens.access}`;
+      const config = {
+        headers: {
+          Authorization,
+        },
+      };
+      await axios.post(`${API}/favorites/${id}/`, config);
       getProducts();
     } catch (error) {
       console.log(error);
@@ -178,7 +194,8 @@ const ProductContextProvider = ({ children }) => {
   };
 
   const values = {
-    showProductDetails,
+    postFavorite,
+    deleteFavorite,
     deleteLike,
     postLike,
     updateProduct,

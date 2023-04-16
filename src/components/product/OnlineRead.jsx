@@ -1,8 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Document, Page } from "react-pdf/dist/esm/entry.webpack";
-import book from "./secondBook.pdf";
 import { Button } from "@mui/material";
+import { useProducts } from "../../contexts/ProductContextProvider";
+import { useParams } from "react-router-dom";
 const ProductsPage = () => {
+  const { getCategories, getOneProduct, oneProduct } = useProducts();
+
+  const { id } = useParams();
+  useEffect(() => {
+    getCategories();
+    getOneProduct(id);
+  }, []);
+
   const [totalPages, setTotalPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
   function onDocumentLoadSuccess({ numPages }) {
@@ -38,12 +47,13 @@ const ProductsPage = () => {
   function nextPage() {
     changePage(+1);
   }
+
   return (
     <div className="big">
       <center style={{ overflow: "hidden" }} className="small">
         <Document
           className="doc"
-          file={book}
+          file={oneProduct?.pdf}
           onLoadSuccess={onDocumentLoadSuccess}
         >
           <Page

@@ -249,7 +249,7 @@ export default function Navbar() {
               inputProps={{ "aria-label": "search" }}
             />
           </Search> */}
-
+          <p>{user ? user : "No auth user"}</p>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
             <IconButton

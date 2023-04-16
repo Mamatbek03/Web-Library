@@ -1,0 +1,11 @@
+.details {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+.details_left_img {
+  width: 50%;
+}
+.details_info {
+}
