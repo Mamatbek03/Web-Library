@@ -1,7 +1,6 @@
 #footer {
   font-size: 1.8rem;
-  /* background-color: rgba(65, 65, 65, 0.745); */
-  background: linear-gradient(#1769aa, skyblue);
+  background-color: rgba(65, 65, 65, 0.745);
   height: 380px;
   width: 100%;
   color: white;

@@ -6,6 +6,7 @@ import MainRoutes from "./routes/MainRoutes";
 import Footer from "./components/Footer/Footer";
 import CommentContextProvider from "./contexts/CommentContextProvider";
 import CartContextProvider from "./contexts/CartContexProvider";
+import "./App.css";
 
 const App = () => {
   return (

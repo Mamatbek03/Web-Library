@@ -6,7 +6,7 @@
 
 #main {
   /* background-color: rgb(66, 66, 66); */
-  background-image: url(./media/wallpaperbetter.com_2560x1440.jpg);
+  /* background-image: url(./media/wallpaperbetter.com_2560x1440.jpg); */
   background-size: cover;
   display: flex;
   flex-direction: column;
@@ -17,22 +17,48 @@
   text-shadow: #fc0 0px 0 5px;
 }
 
+#main > h1 {
+  margin: 50px 40px;
+}
+
+#main_logo {
+  position: sticky;
+}
+
 #homepage_search {
   width: 60em;
   height: 40px;
   margin: 30px auto 30px;
   text-align: center;
-  border-radius: 5px;
+  border-radius: 10px;
   border: #fc0 2px solid;
   background-image: url("https://img.icons8.com/external-filled-outline-perfect-kalash/64/null/external-Magnifying-Glass-basic-filled-outline-perfect-kalash.png");
   background-repeat: no-repeat;
   background-size: 30px 30px;
   background-color: rgba(224, 224, 224, 0.766);
   outline: none;
-  color: white;
+  color: black;
 }
 
 .hr_line {
   width: 90%;
   opacity: 0.5;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgb(66, 66, 66);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #ffd9049b;
+  border-radius: 15px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #ffd700;
 }

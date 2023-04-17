@@ -12,11 +12,11 @@ const HomePage = () => {
           SalamatBook - читайте и добавляйте книги, будем вместе расширять
           библиотеку. В этом году нам будет 30лет!
         </h1>
-        <img id="logo" src={logo} alt="" />
-        <input
-          id="homepage_search"
-          placeholder="Введите название книги"
-        ></input>
+        <div>
+          <img id="logo" src={logo} alt="" />
+          SalamatBook
+        </div>
+        <input id="homepage_search" placeholder="Введите название книги" />
         <p>Популярные книги</p>
         <div></div>
         <hr className="hr_line" />
@@ -30,6 +30,25 @@ const HomePage = () => {
         <div></div>
         <hr className="hr_line" />
         <p>Категория: Детское</p>
+        <p>Hello</p>
+        <p>Hello</p>
+        <p>Hello</p>
+        <p>Hello</p>
+        <p>Hello</p>
+        <p>Hello</p>
+        <p>Hello</p>
+        <p>Hello</p>
+        <p>Hello</p>
+        <p>Hello</p>
+        <p>Hello</p>
+        <p>Hello</p>
+
+        <p>Hello</p>
+        <p>Hello</p>
+        <p>Hello</p>
+        <p>Hello</p>
+        <p>Hello</p>
+        <p>Hello</p>
       </div>
     </div>
   );

@@ -3,13 +3,14 @@
   height: 100%;
   padding-top: 100px;
   padding-bottom: 10%;
+  text-shadow: #fc0 0px 0 5px;
+  color: white;
 }
 
 #partnership_content {
   width: 60%;
   height: 400px;
   background-color: rgba(169, 169, 169, 0);
-  color: black;
   margin: 0 100px;
 }
 
@@ -22,7 +23,6 @@
 legend {
   margin-left: 50px;
   font-size: 2rem;
-  color: red;
 }
 
 #fieldset_right {
