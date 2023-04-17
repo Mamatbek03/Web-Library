@@ -6,6 +6,8 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 import CommentIcon from "@mui/icons-material/Comment";
 import { IconButton } from "@mui/material";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { useCart } from "../../contexts/CartContexProvider";
 
 const ProductCard = ({ item }) => {
   const {
@@ -55,6 +57,8 @@ const ProductCard = ({ item }) => {
     getProducts();
   }, [isLiked]);
   const navigate = useNavigate();
+  const { addProductToCart, checkProductInCart } = useCart();
+
   return (
     <div className="border border-dark m-3">
       <img src={item.images} height={200} alt="" />
@@ -72,6 +76,11 @@ const ProductCard = ({ item }) => {
         <IconButton>
           <CommentIcon />
           <p>{commentsCount}</p>
+        </IconButton>
+        <IconButton onClick={() => addProductToCart(item)}>
+          <ShoppingCartIcon
+            color={checkProductInCart(item.id) ? "primary" : ""}
+          />
         </IconButton>
       </div>
       <div>
