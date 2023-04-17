@@ -19,6 +19,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContextProvider";
 import AutoStoriesIcon from "@mui/icons-material/AutoStories";
 import "./Navbar.css";
+
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { useCart } from "../../contexts/CartContexProvider";
 import { getCountProductsInCart } from "../helpers/function";
