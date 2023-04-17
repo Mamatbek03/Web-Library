@@ -19,6 +19,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContextProvider";
 import AutoStoriesIcon from "@mui/icons-material/AutoStories";
 import "./Navbar.css";
+import { Style } from "@mui/icons-material";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
