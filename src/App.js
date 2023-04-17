@@ -5,17 +5,20 @@ import ProductContextProvider from "./contexts/ProductContextProvider";
 import MainRoutes from "./routes/MainRoutes";
 import Footer from "./components/Footer/Footer";
 import CommentContextProvider from "./contexts/CommentContextProvider";
+import CartContextProvider from "./contexts/CartContexProvider";
 
 const App = () => {
   return (
     <CommentContextProvider>
-      <ProductContextProvider>
-        <AuthContextProvider>
-          <Navbar />
-          <MainRoutes />
-          <Footer />
-        </AuthContextProvider>
-      </ProductContextProvider>
+      <CartContextProvider>
+        <ProductContextProvider>
+          <AuthContextProvider>
+            <Navbar />
+            <MainRoutes />
+            <Footer />
+          </AuthContextProvider>
+        </ProductContextProvider>
+      </CartContextProvider>
     </CommentContextProvider>
   );
 };

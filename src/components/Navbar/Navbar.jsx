@@ -19,7 +19,9 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContextProvider";
 import AutoStoriesIcon from "@mui/icons-material/AutoStories";
 import "./Navbar.css";
-import { Style } from "@mui/icons-material";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { useCart } from "../../contexts/CartContexProvider";
+import { getCountProductsInCart } from "../helpers/function";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -52,7 +54,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   "& .MuiInputBase-input": {
     padding: theme.spacing(1, 1, 1, 0),
     // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+    paddingLeft: calc(`1em + ${theme.spacing(4)}`),
     transition: theme.transitions.create("width"),
     width: "100%",
     [theme.breakpoints.up("md")]: {
@@ -93,6 +95,14 @@ export default function Navbar() {
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
+
+  // корзина//
+  const [count, setCount] = React.useState(0);
+  const { addProductToCart } = useCart();
+
+  React.useEffect(() => {
+    setCount(getCountProductsInCart());
+  }, [addProductToCart]);
 
   const menuId = "primary-search-account-menu";
   const renderMenu = (
@@ -241,18 +251,29 @@ export default function Navbar() {
             MUI
           </Typography>
 
-          {/* <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ "aria-label": "search" }}
-            />
+          {/* <Search> 
+            <SearchIconWrapper> 
+              <SearchIcon /> 
+            </SearchIconWrapper> 
+            <StyledInputBase 
+              placeholder="Search…" 
+              inputProps={{ "aria-label": "search" }} 
+            /> 
           </Search> */}
           <p>{user ? user : "No auth user"}</p>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
+            <IconButton
+              onClick={() => navigate("/cart")}
+              size="large"
+              aria-label="show 4 new mails"
+              color="inherit"
+            >
+              <Badge badgeContent={count} color="error">
+                <ShoppingCartIcon />
+              </Badge>
+            </IconButton>
+
             <IconButton
               size="large"
               aria-label="show 4 new mails"
