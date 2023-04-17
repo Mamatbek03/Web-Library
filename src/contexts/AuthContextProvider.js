@@ -9,7 +9,6 @@ const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  // const API = "http://34.89.140.26";
   const API = "http://34.107.92.21";
 
   const navigate = useNavigate();
@@ -37,7 +36,7 @@ const AuthContextProvider = ({ children }) => {
       navigate("/");
     } catch (error) {
       console.log(error);
-      setError(error.respones.data.detail);
+      setError(Object.values(error.response.data).flat()[0]);
     } finally {
       setLoading(false);
       console.log(error);
@@ -54,6 +53,7 @@ const AuthContextProvider = ({ children }) => {
     try {
       console.log(23523);
       await axios.post(`${API}/accounts/forgot/`, email);
+      navigate("/edit-password-page-2");
     } catch (error) {
       console.log(error);
     } finally {
@@ -81,7 +81,6 @@ const AuthContextProvider = ({ children }) => {
           Authorization,
         },
       };
-      console.log(tokens.refresh);
       const res = await axios.post(`${API}/accounts/refresh/`, {
         refresh: tokens.refresh,
         config,

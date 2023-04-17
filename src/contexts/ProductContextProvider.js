@@ -44,10 +44,7 @@ const ProductContextProvider = ({ children }) => {
           Authorization,
         },
       };
-      const res = await axios.get(
-        `${API}/posts/${window.location.search}`,
-        config
-      );
+      const res = await axios.get(`${API}/posts/`, config);
       console.log(res);
       dispatch({ type: "GET_PRODUCTS", payload: res.data });
     } catch (error) {}
@@ -126,13 +123,81 @@ const ProductContextProvider = ({ children }) => {
         },
       };
       await axios.patch(`${API}/posts/${id}/`, editedProduct, config);
-      navigate("/products");
+      navigate("/product-list");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const postLike = async (formData) => {
+    console.log(formData.post);
+    try {
+      const tokens = JSON.parse(localStorage.getItem("tokens"));
+      const Authorization = `Bearer ${tokens.access}`;
+      const config = {
+        headers: {
+          Authorization,
+        },
+      };
+      await axios.post(`${API}/likes/`, formData, config);
+
+      getProducts();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const deleteLike = async (id) => {
+    try {
+      const tokens = JSON.parse(localStorage.getItem("tokens"));
+      const Authorization = `Bearer ${tokens.access}`;
+      const config = {
+        headers: {
+          Authorization,
+        },
+      };
+      await axios.delete(`${API}/likes/${id}`, config);
+      getProducts();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const postFavorite = async (post) => {
+    console.log(post);
+    try {
+      const tokens = JSON.parse(localStorage.getItem("tokens"));
+      const Authorization = `Bearer ${tokens.access}`;
+      const config = {
+        headers: {
+          Authorization,
+        },
+      };
+      await axios.post(`${API}/favorites/`, post, config);
+
+      getProducts();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const deleteFavorite = async (id) => {
+    try {
+      const tokens = JSON.parse(localStorage.getItem("tokens"));
+      const Authorization = `Bearer ${tokens.access}`;
+      const config = {
+        headers: {
+          Authorization,
+        },
+      };
+      await axios.post(`${API}/favorites/${id}/`, config);
+      getProducts();
     } catch (error) {
       console.log(error);
     }
   };
 
   const values = {
+    postFavorite,
+    deleteFavorite,
+    deleteLike,
+    postLike,
     updateProduct,
     oneProduct: state.oneProduct,
     getOneProduct,

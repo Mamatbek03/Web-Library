@@ -1,3 +1,6 @@
+.forgot-password:hover {
+  color: blue;
+}
 @media all and (max-width: 1025px) {
   .register-places {
     width: 50% !important;

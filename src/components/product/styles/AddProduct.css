@@ -1,0 +1,36 @@
+@media all and (max-width: 1025px) {
+  .add-book_places {
+    width: 55% !important;
+  }
+}
+@media all and (max-width: 769px) {
+  .add-book_places {
+    width: 65% !important;
+  }
+  .add-book_pdf,
+  .add-book_image {
+    font-size: 16px;
+    margin-top: 23px !important;
+  }
+}
+@media all and (max-width: 500px) {
+  .add-book_places {
+    width: 70% !important;
+    padding: 50px 20px !important;
+  }
+}
+@media all and (max-width: 376px) {
+  .add-book_places {
+    width: 70% !important;
+  }
+  .add-book_header {
+    font-size: 27px;
+  }
+}
+
+.add-book_rower {
+  flex-direction: column !important;
+}
+.unrower {
+  display: none;
+}
