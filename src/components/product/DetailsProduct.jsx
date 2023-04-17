@@ -38,7 +38,7 @@ const EditProduct = () => {
   }
 
   function timeDays(time) {
-    const res = moment(time).format("DD.MM.YYYY HH:mm");
+    const res = moment(time).format("DD.MM.YYYY");
     return res;
   }
   function timeHours(time) {
@@ -63,15 +63,6 @@ const EditProduct = () => {
     }
   }
 
-  const handleDownloadClick = (book) => {
-    const link = document.createElement("a");
-    link.href = book.urlbolchu;
-    link.download = oneProduct?.title + ".pdf";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
-
   const formData = new FormData();
   function handleLike() {
     formData.append("post", post);
@@ -83,6 +74,8 @@ const EditProduct = () => {
       deleteLike(id);
     }
   }
+
+  console.log(oneProduct?.pdf);
   return (
     <>
       <div className="details">
@@ -96,7 +89,13 @@ const EditProduct = () => {
               online read
             </button>
             <button className="details_left_btn">
-              <a onClick={() => handleDownloadClick(oneProduct)}>download</a>
+              <a
+                href={oneProduct?.pdf}
+                // download={oneProduct?.title + ".pdf"}
+                target="_blank"
+              >
+                download
+              </a>
             </button>
           </div>
         </div>
@@ -141,7 +140,7 @@ const EditProduct = () => {
         />
         <button onClick={addComment}>send</button>
         <div className="comments_list">
-          {oneProduct?.comments.map((item) => (
+          {comments?.map((item) => (
             <div
               key={item.created_at}
               onClick={(e) => handlebtns(e, "item" + item.id)}
