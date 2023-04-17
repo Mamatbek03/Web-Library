@@ -8,6 +8,7 @@ import CommentIcon from "@mui/icons-material/Comment";
 import { IconButton } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { useCart } from "../../contexts/CartContexProvider";
+import "./styles/ProductCard.css";
 
 const ProductCard = ({ item }) => {
   const {
@@ -36,21 +37,23 @@ const ProductCard = ({ item }) => {
     const id = item.id;
     if (!isLiked) {
       setIsLiked(!isLiked);
+      setLikesCount(likesCount + 1);
       postLike(formData);
     } else {
       setIsLiked(!isLiked);
+      setLikesCount(likesCount - 1);
+
       deleteLike(id);
     }
   }
   function handleFavorite() {
-    formData.append("is_favorite", isFavorite);
-    const post = item.id;
+    formData.append("post", item.id);
     if (!isFavorite) {
-      setIsLiked(!isFavorite);
-      postFavorite(post);
+      setIsFavorite(!isFavorite);
+      postFavorite(formData);
     } else {
-      setIsLiked(!isFavorite);
-      deleteFavorite(post);
+      setIsFavorite(!isFavorite);
+      postFavorite(formData);
     }
   }
   useEffect(() => {
@@ -61,7 +64,7 @@ const ProductCard = ({ item }) => {
 
   return (
     <div className="border border-dark m-3">
-      <img src={item.images} height={200} alt="" />
+      <img src={item.images} height={200} width={227} alt="photo" />
       <h3>{item.title}</h3>
       <p>{item.category_name}</p>
       {item.price ? <p>${item.price}</p> : <p>free</p>}

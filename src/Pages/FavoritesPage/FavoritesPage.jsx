@@ -1,6 +1,5 @@
 import React from "react";
-
-import { Pagination } from "react-bootstrap";
+import { Pagination } from "@mui/material";
 
 const PaginationList = ({ getPagesCount, currentPage, setCurrentPage }) => {
   return (

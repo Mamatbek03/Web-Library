@@ -1,0 +1,9 @@
+.border {
+  border: 1px solid black;
+  margin-left: 30px;
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 15%;
+}
