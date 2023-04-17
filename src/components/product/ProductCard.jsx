@@ -34,21 +34,23 @@ const ProductCard = ({ item }) => {
     const id = item.id;
     if (!isLiked) {
       setIsLiked(!isLiked);
+      setLikesCount(likesCount + 1);
       postLike(formData);
     } else {
       setIsLiked(!isLiked);
+      setLikesCount(likesCount - 1);
+
       deleteLike(id);
     }
   }
   function handleFavorite() {
-    formData.append("is_favorite", isFavorite);
-    const post = item.id;
+    formData.append("post", item.id);
     if (!isFavorite) {
-      setIsLiked(!isFavorite);
-      postFavorite(post);
+      setIsFavorite(!isFavorite);
+      postFavorite(formData);
     } else {
-      setIsLiked(!isFavorite);
-      deleteFavorite(post);
+      setIsFavorite(!isFavorite);
+      postFavorite(formData);
     }
   }
   useEffect(() => {
