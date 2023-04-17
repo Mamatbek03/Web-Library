@@ -8,6 +8,7 @@ import CommentIcon from "@mui/icons-material/Comment";
 import { IconButton } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { useCart } from "../../contexts/CartContexProvider";
+import "./styles/ProductCard.css";
 
 const ProductCard = ({ item }) => {
   const {
@@ -61,7 +62,7 @@ const ProductCard = ({ item }) => {
 
   return (
     <div className="border border-dark m-3">
-      <img src={item.images} height={200} alt="" />
+      <img src={item.images} height={200} width={227} alt="photo" />
       <h3>{item.title}</h3>
       <p>{item.category_name}</p>
       {item.price ? <p>${item.price}</p> : <p>free</p>}

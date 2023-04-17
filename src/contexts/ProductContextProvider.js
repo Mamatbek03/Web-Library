@@ -1,6 +1,12 @@
 import axios from "axios";
-import React, { createContext, useContext, useEffect, useReducer } from "react";
-import { useNavigate } from "react-router-dom";
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useReducer,
+  useState,
+} from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 export const productContext = createContext();
 
@@ -9,6 +15,8 @@ export const useProducts = () => useContext(productContext);
 const ProductContextProvider = ({ children }) => {
   const API = "http://34.107.92.21";
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [search, setSearch] = useState(searchParams.get("q") || "");
 
   const INIT_STATE = {
     products: [],
@@ -44,7 +52,10 @@ const ProductContextProvider = ({ children }) => {
           Authorization,
         },
       };
-      const res = await axios.get(`${API}/posts/`, config);
+      const res = await axios.get(
+        `${API}/posts/${window.location.search}`,
+        config
+      );
       console.log(res);
       dispatch({ type: "GET_PRODUCTS", payload: res.data });
     } catch (error) {}
@@ -192,6 +203,19 @@ const ProductContextProvider = ({ children }) => {
       console.log(error);
     }
   };
+  const fetchByParams = async (query, value) => {
+    const search = new URLSearchParams(window.location.search);
+
+    if (value === "all") {
+      search.delete(query);
+    } else {
+      search.set(query, value);
+    }
+
+    const url = `${window.location.pathname}?${search.toString()}`;
+
+    navigate(url);
+  };
 
   const values = {
     postFavorite,
@@ -208,6 +232,11 @@ const ProductContextProvider = ({ children }) => {
     products: state.products,
     getProducts,
     pages: state.pages,
+    setSearchParams,
+    setSearch,
+    search,
+    searchParams,
+    fetchByParams,
   };
   return (
     <productContext.Provider value={values}>{children}</productContext.Provider>
