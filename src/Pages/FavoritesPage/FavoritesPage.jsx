@@ -1,30 +1,82 @@
-import React from "react";
-import { Pagination } from "@mui/material";
+import { Pagination, Stack } from "@mui/material";
+// import { Box, Container } from "@mui/system";
+import React, { useEffect, useState } from "react";
+// import AddProduct from "../AddProduct/AddProduct";
+// import ProductCard from "../ProductCard/ProductCard";
+import { useSearchParams } from "react-router-dom";
+import { useProducts } from "../../contexts/ProductContextProvider";
 
-const PaginationList = ({ getPagesCount, currentPage, setCurrentPage }) => {
+const ProductList = () => {
+  const { getProducts, products } = useProducts();
+  const [page, setPage] = useState(1);
+  const productsPerPage = 10;
+  const count = Math.ceil(products.length / productsPerPage);
+
+  const [searchParams] = useSearchParams();
+  const res = products.filter((item) => (item.is_favorite ? true : false));
+
+  useEffect(() => {
+    getProducts();
+    if (!JSON.parse(localStorage.getItem("favorites"))) {
+      localStorage.setItem("favorites", JSON.stringify(res));
+    }
+  }, []);
+
+  useEffect(() => {
+    getProducts();
+  }, [searchParams]);
+
+  function handlePage(event, value) {
+    setPage(value);
+  }
+
+  function currentData() {
+    if (!JSON.parse(localStorage.getItem("favorites"))) {
+      localStorage.setItem("favorites", JSON.stringify(res));
+    }
+    const res = JSON.parse(localStorage.getItem("favorites"));
+    let start = (page - 1) * productsPerPage;
+    let end = start + productsPerPage;
+
+    return res.slice(start, end);
+  }
+
   return (
-    <Pagination>
-      <Pagination.Prev onClick={() => setCurrentPage(currentPage - 1)} />
-
-      {getPagesCount().map((item) =>
-        item == currentPage ? (
-          <Pagination.Item
-            onClick={() => setCurrentPage(item)}
-            key={item}
-            active
-          >
-            {item}
-          </Pagination.Item>
-        ) : (
-          <Pagination.Item onClick={() => setCurrentPage(item)} key={item}>
-            {item}
-          </Pagination.Item>
-        )
-      )}
-
-      <Pagination.Next onClick={() => setCurrentPage(currentPage + 1)} />
-    </Pagination>
+    <div className="list_wrapper" style={{ display: "flex" }}>
+      <div className="list_item">
+        <div
+          className="product-card"
+          style={{ display: "flex", flexWrap: "wrap" }}
+        >
+          {currentData().map((product) => {
+            console.log(product);
+            if (product.is_favorite) {
+              return (
+                <div key={product.id}>
+                  <img src={product.images} height={200} alt="error" />
+                  <h3>{product.title}</h3>
+                  <h4>{product.category_name}</h4>
+                  <p>{product.body}</p>
+                </div>
+              );
+            }
+          })}
+        </div>
+        <div className="pagination">
+          <Stack spacing={1}>
+            <Pagination
+              onChange={handlePage}
+              page={page}
+              count={count}
+              variant="outlined"
+              shape="rounded"
+              sx={{ display: "flex", justifyContent: "center" }}
+            />
+          </Stack>
+        </div>
+      </div>
+    </div>
   );
 };
 
-export default PaginationList;
+export default ProductList;
