@@ -62,7 +62,7 @@ const Footer = () => {
           </a>
         </div>
         <div id="footer_right">
-          <input type="text" placeholder="Введите почту" id="footer_email" />
+          <input type="message" placeholder="Введите почту" id="footer_email" />
           <button>Подписаться</button>
         </div>
       </div>

@@ -1,0 +1,98 @@
+.register{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 50px;
+  flex-direction: row;
+
+}
+h1{
+    justify-content: center;
+    align-content: center;
+    display: flex;
+    padding: 10px;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    padding: 20px 5;
+    padding: 1.5rem;
+    justify-content: center;
+    align-items: center;
+}
+.center, p{
+    display: flex;
+    flex-direction: column;  
+    justify-content: center;
+    align-items: center;
+}
+
+input[type=email] {
+    width: 50%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid red;
+    border-radius: 4px;
+    background-color:#07f398;
+    color:white;
+  }
+   input[type=password] {
+    width: 50%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid red;
+    border-radius: 4px;
+    background-color:#07f398;
+    color:white;
+  }
+  input[type=name] {
+    width: 50%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid red;
+    border-radius: 4px;
+    background-color:#07f398;
+    color: white;
+  } 
+  .registering{
+    width: 50%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid red;
+    border-radius: 4px;
+    background-color: #07f398;
+    color: white;
+  }
+  input[type=text] {
+    width: 50%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid red;
+    border-radius: 4px;
+    background-color: #07f398;
+    color:white;
+    align-items: center;
+  }
+  .cyan {
+    width: 50%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid red;
+    border-radius: 4px;
+    background-color: #07f398;
+    color:white
+  }
+  button:hover{
+    cursor: pointer;
+   background-color: darkorchid;
+  }
+  .photo1{
+    justify-content: center;
+    display: flex;
+  }

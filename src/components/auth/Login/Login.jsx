@@ -3,6 +3,7 @@ import { useAuth } from "../../../contexts/AuthContextProvider";
 import Loading from "../Loading";
 import { useNavigate } from "react-router-dom";
 
+
 const Login = () => {
   const { handleLogin, error, setError, loading } = useAuth();
   const [email, setEmail] = useState("");
@@ -21,7 +22,7 @@ const Login = () => {
   if (loading) return <Loading />;
   return (
     <>
-      <div>
+      <div className="center">
         <h1>Login </h1>
         {error ? <p>{error}</p> : null}
         <input
@@ -39,7 +40,7 @@ const Login = () => {
           type="password"
           placeholder="password"
         />
-        <button onClick={handleSave}>login </button>
+        <button className="cyan" onClick={handleSave}>login </button>
       </div>
       <p onClick={() => navigate("/edit-password")}>forgot Password?</p>
     </>
