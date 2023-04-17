@@ -15,6 +15,7 @@ import EditProduct from "../components/product/EditProduct";
 import DetailsProduct from "../components/product/DetailsProduct";
 import OnlineRead from "../components/product/OnlineRead";
 import EditPassword2 from "../components/auth/EditPassword/EditPassword2";
+import Cart from "../components/Cart/Cart";
 
 const MainRoutes = () => {
   return (
@@ -34,6 +35,7 @@ const MainRoutes = () => {
         <Route path="/Partnership" element={<Partnership />} />
         <Route path="/Services" element={<Services />} />
         <Route path="/AboutUs" element={<AboutUs />} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
     </div>
   );
