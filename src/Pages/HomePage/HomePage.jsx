@@ -8,10 +8,10 @@ const HomePage = () => {
   return (
     <div>
       <div id="main">
-        <h2>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dignissimos,
-          eius.
-        </h2>
+        <h1>
+          SalamatBook - читайте и добавляйте книги, будем вместе расширять
+          библиотеку. В этом году нам будет 30лет!
+        </h1>
         <img id="logo" src={logo} alt="" />
         <input
           id="homepage_search"

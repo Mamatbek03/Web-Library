@@ -13,7 +13,7 @@ const App = () => {
         <AuthContextProvider>
           <Navbar />
           <MainRoutes />
-          {/* <Footer /> */}
+          <Footer />
         </AuthContextProvider>
       </ProductContextProvider>
     </CommentContextProvider>

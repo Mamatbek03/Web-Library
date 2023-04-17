@@ -12,7 +12,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: white;
   text-shadow: #fc0 0px 0 5px;
 }
@@ -23,12 +23,13 @@
   margin: 30px auto 30px;
   text-align: center;
   border-radius: 5px;
-  border: white 2px solid;
+  border: #fc0 2px solid;
   background-image: url("https://img.icons8.com/external-filled-outline-perfect-kalash/64/null/external-Magnifying-Glass-basic-filled-outline-perfect-kalash.png");
   background-repeat: no-repeat;
   background-size: 30px 30px;
-  background-color: rgba(224, 224, 224, 0.679);
+  background-color: rgba(224, 224, 224, 0.766);
   outline: none;
+  color: white;
 }
 
 .hr_line {
