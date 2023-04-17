@@ -1,0 +1,39 @@
+#partnership_main {
+  width: 100%;
+  height: 100%;
+  padding-top: 100px;
+  padding-bottom: 10%;
+}
+
+#partnership_content {
+  width: 60%;
+  height: 400px;
+  background-color: rgba(169, 169, 169, 0);
+  color: black;
+  margin: 0 100px;
+}
+
+#partnership_content > h2 {
+  font-size: 2rem;
+  margin: 10px;
+  padding-left: 10px;
+}
+
+legend {
+  margin-left: 50px;
+  font-size: 2rem;
+  color: red;
+}
+
+#fieldset_right {
+  font-size: 1rem;
+  margin-left: 30%;
+  width: 40%;
+  padding: 30px;
+}
+
+#fieldset_left {
+  width: 40%;
+  padding: 20px;
+  margin: 30px 100px;
+}

@@ -5,11 +5,16 @@
 }
 
 #main {
+  /* background-color: rgb(66, 66, 66); */
+  background-image: url(./media/wallpaperbetter.com_2560x1440.jpg);
+  background-size: cover;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   font-size: 2rem;
+  color: white;
+  text-shadow: #fc0 0px 0 5px;
 }
 
 #homepage_search {
@@ -18,7 +23,15 @@
   margin: 30px auto 30px;
   text-align: center;
   border-radius: 5px;
+  border: white 2px solid;
   background-image: url("https://img.icons8.com/external-filled-outline-perfect-kalash/64/null/external-Magnifying-Glass-basic-filled-outline-perfect-kalash.png");
   background-repeat: no-repeat;
   background-size: 30px 30px;
+  background-color: rgba(224, 224, 224, 0.679);
+  outline: none;
+}
+
+.hr_line {
+  width: 90%;
+  opacity: 0.5;
 }
