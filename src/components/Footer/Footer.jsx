@@ -15,7 +15,7 @@ const Footer = () => {
         <p>Количество книг: 0</p>
         <div>
           <input type="text" placeholder="Введите почту" id="footer_email" />
-          <button id="footer_button">Подписатcь я</button>
+          <button id="footer_button">Подписатьcя</button>
         </div>
       </div>
       <div>
