@@ -3,18 +3,20 @@ import Navbar from "./components/Navbar/Navbar";
 import AuthContextProvider from "./contexts/AuthContextProvider";
 import ProductContextProvider from "./contexts/ProductContextProvider";
 import MainRoutes from "./routes/MainRoutes";
-// import "./App.css";
 import Footer from "./components/Footer/Footer";
+import CommentContextProvider from "./contexts/CommentContextProvider";
 
 const App = () => {
   return (
-    <ProductContextProvider>
-      <AuthContextProvider>
-        <Navbar />
-        <MainRoutes />
-        <Footer />
-      </AuthContextProvider>
-    </ProductContextProvider>
+    <CommentContextProvider>
+      <ProductContextProvider>
+        <AuthContextProvider>
+          <Navbar />
+          <MainRoutes />
+          {/* <Footer /> */}
+        </AuthContextProvider>
+      </ProductContextProvider>
+    </CommentContextProvider>
   );
 };
 

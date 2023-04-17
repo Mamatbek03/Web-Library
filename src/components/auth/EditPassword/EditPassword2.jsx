@@ -1,36 +1,30 @@
-import * as React from "react";
-import { useAuth } from "../../../contexts/AuthContextProvider";
+import React, { useState } from "react";
+import { useProducts } from "../../../contexts/ProductContextProvider";
+import Loading from "../Loading";
 import { Button, IconButton, InputAdornment, TextField } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import "./styles.css";
 
-import "./Register.css";
-export default function RegisterList() {
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
-  const [passwordConfirm, setPasswordConfirm] = React.useState("");
-  const [userName, setUserName] = React.useState("");
+const EditPassword2 = () => {
+  const { saveNewPassword, loading, error } = useProducts();
 
   const [showPassword, setShowPassword] = React.useState(false);
   const [showPasswordConfirm, setShowPasswordConfirm] = React.useState(false);
-  const { handleRegister, loading, error, setError } = useAuth();
 
-  const handleSave = () => {
-    if (!email.trim() || !password.trim() || !passwordConfirm.trim()) {
-      alert("заполните все поля!");
-    } else {
-      let formData = new FormData();
-      formData.append("email", email);
-      formData.append("password", password);
-      formData.append("password2", passwordConfirm);
-      formData.append("username", userName);
-      handleRegister(formData, email);
-    }
-  };
+  const [code, setCode] = useState(null);
+  const [password, setPassword] = useState("");
+  const [password2, setPassword2] = useState("");
 
-  React.useEffect(() => {
-    setError(false);
-  }, []);
+  function savePassword() {
+    let formData = new FormData();
+    formData.append("forgot_password_reset", code);
+    formData.append("password", password);
+    formData.append("password2", password2);
+    saveNewPassword(formData);
+  }
+  if (loading) return <Loading />;
+
   const handleClickShowPassword = () => setShowPassword(!showPassword);
   const handleMouseDownPassword = () => setShowPassword(!showPassword);
   const handleClickShowPasswordConfirm = () =>
@@ -57,34 +51,24 @@ export default function RegisterList() {
         }}
       >
         <center>
-          <h1>Register</h1>
+          <h1>Edit Password</h1>
         </center>
 
         <TextField
           sx={{ margin: "10px" }}
           id="outlined-basic"
-          label="email"
+          label="activate code "
           variant="outlined"
           color="grey"
           name="title"
           size="small"
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <TextField
-          sx={{ margin: "10px" }}
-          id="outlined-basic"
-          label="user name"
-          variant="outlined"
-          color="grey"
-          name="title"
-          size="small"
-          onChange={(e) => setUserName(e.target.value)}
+          onChange={(e) => setCode(e.target.value)}
         />
 
         <TextField
           sx={{ margin: "15px" }}
           id="outlined-basic"
-          label="password"
+          label="new password"
           variant="outlined"
           color="grey"
           name="title"
@@ -131,12 +115,12 @@ export default function RegisterList() {
               </InputAdornment>
             ),
           }}
-          onChange={(e) => setPasswordConfirm(e.target.value)}
+          onChange={(e) => setPassword2(e.target.value)}
         />
         <center>
           {error ? <p style={{ color: "red" }}>{error}</p> : null}
           <Button
-            onClick={handleSave}
+            onClick={savePassword}
             variant="contained"
             size="large"
             sx={{
@@ -147,10 +131,12 @@ export default function RegisterList() {
               margin: "20px 0 30px 0",
             }}
           >
-            register
+            save Changes
           </Button>
         </center>
       </div>
     </div>
   );
-}
+};
+
+export default EditPassword2;
