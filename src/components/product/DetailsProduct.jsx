@@ -10,8 +10,14 @@ import BookmarkIcon from "@mui/icons-material/Bookmark";
 import CommentIcon from "@mui/icons-material/Comment";
 
 const EditProduct = () => {
-  const { getOneProduct, oneProduct, deleteProduct, postLike, deleteLike } =
-    useProducts();
+  const {
+    getOneProduct,
+    oneProduct,
+    deleteProduct,
+    postLike,
+    deleteLike,
+    getLikeList,
+  } = useProducts();
 
   const { createComment, getComments, comments, setComments, deleteComment } =
     useComment();
@@ -24,6 +30,8 @@ const EditProduct = () => {
   const [date, setDate] = useState(null);
 
   const [flag, setFlag] = useState(false);
+
+  const [likes, setLikes] = useState(null);
 
   const [isLiked, setIsLiked] = useState(oneProduct?.is_liked);
 
@@ -49,12 +57,17 @@ const EditProduct = () => {
   useEffect(() => {
     if (!date) setDate(new Date().getDay());
   }, []);
-  console.log(date);
 
   useEffect(() => {
     getOneProduct(id);
     getComments();
+    getLikeList(setLikes);
   }, []);
+  function likeForDelete() {
+    const deleteLike = likes?.filter((item) => item.post === id);
+    console.log(deleteLike);
+  }
+  likeForDelete();
 
   function handlebtns(e, id) {
     if (e.target.className == id) {
@@ -74,7 +87,6 @@ const EditProduct = () => {
       deleteLike(id);
     }
   }
-
   console.log(oneProduct?.pdf);
   return (
     <>
@@ -140,7 +152,7 @@ const EditProduct = () => {
         />
         <button onClick={addComment}>send</button>
         <div className="comments_list">
-          {comments?.map((item) => (
+          {oneProduct?.comments.map((item) => (
             <div
               key={item.created_at}
               onClick={(e) => handlebtns(e, "item" + item.id)}
@@ -156,7 +168,7 @@ const EditProduct = () => {
               {flag ? (
                 <>
                   <button>edit</button>
-                  <button onClick={() => deleteComment(id)}>delete</button>
+                  <button onClick={() => deleteComment(item.id)}>delete</button>
                 </>
               ) : null}
             </div>

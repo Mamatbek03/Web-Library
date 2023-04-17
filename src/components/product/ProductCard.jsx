@@ -9,6 +9,7 @@ import { IconButton } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { useCart } from "../../contexts/CartContexProvider";
 import "./styles/ProductCard.css";
+import moment from "moment";
 
 const ProductCard = ({ item }) => {
   const {
@@ -22,28 +23,38 @@ const ProductCard = ({ item }) => {
     getProducts,
   } = useProducts();
 
+  const [time, setTime] = useState(null);
+
   const [isFavorite, setIsFavorite] = useState(item.is_favorite);
   const [isLiked, setIsLiked] = useState(item.is_liked);
   const [likesCount, setLikesCount] = useState(item.likes_count);
+  const [likedUsers, setLikesUsers] = useState(item.liked_users);
   const [commentsCount, setCommentsCount] = useState(item.comments_count);
   const [owner, setOwner] = useState(item.owner);
   const [ownerUserName, setOwnerUserName] = useState(item.owner);
 
-  console.log(isFavorite, isLiked, likesCount, commentsCount);
-
   const formData = new FormData();
   function handleLike() {
     formData.append("post", item.id);
-    const id = item.id;
     if (!isLiked) {
       setIsLiked(!isLiked);
       setLikesCount(likesCount + 1);
+      setTime(Date.now());
       postLike(formData);
     } else {
       setIsLiked(!isLiked);
       setLikesCount(likesCount - 1);
-
-      deleteLike(id);
+      likedUsers.map((like) => {
+        console.log(like.created_date);
+        console.log(moment(like.created_date).format("DD.MM.YYYY HH:mm:ss"));
+        console.log(moment(time).format("DD.MM.YYYY HH:mm:ss"));
+        if (
+          moment(like.created_date).format("DD.MM.YYYY HH:mm:ss") ===
+          moment(time).format("DD.MM.YYYY HH:mm:ss ")
+        ) {
+          deleteLike(like.post);
+        }
+      });
     }
   }
   function handleFavorite() {
