@@ -1,4 +1,5 @@
 import axios from "axios";
+import { async } from "q";
 import React, {
   createContext,
   useContext,
@@ -157,6 +158,21 @@ const ProductContextProvider = ({ children }) => {
       console.log(error);
     }
   };
+  const getLikeList = async (setLikes) => {
+    try {
+      const tokens = JSON.parse(localStorage.getItem("tokens"));
+      const Authorization = `Bearer ${tokens.access}`;
+      const config = {
+        headers: {
+          Authorization,
+        },
+      };
+      const res = await axios.get(`${API}/likes/list/`, config);
+      setLikes(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const deleteLike = async (id) => {
     try {
       const tokens = JSON.parse(localStorage.getItem("tokens"));
@@ -189,6 +205,7 @@ const ProductContextProvider = ({ children }) => {
       console.log(error);
     }
   };
+
   const deleteFavorite = async (id) => {
     try {
       const tokens = JSON.parse(localStorage.getItem("tokens"));
@@ -221,6 +238,7 @@ const ProductContextProvider = ({ children }) => {
   const values = {
     postFavorite,
     deleteFavorite,
+    getLikeList,
     deleteLike,
     postLike,
     updateProduct,

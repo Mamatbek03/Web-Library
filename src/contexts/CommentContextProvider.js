@@ -48,7 +48,7 @@ const CommentContextProvider = ({ children }) => {
           Authorization,
         },
       };
-      await axios.post(`${API}/comments/${id}/`, config);
+      await axios.delete(`${API}/comments/${id}/`, config);
       getComments();
     } catch (error) {
       console.log(error);
