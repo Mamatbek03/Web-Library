@@ -244,12 +244,13 @@ export default function Navbar() {
             Product List
           </Typography>
           <Typography
+            onClick={() => navigate("/favorites")}
             variant="h6"
             noWrap
             component="div"
             sx={{ display: { xs: "none", sm: "block" } }}
           >
-            MUI
+            Favorites
           </Typography>
 
           {/* <Search>
