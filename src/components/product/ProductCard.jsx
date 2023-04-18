@@ -62,7 +62,7 @@ const ProductCard = ({ item }) => {
 
   return (
     <div className="border border-dark m-3">
-      <img src={item.images} height={200} width={227} alt="photo" />
+      <img src={item.images} height={200} width={226} alt="photo" />
       <h3>{item.title}</h3>
       <p>{item.category_name}</p>
       {item.price ? <p>${item.price}</p> : <p>free</p>}

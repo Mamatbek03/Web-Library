@@ -23,6 +23,8 @@ import "./Navbar.css";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { useCart } from "../../contexts/CartContexProvider";
 import { getCountProductsInCart } from "../helpers/function";
+import { useState } from "react";
+import SideBar from "../product/SideBar";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -104,6 +106,8 @@ export default function Navbar() {
   React.useEffect(() => {
     setCount(getCountProductsInCart());
   }, [addProductToCart]);
+
+  let [heartOpen, setHeartOpen] = useState(false);
 
   const menuId = "primary-search-account-menu";
   const renderMenu = (
@@ -264,6 +268,19 @@ export default function Navbar() {
           <p>{user ? user : "No auth user"}</p>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
+            <IconButton>
+              <SearchIcon
+                onClick={() => setHeartOpen((heartOpen = !heartOpen))}
+                className={`favorites ${heartOpen && "active"}`}
+                color="inherit"
+              />
+              {heartOpen && (
+                <div className="shop-cart">
+                  <SideBar />
+                </div>
+              )}
+            </IconButton>
+
             <IconButton
               onClick={() => navigate("/cart")}
               size="large"

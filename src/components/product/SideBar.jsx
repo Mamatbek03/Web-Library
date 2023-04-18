@@ -23,13 +23,14 @@ const SideBar = () => {
   } = useProducts();
 
   useEffect(() => {
-    setSearchParams({ q: search });
+    setSearchParams({ title: search });
     getProducts();
   }, [search]);
 
   useEffect(() => {
     getProducts();
   }, [searchParams]);
+
   return (
     <Grid item md={4}>
       <Paper elevation={1} sx={{ width: "200px", boxShadow: "none" }}>
