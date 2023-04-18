@@ -238,6 +238,17 @@ export default function Navbar() {
             sx={{ display: { xs: "none", sm: "block", marginLeft: 30 } }}
           >
             Каталог
+          
+          </Typography>
+          <Typography
+            onClick={() => navigate("/favorites")}
+            variant="h6"
+            noWrap
+            component="div"
+            sx={{ display: { xs: "none", sm: "block" } }}
+          >
+            Favorites
+
           </Typography>
 
           {/* <Search>

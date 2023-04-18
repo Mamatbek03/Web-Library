@@ -39,7 +39,7 @@ const CommentContextProvider = ({ children }) => {
       console.log(error);
     }
   };
-  const deleteComment = async (id) => {
+  const deleteComment = (id) => {
     try {
       const tokens = JSON.parse(localStorage.getItem("tokens"));
       const Authorization = `Bearer ${tokens.access}`;
@@ -48,13 +48,27 @@ const CommentContextProvider = ({ children }) => {
           Authorization,
         },
       };
-      await axios.post(`${API}/comments/${id}/`, config);
-      getComments();
+      axios.delete(`${API}/comments/${id}/`, config);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const editComment = async (comment) => {
+    try {
+      const tokens = JSON.parse(localStorage.getItem("tokens"));
+      const Authorization = `Bearer ${tokens.access}`;
+      const config = {
+        headers: {
+          Authorization,
+        },
+      };
+      axios.put(`${API}/comments/${comment.id}/`, comment, config);
     } catch (error) {
       console.log(error);
     }
   };
   const values = {
+    editComment,
     deleteComment,
     createComment,
     getComments,
