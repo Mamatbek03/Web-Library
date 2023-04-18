@@ -101,6 +101,18 @@
   opacity: 0.5;
 }
 
+
+#homepage_search1 {
+  width: 60em;
+  height: 40px;
+  margin: 30px auto 30px;
+  text-align: center;
+  border-radius: 5px;
+  border: white 2px solid;
+  background-repeat: no-repeat;
+  background-size: 30px 30px;
+  background-color: rgba(224, 224, 224, 0.679);
+  outline: none;
 ::-webkit-scrollbar {
   width: 10px;
   background-color: transparent;
@@ -117,4 +129,5 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background-color: #ffd700;
+
 }
