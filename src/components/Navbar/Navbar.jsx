@@ -270,7 +270,7 @@ export default function Navbar() {
               size="large"
               aria-label="show 17 new notifications"
               color="inherit"
-              sx={{ color: "pink" }}
+              sx={{ color: "skyblue" }}
             >
               <Badge badgeContent={17} color="error">
                 <NotificationsIcon />

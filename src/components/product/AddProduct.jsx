@@ -179,25 +179,25 @@ const AddProduct = () => {
             onChange={(e) => getPdf(e.target.files[0])}
           />
         </center>
-        <TextField
+        <input
           className="add-book_inp"
-          sx={{
+          style={{
             width: "100%",
             height: "20%",
             margin: "10px 0",
             backgroundColor: "white",
           }}
           id="outlined-basic"
-          label="price"
+          placeholder="Цена"
           variant="outlined"
           color="grey"
           name="price"
           onChange={(e) => setPrice(e.target.value)}
         />
 
-        <TextField
+        <input
           className="add-book_inp"
-          sx={{ margin: "10px 0 20px ", backgroundColor: "white" }}
+          style={{ margin: "10px 0 20px ", backgroundColor: "white" }}
           id="outlined-basic"
           label="description"
           variant="outlined"

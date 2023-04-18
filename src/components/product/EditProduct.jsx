@@ -97,7 +97,6 @@ const EditProduct = () => {
         onChange={(e) => setPdf(e.target.files[0])}
       /> */}
       <button onClick={handleSave} id="edit_btn">
-        {" "}
         save changes
       </button>
     </div>
