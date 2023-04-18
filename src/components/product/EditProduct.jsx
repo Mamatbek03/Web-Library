@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useProducts } from "../../contexts/ProductContextProvider";
+import "./EditProductStyle.css";
 
 const EditProduct = () => {
   const {
@@ -46,9 +47,13 @@ const EditProduct = () => {
   }
 
   return (
-    <div className="d-flex flex-column w-50 m-auto">
+    <div className="d-flex flex-column w-50 m-auto" id="edit_main">
       <h1>EDIT product</h1>
-      <select value={category} onChange={(e) => setCategory(e.target.value)}>
+      <select
+        class="edit_inp"
+        value={category}
+        onChange={(e) => setCategory(e.target.value)}
+      >
         <option>choose category</option>
         {categories.map((item) => (
           <option key={item.id} value={item.id}>
@@ -61,33 +66,40 @@ const EditProduct = () => {
         placeholder="title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
+        class="edit_inp"
       />
       <input
         type="text"
         placeholder="description"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
+        class="edit_inp"
       />
       <input
         type="text"
         placeholder="price"
         value={price}
         onChange={(e) => setPrice(e.target.value)}
+        class="edit_inp"
       />
-      <p>Image before</p>
+      {/* <p>Image before</p> */}
       <img src={oneProduct?.photo} width="100" alt="" />
       <input
         type="text"
         placeholder="image"
         value={image}
         onChange={(e) => setImage(e.target.value)}
+        class="edit_inp"
       />
       {/* <input
         type="file"
         accept="image/*"
         onChange={(e) => setPdf(e.target.files[0])}
       /> */}
-      <button onClick={handleSave}> save changes</button>
+      <button onClick={handleSave} id="edit_btn">
+        {" "}
+        save changes
+      </button>
     </div>
   );
 };

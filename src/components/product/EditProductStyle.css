@@ -1,0 +1,46 @@
+#edit_main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 600px;
+  color: white;
+  text-shadow: #fc0 0px 0 5px;
+}
+
+.edit_inp {
+  background-color: rgba(66, 66, 66, 0.542);
+  color: white;
+  width: 35em;
+  height: 3em;
+  border-radius: 10px;
+  border: white 2px solid;
+  text-align: center;
+}
+
+#edit_btn {
+  background-color: transparent;
+  width: 17em;
+  height: 2.5em;
+  border-radius: 15px;
+  border: #ffd700 2px solid;
+  color: white;
+  text-shadow: #fc0 0px 0 5px;
+}
+
+#edit_btn:hover {
+  background-color: #ffd700;
+  border: #ffd700 2px solid;
+  color: black;
+  transition: 1s;
+}
+
+#edit_btn:focus {
+  background-color: transparent;
+  transition: 1s;
+  color: white;
+  text-shadow: #fc0 0px 0 5px;
+  border: green 2px solid;
+  width: 15em;
+  height: 2em;
+}

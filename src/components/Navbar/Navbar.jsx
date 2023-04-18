@@ -198,7 +198,7 @@ export default function Navbar() {
         position="static"
         sx={{
           backgroundColor: "rgb(66,66,66 )",
-          opacity: "0.5",
+          opacity: "0.7",
           textShadow: "#fc0 0px 0 5px",
         }}
       >
@@ -217,35 +217,27 @@ export default function Navbar() {
             variant="h6"
             noWrap
             component="div"
-            sx={{ display: { xs: "none", sm: "block" }, margin: 2 }}
+            sx={{ display: { xs: "none", sm: "block" }, marginLeft: 10 }}
           >
-            Home
+            Главная
           </Typography>
           <Typography
             onClick={() => navigate("/add")}
             variant="h6"
             noWrap
             component="div"
-            sx={{ display: { xs: "none", sm: "block", margin: 2 } }}
+            sx={{ display: { xs: "none", sm: "block", marginLeft: 30 } }}
           >
-            Add Book
+            Хочешь добавить книгу?
           </Typography>
           <Typography
             onClick={() => navigate("/product-list")}
             variant="h6"
             noWrap
             component="div"
-            sx={{ display: { xs: "none", sm: "block", margin: 2 } }}
+            sx={{ display: { xs: "none", sm: "block", marginLeft: 30 } }}
           >
-            Product List
-          </Typography>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ display: { xs: "none", sm: "block", margin: 2 } }}
-          >
-            MUI
+            Каталог
           </Typography>
 
           {/* <Search>
@@ -268,6 +260,7 @@ export default function Navbar() {
               size="large"
               aria-label="show 4 new mails"
               color="inherit"
+              sx={{ color: "yellow" }}
             >
               <Badge badgeContent={4} color="error">
                 <MailIcon />
@@ -277,6 +270,7 @@ export default function Navbar() {
               size="large"
               aria-label="show 17 new notifications"
               color="inherit"
+              sx={{ color: "pink" }}
             >
               <Badge badgeContent={17} color="error">
                 <NotificationsIcon />
