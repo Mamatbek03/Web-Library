@@ -47,8 +47,8 @@ const AddProduct = () => {
       className="add-book"
       style={{
         height: "1000px",
-        backgroundColor: "gray",
-        padding: "20px 0 50px",
+        backgroundColor: "transparent",
+        padding: "50px 0 30px",
       }}
     >
       <div
@@ -58,26 +58,38 @@ const AddProduct = () => {
           flexDirection: "column",
           justifyContent: "center",
           margin: " 50px auto",
-          backgroundColor: "white",
+          backgroundColor: "rgb(66,66,66)",
+          opacity: "0.9",
           width: "40%",
           padding: "50px 90px",
           borderRadius: "30px",
+          color: "white",
+          border: "white 2px solid",
+          boxShadow: "#fc0 0px 0 10px",
         }}
       >
         <center>
-          <h1 className="add-book_header" style={{ margin: "10px 0 20px" }}>
-            Add Book
+          <h1
+            className="add-book_header"
+            style={{
+              margin: "10px 0 20px",
+              fontSize: "2.3rem",
+              fontFamily: "Times New Roman, Times, serif",
+            }}
+          >
+            Добавление вашей книги
           </h1>
         </center>
 
         <FormControl fullWidth>
-          <InputLabel id="demo-select-label">category</InputLabel>
+          <InputLabel id="demo-select-label">Категория</InputLabel>
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
             value={category}
             label="category"
             onChange={(e) => setCategory(e.target.value)}
+            sx={{ backgroundColor: "white" }}
           >
             {categories.map((item) => (
               <MenuItem key={item.id} value={item.id}>
@@ -91,7 +103,12 @@ const AddProduct = () => {
         </FormControl>
         <TextField
           className="add-book_inp"
-          sx={{ width: "100%", height: "20%", margin: "20px 0 10px" }}
+          sx={{
+            width: "100%",
+            height: "20%",
+            margin: "20px 0 10px",
+            backgroundColor: "white",
+          }}
           id="outlined-basic"
           label="title"
           variant="outlined"
@@ -105,13 +122,22 @@ const AddProduct = () => {
         >
           <h3
             className="add-book_image"
-            style={{ margin: "20px 30px 0 10px   " }}
+            style={{
+              margin: "20px 30px 0 10px",
+              fontSize: "1.5rem",
+              fontFamily: "Times New Roman, Times, serif",
+            }}
           >
-            choose a image <br className="unrower" /> for the header
+            Изображение для обложки
           </h3>
           <TextField
             className="add-book_inp"
-            sx={{ width: "100%", height: "20%", margin: "10px 0" }}
+            sx={{
+              width: "100%",
+              height: "20%",
+              margin: "10px 0",
+              backgroundColor: "white",
+            }}
             id="outlined-basic"
             variant="outlined"
             color="grey"
@@ -127,13 +153,22 @@ const AddProduct = () => {
         >
           <h3
             className="add-book_pdf"
-            style={{ margin: "20px 38px 0 10px   " }}
+            style={{
+              margin: "20px 38px 0 10px",
+              fontSize: "1.5rem",
+              fontFamily: "Times New Roman, Times, serif",
+            }}
           >
-            choose a book
+            Загрузить книгу
           </h3>
           <TextField
             className="add-book_inp"
-            sx={{ width: "100%", height: "20%", margin: "10px 0" }}
+            sx={{
+              width: "100%",
+              height: "20%",
+              margin: "10px 0",
+              backgroundColor: "white",
+            }}
             id="outlined-basic"
             variant="outlined"
             // label="price"
@@ -146,7 +181,12 @@ const AddProduct = () => {
         </center>
         <TextField
           className="add-book_inp"
-          sx={{ width: "100%", height: "20%", margin: "10px 0" }}
+          sx={{
+            width: "100%",
+            height: "20%",
+            margin: "10px 0",
+            backgroundColor: "white",
+          }}
           id="outlined-basic"
           label="price"
           variant="outlined"
@@ -157,7 +197,7 @@ const AddProduct = () => {
 
         <TextField
           className="add-book_inp"
-          sx={{ margin: "10px 0 20px " }}
+          sx={{ margin: "10px 0 20px ", backgroundColor: "white" }}
           id="outlined-basic"
           label="description"
           variant="outlined"
@@ -176,10 +216,12 @@ const AddProduct = () => {
             padding: "10px 0",
             border: "1px solid black",
             color: "white",
-            backgroundColor: "black",
+            backgroundColor: "rgb(66,66,66)",
+            textShadow: "#fc0 0px 0 5px",
+            fontFamily: "Times New Roman, Times, serif",
           }}
         >
-          ADD book
+          Добавить
         </Button>
       </div>
     </div>
