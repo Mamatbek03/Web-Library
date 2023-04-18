@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import books from "./media/books.jpg";
 import books2 from "./media/books2.jpg";
 import library from "./media/library.jpg";
+import BOOKS from "./media/BOOKS.png"
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -72,6 +73,7 @@ const HomePage = () => {
           Quibusdam, ducimus consequatur.
         </p>
         <div id="hp">
+        <img src={BOOKS} class="hp_image"></img>
           <img src={books} class="hp_image"></img>
           <img src={books2} class="hp_image"></img>
           <img src={library} class="hp_image"></img>

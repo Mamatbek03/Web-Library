@@ -26,6 +26,8 @@ import { getCountProductsInCart } from "../helpers/function";
 import { useState } from "react";
 import SideBar from "../product/SideBar";
 
+import { Style } from "@mui/icons-material";
+
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,
@@ -98,7 +100,7 @@ export default function Navbar() {
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
-
+  //
   // корзина//
   const [count, setCount] = React.useState(0);
   const { addProductToCart } = useCart();
