@@ -100,7 +100,7 @@ export default function Navbar() {
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
-
+  //
   // корзина//
   const [count, setCount] = React.useState(0);
   const { addProductToCart } = useCart();
@@ -297,7 +297,6 @@ export default function Navbar() {
             {user ? user : "No auth user"}
           </p>
           <Box sx={{ flexGrow: 1 }} />
-
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
             <IconButton>
               <SearchIcon

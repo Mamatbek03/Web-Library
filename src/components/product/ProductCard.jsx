@@ -46,14 +46,9 @@ const ProductCard = ({ item }) => {
       setIsLiked(!isLiked);
       setLikesCount(likesCount - 1);
       likedUsers.map((like) => {
-        console.log(like.created_date);
-        console.log(moment(like.created_date).format("DD.MM.YYYY HH:mm:ss"));
-        console.log(moment(time).format("DD.MM.YYYY HH:mm:ss"));
-        if (
-          moment(like.created_date).format("DD.MM.YYYY HH:mm:ss") ===
-          moment(time).format("DD.MM.YYYY HH:mm:ss ")
-        ) {
-          deleteLike(like.post);
+        const email = localStorage.getItem("email");
+        if (like.owner_email == email) {
+          deleteLike(like.id);
         }
       });
     }
@@ -105,6 +100,9 @@ const ProductCard = ({ item }) => {
       </div>
       <div> {item.price ? <p>${item.price}</p> : <p sx={{}}>free</p>}</div>
 
+      <h3>{item.title}</h3>
+      <p>{item.category_name}</p>
+      {item.price ? <p>${item.price}</p> : <p>free</p>}
       <div>
         <IconButton onClick={handleLike}>
           <FavoriteIcon color={isLiked ? "error" : ""} />

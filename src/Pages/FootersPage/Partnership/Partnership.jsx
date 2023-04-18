@@ -5,64 +5,56 @@ const Partnership = () => {
   return (
     <div id="partnership_main">
       <div id="partnership_content">
-        <h2>Что мы можем предложить?</h2>
+       <legend><h2>Что мы можем предложить?</h2></legend>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae quo
-          commodi id similique at praesentium qui eos aliquid culpa officiis
-          quam rem adipisci iure architecto provident officia pariatur,
-          assumenda doloremque? Corporis totam quaerat minus porro fuga, ab
-          repellendus velit impedit officiis quisquam incidunt dignissimos quis
-          ullam! Veritatis in nulla quia voluptas! Exercitationem, velit? Modi
-          rem natus officia asperiores cupiditate? Repellendus qui perferendis
-          nam nemo ipsam, harum veritatis reiciendis aperiam reprehenderit
-          accusantium assumenda eum explicabo quis illo soluta totam? Cum in id
-          reiciendis incidunt aperiam molestiae officiis aliquam eum assumenda,
-          voluptate eveniet laboriosam dolor rerum ullam dignissimos magni iure
-          repudiandae totam ad. Quis assumenda laudantium fuga repellat at dolor
-          eos nam vitae ea eaque asperiores distinctio veritatis, consequatur
-          ullam, ipsam alias. Recusandae voluptas accusamus ea quisquam neque
-          ducimus officia porro, cupiditate culpa dolor aperiam voluptatem ab
-          facere laboriosam, quidem reprehenderit vitae fugit numquam nisi
-          reiciendis. Ullam doloribus corrupti recusandae libero architecto
-          autem voluptatibus ad voluptate debitis doloremque laudantium
-          molestiae inventore reiciendis iste aliquid, repellendus, tenetur est
-          quibusdam. Eligendi dignissimos consectetur, vel magnam temporibus
-          minus natus iure mollitia voluptas quasi perferendis ut voluptatem,
-          odio sed accusantium vero obcaecati aut nihil autem, suscipit
-          laudantium. Magni ad est neque magnam obcaecati fugit. Possimus,
-          voluptatum.
+        <legend><strong> Научная библиотека предоставляет следующие сервисы.</strong></legend>
+       <br></br>
+Личный кабинет - персональная страница пользователя с информацией об электронных заказах.
+<br></br>
+Электронный заказ - доступен читателям, которые прошли регистрацию на сайте. Электронный заказ возможен на литературу, размещенную в отделах:
+Фундаментальная библиотека (Ломоносовский просп. 27)
+<br></br>
+Отдел обслуживания корпуса «Шуваловский» (Ломоносовский просп. 27, корп.4)
+БИЦ юридического факультета и Высшей школы государственного аудита. (Ленинские горы, 1, стр. 13-14, 4-й учебный корпус, комн. 618Б)
+<br></br>
+Отдел обслуживания факультетов биологического и почвоведения (Ленинские горы, 1 стр.12, 1 эт.)
+<br></br>
+Отдел обслуживания механико-математического факультета (Ленинские горы, 1, ГЗ МГУ, 14 эт.)
+<br></br>
+Отдел обслуживания географического факультета (Ленинские горы, 1, ГЗ МГУ, 21 эт.)
+<br></br>
+Отдел абонемента ИСАА (Моховая ул., 11, стр. 1, комн. № 147)
+<br></br>
+Отдел обслуживания 2-го учебного корпуса (Ленинские горы, 1 стр.52, 1 эт.)
+<br></br>
+Консультация библиографа.
+Что есть что - актуальные аббревиатуры и их содержание.
         </p>
       </div>
       <div>
         <fieldset id="fieldset_right">
-          <legend>Наши услуги</legend>
-          Keep calm and carry on your job Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Cumque provident officiis praesentium quae voluptate
-          quidem, exercitationem ipsa architecto, eius nihil natus. Neque in
-          consectetur a officia cum, corporis ea quos aspernatur quod, nulla
-          unde? Dolorem quasi neque quibusdam error mollitia eos adipisci
-          laudantium nostrum dolores accusantium at minima laboriosam, facere ex
-          ut quisquam magni earum, cupiditate iste quo ipsa voluptas perferendis
-          maxime dignissimos. Aut corrupti ipsa incidunt error repudiandae dicta
-          illo ducimus veritatis maiores dolor, nobis, excepturi laboriosam quos
-          enim. Ea assumenda amet, nostrum fugit aliquid expedita? Quo
-          repellendus assumenda commodi, sed aliquam perferendis saepe impedit
-          voluptate molestias numquam tempora? Lorem ipsum dolor sit amet
-          consectetur adipisicing elit. Maiores ut provident molestias id
-          placeat incidunt recusandae cumque magnam facere iure, dolor nihil
-          corporis modi qui quos ratione optio amet! Architecto odio, temporibus
-          dolor error eveniet dicta rerum quam vel accusantium maxime, totam
-          laboriosam veritatis minus saepe esse in praesentium et deleniti
-          asperiores debitis. Dolorem facere delectus vitae dolore voluptatibus
-          voluptatem enim ex numquam amet ullam possimus, expedita nesciunt
-          voluptates temporibus fugit hic accusantium ad, aliquid, porro
-          pariatur cum? Nesciunt velit corporis quisquam corrupti modi. Neque
-          facilis perferendis doloribus est autem nesciunt, optio commodi
-          temporibus tempora, repellendus deleniti facere odio odit.
+          <legend><strong>Наши услуги</strong></legend>
+          Читателям библиотеки оказываются все основные библиотечные услуги в соответствии с законом о библиотечном деле №78-ФЗ.
+          <br></br>
+        <strong>Это:</strong> 
+предоставление полной информации о составе библиотечных фондов через систему каталогов и другие формы библиотечного информирования,
+консультационная помощь в поиске и выборе источников информации,
+предоставление во временное пользование документов из библиотечных фондов (в читальных залах или на абонементах),
+межбиблиотечный абонемент
+и другие услуги.
         </fieldset>
         <fieldset id="fieldset_left">
-          Наш адрес: Табышалиева 29 Bishkek · 0501 619 690 Открыто ⋅ Закроется в
+          Наш адрес: Табышалиева 29 
+          <br></br>
+          г. БИШКЕК, 720044  · Открыто ⋅ 
+          Закроется в
           19:00
+          <br></br>
+          Tелефон: +996 (312) 49-27-65
+          Факс: +996 (312) 54-19-35
+          <br></br>
+          E-posta: library@salamatbook.kg
+ 
         </fieldset>
       </div>
     </div>
