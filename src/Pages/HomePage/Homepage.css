@@ -113,6 +113,7 @@
   background-size: 30px 30px;
   background-color: rgba(224, 224, 224, 0.679);
   outline: none;
+}
 ::-webkit-scrollbar {
   width: 10px;
   background-color: transparent;
