@@ -75,21 +75,30 @@ const ProductCard = ({ item }) => {
       style={{
         boxShadow: "#fc0 0px 0 5px",
         margin: "30px",
-        width: "18em",
-        height: "25em",
+        width: "20em",
+        height: "30em",
         textAlign: "center",
         color: "white",
+        display: "flex",
+        alignItems: "center",
+        flexDirection: "column",
+        // justifyContent: "center",
       }}
     >
       <img
         style={{
-          width: "70%",
+          width: "80%",
           margin: "15px 30px 20px",
           height: "200px",
         }}
         src={item.images}
         alt=""
       />
+      <div>
+        <h3>{item.title}</h3>
+        <p>{item.category_name}</p>
+      </div>
+      <div> {item.price ? <p>${item.price}</p> : <p sx={{}}>free</p>}</div>
 
       <h3>{item.title}</h3>
       <p>{item.category_name}</p>
@@ -112,14 +121,14 @@ const ProductCard = ({ item }) => {
         </IconButton>
         <IconButton onClick={() => addProductToCart(item)}>
           <ShoppingCartIcon
-            color={checkProductInCart(item.id) ? "primary" : ""}
+            color={checkProductInCart(item.id) ? "secondary" : ""}
           />
         </IconButton>
       </div>
       <div>
         <button
           onClick={() => navigate(`/edit/${item.id}`)}
-          class="product_btn_delete"
+          className="product_btn_delete"
         >
           Edit
         </button>
@@ -128,13 +137,13 @@ const ProductCard = ({ item }) => {
             // showProductDetails(formData);
             navigate(`/details/${item.id}`);
           }}
-          class="product_btn_delete"
+          className="product_btn_delete"
         >
           Details
         </button>
         <button
           onClick={() => deleteProduct(item.id)}
-          class="product_btn_delete"
+          className="product_btn_delete"
         >
           Delete
         </button>

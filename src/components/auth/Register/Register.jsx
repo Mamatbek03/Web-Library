@@ -41,7 +41,12 @@ export default function RegisterList() {
   return (
     <div
       className="register"
-      style={{ height: "1000px", backgroundColor: "gray", padding: "50px 0" }}
+      style={{
+        height: "1000px",
+        backgroundColor: "transparent",
+        padding: "50px 0",
+        opacity: "0.9",
+      }}
     >
       <div
         className="register-places"
@@ -57,23 +62,25 @@ export default function RegisterList() {
         }}
       >
         <center>
-          <h1>Register</h1>
+          <h1>Регистрация</h1>
         </center>
 
-        <TextField
+        <input
+          className="register_inp"
           sx={{ margin: "10px" }}
           id="outlined-basic"
-          label="email"
+          placeholder="email"
           variant="outlined"
           color="grey"
           name="title"
           size="small"
           onChange={(e) => setEmail(e.target.value)}
         />
-        <TextField
+        <input
+          className="register_inp"
           sx={{ margin: "10px" }}
           id="outlined-basic"
-          label="user name"
+          placeholder="Ник"
           variant="outlined"
           color="grey"
           name="title"
@@ -81,10 +88,11 @@ export default function RegisterList() {
           onChange={(e) => setUserName(e.target.value)}
         />
 
-        <TextField
+        <input
+          className="register_inp"
           sx={{ margin: "15px" }}
           id="outlined-basic"
-          label="password"
+          placeholder="password"
           variant="outlined"
           color="grey"
           name="title"
@@ -105,10 +113,11 @@ export default function RegisterList() {
           }}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <TextField
+        <input
+          className="register_inp"
           sx={{ margin: "15px" }}
           id="outlined-basic"
-          label="password confirm"
+          placeholder="Потверждение пароля"
           variant="outlined"
           color="grey"
           name="title"
@@ -139,6 +148,7 @@ export default function RegisterList() {
             onClick={handleSave}
             variant="contained"
             size="large"
+            color="success"
             sx={{
               border: "1px solid black",
               color: "white",
@@ -147,7 +157,7 @@ export default function RegisterList() {
               margin: "20px 0 30px 0",
             }}
           >
-            register
+            Потвердить
           </Button>
         </center>
       </div>
