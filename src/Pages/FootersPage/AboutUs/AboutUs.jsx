@@ -12,6 +12,7 @@ const AboutUs = () => {
         <div>
           <h2 className="AboutUs_text">О нашей онлайн библиотеке</h2>
           <p className="AboutUs_text">
+            {/* added about us */}
           Библиотека  “SalamatBook” в соответствии
            с миссией и целями университета для обеспечения 
            профессорско-преподавательского состава, студентов,
