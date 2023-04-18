@@ -66,7 +66,7 @@ const ProductList = () => {
           flexWrap: "wrap",
           marginTop: "10px",
           marginBottom: "20px",
-          // justifyContent: "space-between",
+          justifyContent: "center",
         }}
       >
         {products.map((item) => (

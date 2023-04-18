@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Footer.css";
 import logo from "./media/logo.svg";
 import youtube_logo from "./media/youtube.svg";
@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
   const navigate = useNavigate();
+
   return (
     <div id="footer">
       <div id="footer_left">

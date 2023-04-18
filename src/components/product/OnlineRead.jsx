@@ -58,7 +58,7 @@ const ProductsPage = () => {
         >
           <Page
             className="page"
-            height="1200"
+            width={1200}
             onLoadSuccess={removeTextLayerOffset}
             pageNumber={pageNumber}
           />

@@ -5,16 +5,40 @@
 }
 
 #main {
-  /* background-color: rgb(66, 66, 66); */
-  background-image: url(./media/wallpaperbetter.com_2560x1440.jpg);
   background-size: cover;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: white;
   text-shadow: #fc0 0px 0 5px;
+}
+
+#main > p {
+  margin: 30px;
+}
+
+#main > h1 {
+  margin: 50px 40px;
+}
+
+#main_logo {
+  transform: translate(550px, 0px);
+  width: 10em;
+  height: 8em;
+  margin: 70px 0px 0px 0px;
+  outline: white 2px solid;
+  border: #fc0 2px solid;
+  box-shadow: #fc0 0px 0 5px;
+  border-radius: 10px;
+  padding-left: 30px;
+  padding-top: 3px;
+}
+
+#logo {
+  width: 5em;
+  margin: 5px;
 }
 
 #homepage_search {
@@ -22,19 +46,61 @@
   height: 40px;
   margin: 30px auto 30px;
   text-align: center;
-  border-radius: 5px;
-  border: white 2px solid;
+  border-radius: 10px;
+  border: #fc0 2px solid;
   background-image: url("https://img.icons8.com/external-filled-outline-perfect-kalash/64/null/external-Magnifying-Glass-basic-filled-outline-perfect-kalash.png");
   background-repeat: no-repeat;
   background-size: 30px 30px;
-  background-color: rgba(224, 224, 224, 0.679);
+  background-color: rgba(202, 202, 202, 0.144);
   outline: none;
+  color: white;
+}
+
+#homepage_button {
+  background-color: transparent;
+  width: 17em;
+  height: 2.5em;
+  border-radius: 15px;
+  border: #ffd700 2px solid;
+  color: white;
+  text-shadow: #fc0 0px 0 5px;
+}
+
+#homepage_button:hover {
+  background-color: #ffd700;
+  border: #ffd700 2px solid;
+  color: black;
+  transition: 1s;
+}
+
+#homepage_button:focus {
+  background-color: transparent;
+  transition: 1s;
+  color: white;
+  text-shadow: #fc0 0px 0 5px;
+  border: green 2px solid;
+  width: 15em;
+  height: 2em;
+}
+
+#hp {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.hp_image {
+  width: 500px;
+  padding: 10px;
+  border: #fc0 2px solid;
+  margin: 50px;
 }
 
 .hr_line {
   width: 90%;
   opacity: 0.5;
 }
+
 
 #homepage_search1 {
   width: 60em;
@@ -47,4 +113,21 @@
   background-size: 30px 30px;
   background-color: rgba(224, 224, 224, 0.679);
   outline: none;
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgb(66, 66, 66);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #ffd9049b;
+  border-radius: 15px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #ffd700;
+
 }
