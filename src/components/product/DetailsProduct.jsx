@@ -73,23 +73,25 @@ const EditProduct = () => {
     };
     createComment(comment)
       .then(() => {
-        setBody(""); // очищаем значение поля ввода комментария после успешного создания
-        getOneProduct(id); // обновляем продукт, чтобы отобразить новый комментарий
+        setBody("");
+        getOneProduct(id);
       })
       .catch((error) => {
         console.log(error);
       });
   }
 
-  function handleDeleteComment(commentId) {
-    deleteComment(commentId);
-    setComments(comments.filter((comment) => comment.id !== commentId));
-    getComments();
+  async function handleDeleteComment(commentId) {
+    await deleteComment(commentId);
+    getOneProduct(id);
+    console.log(oneProduct);
     getOneProduct(id);
   }
 
   console.log(oneProduct);
   function handleEditComment(commentEdit) {
+    handleOpen();
+
     setCommentToEdit(commentEdit);
   }
   async function saveEditedComment() {
@@ -151,6 +153,9 @@ const EditProduct = () => {
     }
   }
   // ! Modal
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   return (
     <>
@@ -244,6 +249,32 @@ const EditProduct = () => {
             </div>
           ))}
         </div>
+        <Button onClick={handleOpen}>Open modal</Button>
+        <Modal
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box sx={style}>
+            <center>
+              <h3>Edit Comment</h3>
+              <TextField
+                label="new Comment"
+                defaultValue={commentToEdit?.body}
+                onChange={(e) => setBodyEdit(e.target.value)}
+              />
+              <Button
+                onClick={() => {
+                  saveEditedComment();
+                  handleClose();
+                }}
+              >
+                save changes
+              </Button>
+            </center>
+          </Box>
+        </Modal>
       </div>
     </>
   );
