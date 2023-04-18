@@ -124,7 +124,7 @@ const ProductCard = ({ item }) => {
       <div>
         <button
           onClick={() => navigate(`/edit/${item.id}`)}
-          class="product_btn_delete"
+          className="product_btn_delete"
         >
           Edit
         </button>
@@ -133,13 +133,13 @@ const ProductCard = ({ item }) => {
             // showProductDetails(formData);
             navigate(`/details/${item.id}`);
           }}
-          class="product_btn_delete"
+          className="product_btn_delete"
         >
           Details
         </button>
         <button
           onClick={() => deleteProduct(item.id)}
-          class="product_btn_delete"
+          className="product_btn_delete"
         >
           Delete
         </button>

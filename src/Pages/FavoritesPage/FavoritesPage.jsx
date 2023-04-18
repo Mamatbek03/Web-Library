@@ -14,7 +14,6 @@ const ProductList = () => {
 
   const [searchParams] = useSearchParams();
   const res = products.filter((item) => (item.is_favorite ? true : false));
-  console.log(res);
 
   useEffect(() => {
     getProducts();
@@ -43,7 +42,7 @@ const ProductList = () => {
   }
 
   return (
-    <div className="list_wrapper" style={{ display: "flex" }}>
+    <div className="list_wrapper" style={{ display: "flex", height: "500px" }}>
       <div className="list_item">
         <div
           className="product-card"

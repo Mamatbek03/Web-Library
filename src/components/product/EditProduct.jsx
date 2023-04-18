@@ -50,7 +50,7 @@ const EditProduct = () => {
     <div className="d-flex flex-column w-50 m-auto" id="edit_main">
       <h1>EDIT product</h1>
       <select
-        class="edit_inp"
+        className="edit_inp"
         value={category}
         onChange={(e) => setCategory(e.target.value)}
       >
@@ -66,21 +66,21 @@ const EditProduct = () => {
         placeholder="title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
-        class="edit_inp"
+        className="edit_inp"
       />
       <input
         type="text"
         placeholder="description"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
-        class="edit_inp"
+        className="edit_inp"
       />
       <input
         type="text"
         placeholder="price"
         value={price}
         onChange={(e) => setPrice(e.target.value)}
-        class="edit_inp"
+        className="edit_inp"
       />
       {/* <p>Image before</p> */}
       <img src={oneProduct?.photo} width="100" alt="" />
@@ -89,7 +89,7 @@ const EditProduct = () => {
         placeholder="image"
         value={image}
         onChange={(e) => setImage(e.target.value)}
-        class="edit_inp"
+        className="edit_inp"
       />
       {/* <input
         type="file"
