@@ -6,6 +6,11 @@ import { useProducts } from "../../contexts/ProductContextProvider";
 import ProductCard from "./ProductCard";
 import PaginationList from "./PaginationList";
 import SideBar from "./SideBar";
+import SearchIcon from "@mui/icons-material/Search";
+import IconButton from "@mui/material/IconButton";
+import "./styles/ProductList.css";
+import Search from "./Search";
+import Filter from "./Filter";
 
 const ProductList = () => {
   const { getProducts, products, pages } = useProducts();
@@ -47,16 +52,21 @@ const ProductList = () => {
     console.log(products);
   }, [searchParams]);
 
+  let [heartOpen, setHeartOpen] = useState(false);
+
   return (
     <div>
-      <SideBar />
+      <div>
+        <Search />
+      </div>
+
       <Box
         sx={{
           display: "flex",
           flexWrap: "wrap",
-          marginTop: "90px",
+          marginTop: "10px",
           marginBottom: "20px",
-          // justifyContent: "space-between",
+          justifyContent: "center",
         }}
       >
         {products.map((item) => (

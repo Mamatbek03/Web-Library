@@ -4,26 +4,63 @@ import { useProducts } from "../../contexts/ProductContextProvider";
 import { useComment } from "../../contexts/CommentContextProvider";
 import moment from "moment/moment";
 import "./styles/DetailsProduct.css";
-import { IconButton } from "@mui/material";
+import {
+  Box,
+  Button,
+  IconButton,
+  Modal,
+  TextField,
+  Typography,
+} from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 import CommentIcon from "@mui/icons-material/Comment";
 
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 400,
+  bgcolor: "background.paper",
+  border: "2px solid #000",
+  boxShadow: 24,
+  p: 4,
+};
 const EditProduct = () => {
-  const { getOneProduct, oneProduct, deleteProduct, postLike, deleteLike } =
-    useProducts();
+  const {
+    getOneProduct,
+    oneProduct,
+    deleteProduct,
+    postLike,
+    deleteLike,
+    getLikeList,
+    getProducts,
+    postFavorite,
+  } = useProducts();
 
-  const { createComment, getComments, comments, setComments, deleteComment } =
-    useComment();
+  const {
+    createComment,
+    getComments,
+    comments,
+    setComments,
+    deleteComment,
+    editComment,
+  } = useComment();
 
   const navigate = useNavigate();
   const { id } = useParams();
 
-  const [body, setText] = useState(null);
+  const [commentToEdit, setCommentToEdit] = useState(null);
+
+  const [bodyEdit, setBodyEdit] = useState(null);
+  const [body, setBody] = useState(null);
 
   const [date, setDate] = useState(null);
 
-  const [flag, setFlag] = useState(false);
+  const [likes, setLikes] = useState(null);
+
+  const [isFavorite, setIsFavorite] = useState(oneProduct?.is_favorite);
 
   const [isLiked, setIsLiked] = useState(oneProduct?.is_liked);
 
@@ -34,11 +71,38 @@ const EditProduct = () => {
       body,
       post,
     };
-    createComment(comment);
+    createComment(comment)
+      .then(() => {
+        setBody(""); // очищаем значение поля ввода комментария после успешного создания
+        getOneProduct(id); // обновляем продукт, чтобы отобразить новый комментарий
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  function handleDeleteComment(commentId) {
+    deleteComment(commentId);
+    setComments(comments.filter((comment) => comment.id !== commentId));
+    getComments();
+    getOneProduct(id);
+  }
+
+  function handleEditComment(commentEdit) {
+    handleOpen();
+    setCommentToEdit(commentEdit);
+  }
+  async function saveEditedComment() {
+    const editingComment = {
+      ...commentToEdit,
+      body: bodyEdit,
+    };
+    await editComment(editingComment);
+    setCommentToEdit(null);
   }
 
   function timeDays(time) {
-    const res = moment(time).format("DD.MM.YYYY");
+    const res = moment(time).format("  DD.MM.YYYY");
     return res;
   }
   function timeHours(time) {
@@ -47,21 +111,19 @@ const EditProduct = () => {
   }
 
   useEffect(() => {
-    if (!date) setDate(new Date().getDay());
+    if (!date) setDate(moment(new Date()).format("DD.MM.YYYY"));
   }, []);
-  console.log(date);
 
   useEffect(() => {
     getOneProduct(id);
     getComments();
+    getLikeList(setLikes);
   }, []);
-
-  function handlebtns(e, id) {
-    if (e.target.className == id) {
-      console.log(e.target.className);
-      flag ? setFlag(false) : setFlag(true);
-    }
+  function likeForDelete() {
+    const deleteLike = likes?.filter((item) => item.post === id);
+    console.log(deleteLike);
   }
+  likeForDelete();
 
   const formData = new FormData();
   function handleLike() {
@@ -74,8 +136,25 @@ const EditProduct = () => {
       deleteLike(id);
     }
   }
+  console.log(comments);
+  // ! Favorite
 
-  console.log(oneProduct?.pdf);
+  function handleFavorite() {
+    formData.append("post", oneProduct?.id);
+    if (!isFavorite) {
+      setIsFavorite(!isFavorite);
+      postFavorite(formData);
+    } else {
+      setIsFavorite(!isFavorite);
+      postFavorite(formData);
+    }
+  }
+  // ! Modal
+
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   return (
     <>
       <div className="details">
@@ -116,8 +195,8 @@ const EditProduct = () => {
               <FavoriteIcon color={isLiked ? "error" : ""} />
               <p>{oneProduct?.likes_count}</p>
             </IconButton>
-            <IconButton>
-              <BookmarkIcon />
+            <IconButton onClick={handleFavorite}>
+              <BookmarkIcon color={isFavorite ? "primary" : ""} />
             </IconButton>
           </div>
           <div>
@@ -136,32 +215,59 @@ const EditProduct = () => {
           type="text"
           value={body}
           placeholder="add comment"
-          onChange={(e) => setText(e.target.value)}
+          onChange={(e) => setBody(e.target.value)}
         />
         <button onClick={addComment}>send</button>
         <div className="comments_list">
-          {comments?.map((item) => (
+          {oneProduct?.comments.map((item) => (
             <div
               key={item.created_at}
-              onClick={(e) => handlebtns(e, "item" + item.id)}
               // className="comments_item"
             >
-              <p className={"item" + item.id}>
-                {item.owner}
-                {date >= 1
-                  ? timeDays(item.created_at)
+              <p>{item.owner}</p>
+              <p>{item.body}</p>
+              <p>
+                {" "}
+                {date !== moment(item.created_at).format("DD.MM.YYYY")
+                  ? // ! timeDays(item.created_at) -------------------------------
+                    timeDays(item.created_at)
                   : timeHours(item.created_at)}
               </p>
-              <p>{item.body}</p>
-              {flag ? (
-                <>
-                  <button>edit</button>
-                  <button onClick={() => deleteComment(id)}>delete</button>
-                </>
-              ) : null}
+              <div>
+                <button onClick={() => handleEditComment(item)}>edit</button>
+                <button onClick={() => handleDeleteComment(item.id)}>
+                  delete
+                </button>
+              </div>
             </div>
           ))}
         </div>
+        <Button onClick={handleOpen}>Open modal</Button>
+        <Modal
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box sx={style}>
+            <center>
+              <h3>Edit Comment</h3>
+              <TextField
+                label="new Comment"
+                defaultValue={commentToEdit?.body}
+                onChange={(e) => setBodyEdit(e.target.value)}
+              />
+              <Button
+                onClick={() => {
+                  saveEditedComment();
+                  handleClose();
+                }}
+              >
+                save changes
+              </Button>
+            </center>
+          </Box>
+        </Modal>
       </div>
     </>
   );

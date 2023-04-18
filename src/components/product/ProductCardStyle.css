@@ -1,0 +1,18 @@
+.product_btn_delete {
+  margin: 5px;
+  background-color: transparent;
+  width: 5em;
+  height: 2em;
+  border-radius: 15px;
+  border: #ffd700 2px solid;
+  color: white;
+  text-shadow: #fc0 0px 0 5px;
+}
+
+.product_btn_delete:hover {
+  background-color: #ffd700;
+  border: #ffd700 2px solid;
+  color: black;
+  transition: 1s;
+  border: white 2px solid;
+}
