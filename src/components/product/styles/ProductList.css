@@ -11,8 +11,8 @@
 }
 
 /* .Navbar {
-    position: relative;
-  } */
+      position: relative;
+    } */
 
 .shop-cart {
   position: absolute;
@@ -24,4 +24,13 @@
   background-color: #fafafa;
   z-index: 1000;
   color: red;
+}
+
+.search {
+  margin-left: 10px;
+}
+
+.search1 {
+  display: flex;
+  flex-wrap: wrap;
 }
