@@ -20,7 +20,6 @@ import { useAuth } from "../../contexts/AuthContextProvider";
 import AutoStoriesIcon from "@mui/icons-material/AutoStories";
 import "./Navbar.css";
 
-
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { useCart } from "../../contexts/CartContexProvider";
 import { getCountProductsInCart } from "../helpers/function";
@@ -28,7 +27,6 @@ import { useState } from "react";
 import SideBar from "../product/SideBar";
 
 import { Style } from "@mui/icons-material";
-
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -113,7 +111,6 @@ export default function Navbar() {
 
   let [heartOpen, setHeartOpen] = useState(false);
 
-
   const menuId = "primary-search-account-menu";
   const renderMenu = (
     <Menu
@@ -132,6 +129,7 @@ export default function Navbar() {
       onClose={handleMenuClose}
     >
       <MenuItem
+        className="navbar_menu"
         onClick={() => {
           handleMenuClose();
           navigate("/register");
@@ -140,6 +138,7 @@ export default function Navbar() {
         Register
       </MenuItem>
       <MenuItem
+        className="navbar_menu"
         onClick={() => {
           handleMenuClose();
           navigate("/login");
@@ -149,6 +148,7 @@ export default function Navbar() {
       </MenuItem>
       <hr />
       <MenuItem
+        className="navbar_menu"
         onClick={() => {
           handleMenuClose();
           handleLogout();
@@ -237,7 +237,11 @@ export default function Navbar() {
             variant="h6"
             noWrap
             component="div"
-            sx={{ display: { xs: "none", sm: "block" }, marginLeft: 10 }}
+            sx={{
+              display: { xs: "none", sm: "block" },
+              marginLeft: 10,
+              cursor: "pointer",
+            }}
           >
             Главная
           </Typography>
@@ -246,7 +250,14 @@ export default function Navbar() {
             variant="h6"
             noWrap
             component="div"
-            sx={{ display: { xs: "none", sm: "block", marginLeft: 30 } }}
+            sx={{
+              display: {
+                xs: "none",
+                sm: "block",
+                marginLeft: 30,
+                cursor: "pointer",
+              },
+            }}
           >
             Хочешь добавить книгу?
           </Typography>
@@ -255,7 +266,14 @@ export default function Navbar() {
             variant="h6"
             noWrap
             component="div"
-            sx={{ display: { xs: "none", sm: "block", marginLeft: 30 } }}
+            sx={{
+              display: {
+                xs: "none",
+                sm: "block",
+                marginLeft: 30,
+                cursor: "pointer",
+              },
+            }}
           >
             Библиотека
           </Typography>
@@ -264,11 +282,18 @@ export default function Navbar() {
             variant="h6"
             noWrap
             component="div"
-            sx={{ display: { xs: "none", sm: "block", marginLeft: 30 } }}
+            sx={{
+              display: {
+                xs: "none",
+                sm: "block",
+                marginLeft: 30,
+                cursor: "pointer",
+              },
+            }}
           >
             Избранные
           </Typography>
-          <p style={{ marginLeft: "400px", marginTop: "20px" }}>
+          <p style={{ marginLeft: "200px", marginTop: "20px" }}>
             {user ? user : "No auth user"}
           </p>
           <Box sx={{ flexGrow: 1 }} />
@@ -292,12 +317,12 @@ export default function Navbar() {
               size="large"
               aria-label="show 4 new mails"
               color="inherit"
+              sx={{ color: "green" }}
             >
               <Badge badgeContent={count} color="error">
                 <ShoppingCartIcon />
               </Badge>
             </IconButton>
-
 
             <IconButton
               size="large"

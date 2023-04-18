@@ -73,21 +73,21 @@ const AddProduct = () => {
             className="add-book_header"
             style={{
               margin: "10px 0 20px",
-              fontSize: "2.3rem",
+              fontSize: "3rem",
               fontFamily: "Times New Roman, Times, serif",
             }}
           >
-            Добавление вашей книги
+            Добавим вашу книгу
           </h1>
         </center>
 
         <FormControl fullWidth>
-          <InputLabel id="demo-select-label">Категория</InputLabel>
+          <h3>Выберите категорию:</h3>
+          <InputLabel id="demo-select-label"></InputLabel>
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
             value={category}
-            label="category"
             onChange={(e) => setCategory(e.target.value)}
             sx={{ backgroundColor: "white" }}
           >
@@ -101,8 +101,9 @@ const AddProduct = () => {
             <MenuItem value={30}>Thirty</MenuItem> */}
           </Select>
         </FormControl>
-        <TextField
+        <input
           className="add-book_inp"
+          type="input"
           sx={{
             width: "100%",
             height: "20%",
@@ -110,7 +111,7 @@ const AddProduct = () => {
             backgroundColor: "white",
           }}
           id="outlined-basic"
-          label="title"
+          placeholder="Заголовок"
           variant="outlined"
           color="grey"
           name="title"
@@ -181,6 +182,7 @@ const AddProduct = () => {
         </center>
         <input
           className="add-book_inp"
+          type="input"
           style={{
             width: "100%",
             height: "20%",
@@ -194,12 +196,12 @@ const AddProduct = () => {
           name="price"
           onChange={(e) => setPrice(e.target.value)}
         />
-
         <input
           className="add-book_inp"
+          type="input"
           style={{ margin: "10px 0 20px ", backgroundColor: "white" }}
           id="outlined-basic"
-          label="description"
+          placeholder="Описание"
           variant="outlined"
           color="grey"
           name="description"
@@ -212,6 +214,7 @@ const AddProduct = () => {
           }}
           variant="contained"
           size="large"
+          color="success"
           sx={{
             padding: "10px 0",
             border: "1px solid black",

@@ -75,32 +75,36 @@ const ProductCard = ({ item }) => {
   const { addProductToCart, checkProductInCart } = useCart();
 
   return (
-
     <div
       className="border border-dark m-3"
       style={{
         boxShadow: "#fc0 0px 0 5px",
         margin: "30px",
-        width: "18em",
-        height: "25em",
+        width: "20em",
+        height: "30em",
         textAlign: "center",
         color: "white",
+        display: "flex",
+        alignItems: "center",
+        flexDirection: "column",
+        // justifyContent: "center",
       }}
     >
       <img
         style={{
-          width: "70%",
+          width: "80%",
           margin: "15px 30px 20px",
           height: "200px",
         }}
         src={item.images}
         alt=""
       />
+      <div>
+        <h3>{item.title}</h3>
+        <p>{item.category_name}</p>
+      </div>
+      <div> {item.price ? <p>${item.price}</p> : <p sx={{}}>free</p>}</div>
 
-
-      <h3>{item.title}</h3>
-      <p>{item.category_name}</p>
-      {item.price ? <p>${item.price}</p> : <p>free</p>}
       <div>
         <IconButton onClick={handleLike}>
           <FavoriteIcon color={isLiked ? "error" : ""} />
@@ -119,7 +123,7 @@ const ProductCard = ({ item }) => {
         </IconButton>
         <IconButton onClick={() => addProductToCart(item)}>
           <ShoppingCartIcon
-            color={checkProductInCart(item.id) ? "primary" : ""}
+            color={checkProductInCart(item.id) ? "secondary" : ""}
           />
         </IconButton>
       </div>

@@ -57,9 +57,19 @@ const Footer = () => {
             <details className="footer_link">
               <summary>Контакты</summary>
               <p>Главный редактор</p>
-              <input type="text" value="0501 619 690" disabled />
+              <input
+                type="text"
+                value="0501 619 690"
+                disabled
+                style={{ width: "10em", height: "0.8em" }}
+              />
               <p>Справочная</p>
-              <input type="text" value="0501 619 690" disabled />
+              <input
+                type="text"
+                value="0501 619 690"
+                disabled
+                style={{ width: "10em", height: "0.8em" }}
+              />
             </details>
 
             <p className="footer_link" onClick={() => navigate("/Services")}>

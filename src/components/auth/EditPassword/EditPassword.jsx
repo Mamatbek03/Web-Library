@@ -12,7 +12,11 @@ const EditPassword = () => {
   return (
     <div
       className="register"
-      style={{ height: "1000px", backgroundColor: "gray", padding: "50px 0" }}
+      style={{
+        height: "1000px",
+        backgroundColor: "transparent",
+        padding: "50px 0",
+      }}
     >
       <div
         className="register-places"
@@ -28,13 +32,14 @@ const EditPassword = () => {
         }}
       >
         <center>
-          <h1>Send activate code to email</h1>
+          <h1>Отправить код в почту</h1>
         </center>
 
-        <TextField
+        <input
+          className="register_inp"
           sx={{ margin: "30px 10px 20px" }}
           id="outlined-basic"
-          label="email"
+          placeholder="Email"
           variant="outlined"
           color="grey"
           name="title"
@@ -46,6 +51,7 @@ const EditPassword = () => {
             onClick={() => sendCodeToEmail(email)}
             variant="contained"
             size="large"
+            color="success"
             sx={{
               border: "1px solid black",
               color: "white",
@@ -54,7 +60,7 @@ const EditPassword = () => {
               margin: "20px 0 30px 0",
             }}
           >
-            login
+            Отправить
           </Button>
         </center>
       </div>

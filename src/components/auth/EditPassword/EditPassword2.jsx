@@ -35,7 +35,12 @@ const EditPassword2 = () => {
   return (
     <div
       className="register"
-      style={{ height: "1000px", backgroundColor: "gray", padding: "50px 0" }}
+      style={{
+        height: "1000px",
+        backgroundColor: "gray",
+        padding: "50px 0",
+        backgroundColor: "transparent",
+      }}
     >
       <div
         className="register-places"
@@ -51,13 +56,14 @@ const EditPassword2 = () => {
         }}
       >
         <center>
-          <h1>Edit Password</h1>
+          <h1>Изменить пароль</h1>
         </center>
 
-        <TextField
+        <input
+          className="register_inp"
           sx={{ margin: "10px" }}
           id="outlined-basic"
-          label="activate code "
+          placeholder="Активация кода"
           variant="outlined"
           color="grey"
           name="title"
@@ -65,10 +71,11 @@ const EditPassword2 = () => {
           onChange={(e) => setCode(e.target.value)}
         />
 
-        <TextField
+        <input
+          className="register_inp"
           sx={{ margin: "15px" }}
           id="outlined-basic"
-          label="new password"
+          placeholder="Новый пароль"
           variant="outlined"
           color="grey"
           name="title"
@@ -89,10 +96,11 @@ const EditPassword2 = () => {
           }}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <TextField
+        <input
+          className="register_inp"
           sx={{ margin: "15px" }}
           id="outlined-basic"
-          label="password confirm"
+          placeholder="Потверждение пароля"
           variant="outlined"
           color="grey"
           name="title"
@@ -122,6 +130,7 @@ const EditPassword2 = () => {
           <Button
             onClick={savePassword}
             variant="contained"
+            color="success"
             size="large"
             sx={{
               border: "1px solid black",
@@ -131,7 +140,7 @@ const EditPassword2 = () => {
               margin: "20px 0 30px 0",
             }}
           >
-            save Changes
+            Сохранить
           </Button>
         </center>
       </div>

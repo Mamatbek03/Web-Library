@@ -56,15 +56,11 @@ const ProductList = () => {
 
   return (
     <div>
-      <div>
-        <Search />
-      </div>
-
       <Box
         sx={{
           display: "flex",
           flexWrap: "wrap",
-          marginTop: "10px",
+          marginTop: "30px",
           marginBottom: "20px",
           justifyContent: "center",
         }}
