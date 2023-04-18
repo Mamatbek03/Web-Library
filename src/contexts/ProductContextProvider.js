@@ -30,7 +30,7 @@ const ProductContextProvider = ({ children }) => {
         return {
           ...state,
           products: action.payload.results,
-          pages: Math.ceil(action.payload.count / 6),
+          pages: Math.ceil(action.payload.count / 12),
         };
       case "GET_CATEGORIES":
         return { ...state, categories: action.payload };
