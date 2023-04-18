@@ -19,10 +19,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContextProvider";
 import AutoStoriesIcon from "@mui/icons-material/AutoStories";
 import "./Navbar.css";
-
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { useCart } from "../../contexts/CartContexProvider";
-import { getCountProductsInCart } from "../helpers/function";
+import { Style } from "@mui/icons-material";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -96,14 +93,6 @@ export default function Navbar() {
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
-
-  // корзина//
-  const [count, setCount] = React.useState(0);
-  const { addProductToCart } = useCart();
-
-  React.useEffect(() => {
-    setCount(getCountProductsInCart());
-  }, [addProductToCart]);
 
   const menuId = "primary-search-account-menu";
   const renderMenu = (
@@ -205,14 +194,21 @@ export default function Navbar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar
+        position="static"
+        sx={{
+          backgroundColor: "rgb(66,66,66 )",
+          opacity: "0.7",
+          textShadow: "#fc0 0px 0 5px",
+        }}
+      >
         <Toolbar>
           <IconButton
             size="large"
             edge="start"
             color="inherit"
             aria-label="open drawer"
-            sx={{ mr: 5, ml: 5 }}
+            sx={{ mr: 5, ml: 5, margin: 2 }}
           >
             <MenuIcon />
           </IconButton>
@@ -221,27 +217,28 @@ export default function Navbar() {
             variant="h6"
             noWrap
             component="div"
-            sx={{ display: { xs: "none", sm: "block" } }}
+            sx={{ display: { xs: "none", sm: "block" }, marginLeft: 10 }}
           >
-            Home
+            Главная
           </Typography>
           <Typography
             onClick={() => navigate("/add")}
             variant="h6"
             noWrap
             component="div"
-            sx={{ display: { xs: "none", sm: "block" } }}
+            sx={{ display: { xs: "none", sm: "block", marginLeft: 30 } }}
           >
-            Add Book
+            Хочешь добавить книгу?
           </Typography>
           <Typography
             onClick={() => navigate("/product-list")}
             variant="h6"
             noWrap
             component="div"
-            sx={{ display: { xs: "none", sm: "block" } }}
+            sx={{ display: { xs: "none", sm: "block", marginLeft: 30 } }}
           >
-            Product List
+            Каталог
+          
           </Typography>
           <Typography
             onClick={() => navigate("/favorites")}
@@ -251,6 +248,7 @@ export default function Navbar() {
             sx={{ display: { xs: "none", sm: "block" } }}
           >
             Favorites
+
           </Typography>
 
           {/* <Search>
@@ -262,24 +260,18 @@ export default function Navbar() {
               inputProps={{ "aria-label": "search" }}
             />
           </Search> */}
-          <p>{user ? user : "No auth user"}</p>
+          <p style={{ marginLeft: "100px" }}>{user ? user : "No auth user"}</p>
           <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: "none", md: "flex" } }}>
-            <IconButton
-              onClick={() => navigate("/cart")}
-              size="large"
-              aria-label="show 4 new mails"
-              color="inherit"
-            >
-              <Badge badgeContent={count} color="error">
-                <ShoppingCartIcon />
-              </Badge>
-            </IconButton>
-
+          <Box
+            sx={{
+              display: { xs: "none", md: "flex" },
+            }}
+          >
             <IconButton
               size="large"
               aria-label="show 4 new mails"
               color="inherit"
+              sx={{ color: "yellow" }}
             >
               <Badge badgeContent={4} color="error">
                 <MailIcon />
@@ -289,6 +281,7 @@ export default function Navbar() {
               size="large"
               aria-label="show 17 new notifications"
               color="inherit"
+              sx={{ color: "pink" }}
             >
               <Badge badgeContent={17} color="error">
                 <NotificationsIcon />

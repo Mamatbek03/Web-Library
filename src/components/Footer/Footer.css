@@ -41,17 +41,17 @@
 }
 
 #footer_button:hover {
-  background-color: rgba(192, 192, 192, 0.752);
+  background-color: #ffd700;
   border: #ffd700 2px solid;
-  color: white;
-  text-shadow: #fc0 0px 0 5px;
+  color: black;
   transition: 1s;
 }
 
 #footer_button:focus {
-  background-color: #fc0;
+  background-color: transparent;
   transition: 1s;
-  color: black;
+  color: white;
+  text-shadow: #fc0 0px 0 5px;
 }
 
 #footer_center {

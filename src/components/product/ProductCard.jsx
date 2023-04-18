@@ -8,6 +8,7 @@ import CommentIcon from "@mui/icons-material/Comment";
 import { IconButton } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { useCart } from "../../contexts/CartContexProvider";
+import "./ProductCardStyle.css";
 import "./styles/ProductCard.css";
 import moment from "moment";
 
@@ -74,22 +75,45 @@ const ProductCard = ({ item }) => {
   const { addProductToCart, checkProductInCart } = useCart();
 
   return (
-    <div className="border border-dark m-3">
-      <img src={item.images} height={200} width={227} alt="photo" />
+    <div
+      className="border border-dark m-3"
+      style={{
+        boxShadow: "#fc0 0px 0 5px",
+        margin: "30px",
+        width: "18em",
+        height: "25em",
+        textAlign: "center",
+        color: "white",
+      }}
+    >
+      <img
+        style={{
+          width: "70%",
+          margin: "15px 30px 20px",
+          height: "200px",
+        }}
+        src={item.images}
+        alt=""
+      />
+
       <h3>{item.title}</h3>
       <p>{item.category_name}</p>
       {item.price ? <p>${item.price}</p> : <p>free</p>}
       <div>
         <IconButton onClick={handleLike}>
           <FavoriteIcon color={isLiked ? "error" : ""} />
-          <p>{likesCount}</p>
+          <p style={{ color: "white", textShadow: "#fc0 0px 0 5px" }}>
+            {likesCount}
+          </p>
         </IconButton>
         <IconButton onClick={handleFavorite}>
           <BookmarkIcon color={isFavorite ? "primary" : ""} />
         </IconButton>
         <IconButton>
           <CommentIcon />
-          <p>{commentsCount}</p>
+          <p style={{ color: "white", textShadow: "#fc0 0px 0 5px" }}>
+            {commentsCount}
+          </p>
         </IconButton>
         <IconButton onClick={() => addProductToCart(item)}>
           <ShoppingCartIcon
@@ -98,16 +122,27 @@ const ProductCard = ({ item }) => {
         </IconButton>
       </div>
       <div>
-        <button onClick={() => navigate(`/edit/${item.id}`)}>Edit</button>
+        <button
+          onClick={() => navigate(`/edit/${item.id}`)}
+          class="product_btn_delete"
+        >
+          Edit
+        </button>
         <button
           onClick={() => {
             // showProductDetails(formData);
             navigate(`/details/${item.id}`);
           }}
+          class="product_btn_delete"
         >
           Details
         </button>
-        <button onClick={() => deleteProduct(item.id)}>Delete</button>
+        <button
+          onClick={() => deleteProduct(item.id)}
+          class="product_btn_delete"
+        >
+          Delete
+        </button>
       </div>
     </div>
   );
