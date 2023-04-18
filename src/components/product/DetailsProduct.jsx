@@ -36,6 +36,7 @@ const EditProduct = () => {
     deleteLike,
     getLikeList,
     getProducts,
+    postFavorite,
   } = useProducts();
 
   const {
@@ -58,6 +59,8 @@ const EditProduct = () => {
   const [date, setDate] = useState(null);
 
   const [likes, setLikes] = useState(null);
+
+  const [isFavorite, setIsFavorite] = useState(oneProduct?.is_favorite);
 
   const [isLiked, setIsLiked] = useState(oneProduct?.is_liked);
 
@@ -134,6 +137,18 @@ const EditProduct = () => {
     }
   }
   console.log(comments);
+  // ! Favorite
+
+  function handleFavorite() {
+    formData.append("post", oneProduct?.id);
+    if (!isFavorite) {
+      setIsFavorite(!isFavorite);
+      postFavorite(formData);
+    } else {
+      setIsFavorite(!isFavorite);
+      postFavorite(formData);
+    }
+  }
   // ! Modal
 
   const [open, setOpen] = React.useState(false);
@@ -180,8 +195,8 @@ const EditProduct = () => {
               <FavoriteIcon color={isLiked ? "error" : ""} />
               <p>{oneProduct?.likes_count}</p>
             </IconButton>
-            <IconButton>
-              <BookmarkIcon />
+            <IconButton onClick={handleFavorite}>
+              <BookmarkIcon color={isFavorite ? "primary" : ""} />
             </IconButton>
           </div>
           <div>
