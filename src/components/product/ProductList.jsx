@@ -5,6 +5,7 @@ import { useSearchParams } from "react-router-dom";
 import { useProducts } from "../../contexts/ProductContextProvider";
 import ProductCard from "./ProductCard";
 import PaginationList from "./PaginationList";
+import SideBar from "./SideBar";
 
 const ProductList = () => {
   const { getProducts, products, pages } = useProducts();
@@ -48,6 +49,7 @@ const ProductList = () => {
 
   return (
     <div>
+      <SideBar />
       <Box
         sx={{
           display: "flex",
