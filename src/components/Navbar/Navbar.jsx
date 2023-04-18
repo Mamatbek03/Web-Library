@@ -102,7 +102,7 @@ export default function Navbar() {
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
-
+// 
   // корзина//
   const [count, setCount] = React.useState(0);
   const { addProductToCart } = useCart();
