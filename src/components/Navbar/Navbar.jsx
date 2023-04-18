@@ -237,30 +237,20 @@ export default function Navbar() {
             component="div"
             sx={{ display: { xs: "none", sm: "block", marginLeft: 30 } }}
           >
-            Каталог
-          
+            Библиотека
           </Typography>
           <Typography
             onClick={() => navigate("/favorites")}
             variant="h6"
             noWrap
             component="div"
-            sx={{ display: { xs: "none", sm: "block" } }}
+            sx={{ display: { xs: "none", sm: "block", marginLeft: 30 } }}
           >
-            Favorites
-
+            Избранные
           </Typography>
-
-          {/* <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ "aria-label": "search" }}
-            />
-          </Search> */}
-          <p style={{ marginLeft: "100px" }}>{user ? user : "No auth user"}</p>
+          <p style={{ marginLeft: "400px", marginTop: "20px" }}>
+            {user ? user : "No auth user"}
+          </p>
           <Box sx={{ flexGrow: 1 }} />
           <Box
             sx={{

@@ -14,6 +14,7 @@ const ProductList = () => {
 
   const [searchParams] = useSearchParams();
   const res = products.filter((item) => (item.is_favorite ? true : false));
+  console.log(res);
 
   useEffect(() => {
     getProducts();
