@@ -75,7 +75,6 @@ const ProductCard = ({ item }) => {
   const { addProductToCart, checkProductInCart } = useCart();
 
   return (
-
     <div
       className="border border-dark m-3"
       style={{
@@ -96,7 +95,6 @@ const ProductCard = ({ item }) => {
         src={item.images}
         alt=""
       />
-
 
       <h3>{item.title}</h3>
       <p>{item.category_name}</p>

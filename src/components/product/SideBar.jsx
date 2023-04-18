@@ -23,7 +23,7 @@ const SideBar = () => {
   } = useProducts();
 
   useEffect(() => {
-    setSearchParams({ title: search });
+    setSearchParams({ search: search });
     getProducts();
   }, [search]);
 
@@ -51,7 +51,7 @@ const SideBar = () => {
             aria-labelledby="demo-radio-buttons-group-label"
             defaultValue="all"
             name="radio-buttons-group"
-            onChange={(e) => fetchByParams("type", e.target.value)}
+            onChange={(e) => fetchByParams("Type", e.target.value)}
           >
             <FormControlLabel
               value="Fantasy"

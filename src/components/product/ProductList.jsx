@@ -56,9 +56,7 @@ const ProductList = () => {
 
   return (
     <div>
-      <div>
-        <Search />
-      </div>
+      <div>{/* <Search /> */}</div>
 
       <Box
         sx={{
