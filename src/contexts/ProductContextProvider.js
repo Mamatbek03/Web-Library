@@ -1,4 +1,5 @@
 import axios from "axios";
+import { async } from "q";
 import React, {
   createContext,
   useContext,
@@ -16,8 +17,7 @@ const ProductContextProvider = ({ children }) => {
   const API = "http://34.107.92.21";
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
-  const [search, setSearch] = useState(searchParams.get("title") || "");
-
+  const [search, setSearch] = useState(searchParams.get("search") || "");
   const INIT_STATE = {
     products: [],
     categories: [],
@@ -70,6 +70,7 @@ const ProductContextProvider = ({ children }) => {
         },
       };
       const res = await axios.get(`${API}/category/`, config);
+      getProducts();
       console.log(res);
 
       dispatch({ type: "GET_CATEGORIES", payload: res.data });
@@ -156,6 +157,21 @@ const ProductContextProvider = ({ children }) => {
       console.log(error);
     }
   };
+  const getLikeList = async (setLikes) => {
+    try {
+      const tokens = JSON.parse(localStorage.getItem("tokens"));
+      const Authorization = `Bearer ${tokens.access}`;
+      const config = {
+        headers: {
+          Authorization,
+        },
+      };
+      const res = await axios.get(`${API}/likes/list/`, config);
+      setLikes(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const deleteLike = async (id) => {
     try {
       const tokens = JSON.parse(localStorage.getItem("tokens"));
@@ -188,6 +204,7 @@ const ProductContextProvider = ({ children }) => {
       console.log(error);
     }
   };
+
   const deleteFavorite = async (id) => {
     try {
       const tokens = JSON.parse(localStorage.getItem("tokens"));
@@ -203,23 +220,22 @@ const ProductContextProvider = ({ children }) => {
       console.log(error);
     }
   };
-  const fetchByParams = async (query, value) => {
+  const fetchByParams = async (title, value) => {
     const search = new URLSearchParams(window.location.search);
-
     if (value === "all") {
-      search.delete(query);
+      search.delete(title);
     } else {
-      search.set(query, value);
+      search.set(title, value);
     }
 
     const url = `${window.location.pathname}?${search.toString()}`;
-
     navigate(url);
   };
 
   const values = {
     postFavorite,
     deleteFavorite,
+    getLikeList,
     deleteLike,
     postLike,
     updateProduct,

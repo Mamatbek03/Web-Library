@@ -56,9 +56,7 @@ const ProductList = () => {
 
   return (
     <div>
-      <div>
-        <Search />
-      </div>
+      <div>{/* <Search /> */}</div>
 
       <Box
         sx={{
@@ -66,7 +64,7 @@ const ProductList = () => {
           flexWrap: "wrap",
           marginTop: "10px",
           marginBottom: "20px",
-          // justifyContent: "space-between",
+          justifyContent: "center",
         }}
       >
         {products.map((item) => (
