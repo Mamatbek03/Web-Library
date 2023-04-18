@@ -88,18 +88,18 @@ const EditProduct = () => {
     getOneProduct(id);
   }
 
+  console.log(oneProduct);
   function handleEditComment(commentEdit) {
-    handleOpen();
     setCommentToEdit(commentEdit);
   }
   async function saveEditedComment() {
-    const editingComment = {
-      ...commentToEdit,
-      body: bodyEdit,
-    };
-    await editComment(editingComment);
+    const formData = new FormData();
+    formData.append("body", bodyEdit);
+    formData.append("post", bodyEdit);
+    await editComment(formData);
     setCommentToEdit(null);
   }
+  console.log(oneProduct?.post);
 
   function timeDays(time) {
     const res = moment(time).format("  DD.MM.YYYY");
@@ -122,6 +122,7 @@ const EditProduct = () => {
   function likeForDelete() {
     const deleteLike = likes?.filter((item) => item.post === id);
     console.log(deleteLike);
+    // console.log(deleteLike.data);
   }
   likeForDelete();
 
@@ -150,10 +151,6 @@ const EditProduct = () => {
     }
   }
   // ! Modal
-
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
 
   return (
     <>
@@ -203,7 +200,12 @@ const EditProduct = () => {
             <button onClick={() => navigate(`/edit/${oneProduct?.id}`)}>
               Edit
             </button>
-            <button onClick={() => deleteProduct(oneProduct?.id)}>
+            <button
+              onClick={async () => {
+                await deleteProduct(oneProduct?.id);
+                navigate("/product-list");
+              }}
+            >
               Delete
             </button>
           </div>
@@ -242,32 +244,6 @@ const EditProduct = () => {
             </div>
           ))}
         </div>
-        <Button onClick={handleOpen}>Open modal</Button>
-        <Modal
-          open={open}
-          onClose={handleClose}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-        >
-          <Box sx={style}>
-            <center>
-              <h3>Edit Comment</h3>
-              <TextField
-                label="new Comment"
-                defaultValue={commentToEdit?.body}
-                onChange={(e) => setBodyEdit(e.target.value)}
-              />
-              <Button
-                onClick={() => {
-                  saveEditedComment();
-                  handleClose();
-                }}
-              >
-                save changes
-              </Button>
-            </center>
-          </Box>
-        </Modal>
       </div>
     </>
   );
