@@ -10,6 +10,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { useCart } from "../../contexts/CartContexProvider";
 import "./ProductCardStyle.css";
 import "./styles/ProductCard.css";
+import "./styles/ProductCardStyle.css";
 import moment from "moment";
 
 const ProductCard = ({ item }) => {
