@@ -40,7 +40,7 @@ const SideBar = () => {
   }, [searchParams]);
 
   return (
-    <Grid item md={4}>
+    <Grid sx={{ width: "min-content" }} item md={4}>
       <Paper elevation={1} sx={{ width: "200px", boxShadow: "none" }}>
         <TextField
           fullWidth

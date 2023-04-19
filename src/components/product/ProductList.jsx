@@ -56,31 +56,33 @@ const ProductList = () => {
   let [heartOpen, setHeartOpen] = useState(false);
 
   return (
-    <div>
+    <div style={{ display: "flex" }}>
       <SideBar />
-      <Box
-        sx={{
-          display: "flex",
-          flexWrap: "wrap",
-          marginTop: "30px",
-          marginBottom: "20px",
-          justifyContent: "center",
-        }}
-      >
-        {products.map((item) => (
-          <ProductCard item={item} key={item.id} />
-        ))}
-      </Box>
-      {/* <PaginationList
+      <div>
+        <Box
+          sx={{
+            display: "flex",
+            flexWrap: "wrap",
+            marginTop: "30px",
+            marginBottom: "20px",
+            justifyContent: "center",
+          }}
+        >
+          {products.map((item) => (
+            <ProductCard item={item} key={item.id} />
+          ))}
+        </Box>
+        {/* <PaginationList
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
         getPagesCount={getPagesCount}
       /> */}
-      <PaginationList2
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-        getPagesCount={getPagesCount}
-      />
+        <PaginationList2
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          getPagesCount={getPagesCount}
+        />
+      </div>
     </div>
   );
 };
