@@ -83,8 +83,8 @@ const Footer = () => {
           style={{
             border: "3px solid white",
             padding: "4px",
-            width: "350px",
-            height: "330px",
+            width: "400px",
+            height: "350px",
             margin: "10px",
           }}
           allowfullscreen=""

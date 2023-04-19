@@ -20,6 +20,9 @@
   }
 }
 @media all and (max-width: 376px) {
+  .add-book {
+    height: 100vh;
+  }
   .add-book_places {
     width: 70% !important;
   }

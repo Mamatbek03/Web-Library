@@ -9,7 +9,6 @@
 
 #partnership_content {
   width: 60%;
-  height: 400px;
   background-color: rgba(169, 169, 169, 0);
   margin: 0 100px;
 }
@@ -30,6 +29,7 @@ legend {
   margin-left: 30%;
   width: 40%;
   padding: 30px;
+  margin: 20x;
 }
 
 #fieldset_left {
