@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { useProducts } from "../../contexts/ProductContextProvider";
 import {
   FormControl,
@@ -18,14 +18,22 @@ const SideBar = () => {
     search,
     setSearch,
     searchParams,
+    category,
     setSearchParams,
     fetchByParams,
   } = useProducts();
+  const navigate = useNavigate();
 
   useEffect(() => {
+    navigate("/product-list");
     setSearchParams({ search: search });
     getProducts();
   }, [search]);
+  useEffect(() => {
+    navigate("/product-list");
+    setSearchParams({ category: category });
+    getProducts();
+  }, [category]);
 
   useEffect(() => {
     getProducts();
@@ -53,54 +61,18 @@ const SideBar = () => {
             name="radio-buttons-group"
             onChange={(e) => fetchByParams("category", e.target.value)}
           >
-            <FormControlLabel
-              value="Fantasy"
-              control={<Radio />}
-              label="Fantasy"
-            />
-            <FormControlLabel
-              value="Mystery"
-              control={<Radio />}
-              label="Mystery"
-            />
-            <FormControlLabel
-              value="Romance"
-              control={<Radio />}
-              label="Romance"
-            />
-            <FormControlLabel
-              value="Western"
-              control={<Radio />}
-              label="Western"
-            />
-            <FormControlLabel
-              value="Dystopian"
-              control={<Radio />}
-              label="Dystopian"
-            />
+            <FormControlLabel value="1" control={<Radio />} label="Fantasy" />
+            <FormControlLabel value="2" control={<Radio />} label="Mystery" />
+            <FormControlLabel value="3" control={<Radio />} label="Romance" />
+            <FormControlLabel value="4" control={<Radio />} label="Western" />
+            <FormControlLabel value="5" control={<Radio />} label="Dystopian" />
 
+            <FormControlLabel value="6" control={<Radio />} label="Thriller" />
+            <FormControlLabel value="7" control={<Radio />} label="Horror" />
+            <FormControlLabel value="8" control={<Radio />} label="Classic" />
+            <FormControlLabel value="9" control={<Radio />} label="History" />
             <FormControlLabel
-              value="Thriller"
-              control={<Radio />}
-              label="Thriller"
-            />
-            <FormControlLabel
-              value="Horror"
-              control={<Radio />}
-              label="Horror"
-            />
-            <FormControlLabel
-              value="Classic"
-              control={<Radio />}
-              label="Classic"
-            />
-            <FormControlLabel
-              value="History"
-              control={<Radio />}
-              label="History"
-            />
-            <FormControlLabel
-              value="Children`s"
+              value="10"
               control={<Radio />}
               label="Children`s"
             />

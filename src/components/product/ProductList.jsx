@@ -57,6 +57,7 @@ const ProductList = () => {
 
   return (
     <div>
+      <SideBar />
       <Box
         sx={{
           display: "flex",
