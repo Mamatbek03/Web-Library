@@ -1,4 +1,5 @@
 body {
   background-image: url(./Wallpaper/pexels-dziana-hasanbekava-7063741.jpg);
-  background-size: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
 }

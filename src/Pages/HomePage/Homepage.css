@@ -24,25 +24,29 @@
 }
 
 #main_logo {
-  transform: translate(550px, 0px);
-  width: 10em;
-  height: 8em;
-  margin: 70px 0px 0px 0px;
+  width: 13%;
+  height: 5%;
+  margin: 70px 30px 0px 0px;
   outline: white 2px solid;
   border: #fc0 2px solid;
   box-shadow: #fc0 0px 0 5px;
   border-radius: 10px;
-  padding-left: 30px;
   padding-top: 3px;
+  text-align: center;
+}
+
+#main_logo > p {
+  width: 80%;
+  margin: 5px;
 }
 
 #logo {
-  width: 5em;
+  width: 60%;
   margin: 5px;
 }
 
 #homepage_search {
-  width: 40em;
+  width: 40%;
   height: 40px;
   margin: 30px auto 30px;
   text-align: center;
@@ -88,9 +92,11 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+  margin: auto;
+  width: 100%;
 }
 .hp_image {
-  width: 500px;
+  width: 30%;
   padding: 10px;
   border: #fc0 2px solid;
   margin: 50px;

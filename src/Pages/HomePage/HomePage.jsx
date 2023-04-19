@@ -14,9 +14,9 @@ const HomePage = () => {
       <div id="main">
         <div id="main_logo">
           <img id="logo" src={logo} alt="" />
-          SalamatBook
+          <p>SalamatBook</p>
         </div>
-        <h1>
+        <h1 style={{ width: "80vw" }}>
           SalamatBook - читайте и добавляйте книги, будем вместе расширять
           библиотеку. В этом году нам будет 30лет!
         </h1>
