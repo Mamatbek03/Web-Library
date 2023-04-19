@@ -27,6 +27,7 @@ import { useState } from "react";
 import SideBar from "../product/SideBar";
 
 import { Style } from "@mui/icons-material";
+import logo from "./logo.svg";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -176,27 +177,28 @@ export default function Navbar() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem>
-        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="error">
-            <MailIcon />
-          </Badge>
-        </IconButton>
-        <p>Messages</p>
-      </MenuItem>
-
-      <MenuItem>
+      <Typography
+        sx={{ margin: "5px 10px" }}
+        variant="h6"
+        noWrap
+        component="div"
+      >
+        {user ? user : "No auth user"}
+      </Typography>
+      <center>
         <IconButton
+          onClick={() => navigate("/cart")}
           size="large"
-          aria-label="show 17 new notifications"
+          aria-label="show 4 new mails"
           color="inherit"
+          sx={{ color: "green" }}
         >
-          <Badge badgeContent={17} color="error">
-            <NotificationsIcon />
+          <Badge badgeContent={count} color="error">
+            <ShoppingCartIcon />
           </Badge>
         </IconButton>
-        <p>Notifications</p>
-      </MenuItem>
+      </center>
+
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
           size="large"
@@ -205,9 +207,23 @@ export default function Navbar() {
           aria-haspopup="true"
           color="inherit"
         >
-          <AccountCircle />
+          {user ? (
+            <button
+              style={{
+                borderRadius: "100%",
+                padding: "0 10px",
+                backgroundColor: "black",
+                color: "white",
+                fontSize: "1.2rem",
+              }}
+            >
+              {user[0].toUpperCase()}
+            </button>
+          ) : (
+            <AccountCircle />
+          )}
         </IconButton>
-        <p>Profile</p>
+        <p style={{ marginBottom: "3px" }}>Profile</p>
       </MenuItem>
     </Menu>
   );
@@ -223,7 +239,7 @@ export default function Navbar() {
         }}
       >
         <Toolbar>
-          <IconButton
+          {/* <IconButton
             size="large"
             edge="start"
             color="inherit"
@@ -231,7 +247,7 @@ export default function Navbar() {
             sx={{ mr: 5, ml: 5, margin: 2 }}
           >
             <MenuIcon />
-          </IconButton>
+          </IconButton> */}
           <Typography
             onClick={() => navigate("/")}
             variant="h6"
@@ -239,7 +255,7 @@ export default function Navbar() {
             component="div"
             sx={{
               display: { xs: "none", sm: "block" },
-              marginLeft: 10,
+              marginLeft: "10px",
               cursor: "pointer",
             }}
           >
@@ -254,12 +270,12 @@ export default function Navbar() {
               display: {
                 xs: "none",
                 sm: "block",
-                marginLeft: 30,
+                marginLeft: "30px",
                 cursor: "pointer",
               },
             }}
           >
-            Хочешь добавить книгу?
+            Добавить книгу
           </Typography>
           <Typography
             onClick={() => navigate("/product-list")}
@@ -270,7 +286,7 @@ export default function Navbar() {
               display: {
                 xs: "none",
                 sm: "block",
-                marginLeft: 30,
+                marginLeft: "30px",
                 cursor: "pointer",
               },
             }}
@@ -286,44 +302,56 @@ export default function Navbar() {
               display: {
                 xs: "none",
                 sm: "block",
-                marginLeft: 30,
+                marginLeft: "30px",
+                marginRight: "120px",
                 cursor: "pointer",
               },
             }}
           >
             Избранные
           </Typography>
-          <p style={{ marginLeft: "200px", marginTop: "20px" }}>
+          <div id="navbar_logo">
+            <img id="logotip" src={logo} alt="" />
+            Salamat 30
+          </div>
+          <p
+            className="email-view"
+            style={{
+              marginLeft: "20%",
+              marginTop: "20px",
+              marginBottom: "1rem",
+            }}
+          >
             {user ? user : "No auth user"}
           </p>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
-            <IconButton>
-              <SearchIcon
+            {/* <IconButton> */}
+            {/* <SearchIcon
                 onClick={() => setHeartOpen((heartOpen = !heartOpen))}
                 className={`favorites ${heartOpen && "active"}`}
                 color="inherit"
-              />
-              {/* {heartOpen && (
+              /> */}
+            {/* {heartOpen && (
                 <div className="shop-cart">
                   <SideBar />
                 </div>
               )} */}
-            </IconButton>
+            {/* </IconButton> */}
 
             <IconButton
               onClick={() => navigate("/cart")}
               size="large"
               aria-label="show 4 new mails"
               color="inherit"
-              sx={{ color: "green" }}
+              sx={{ color: "gold" }}
             >
               <Badge badgeContent={count} color="error">
                 <ShoppingCartIcon />
               </Badge>
             </IconButton>
 
-            <IconButton
+            {/* <IconButton
               size="large"
               aria-label="show 4 new mails"
               color="inherit"
@@ -342,7 +370,7 @@ export default function Navbar() {
               <Badge badgeContent={17} color="error">
                 <NotificationsIcon />
               </Badge>
-            </IconButton>
+            </IconButton> */}
             <IconButton
               size="large"
               edge="end"
@@ -355,8 +383,8 @@ export default function Navbar() {
               {user ? (
                 <button
                   style={{
-                    borderRadius: "90%",
-                    padding: "5px 8px",
+                    borderRadius: "100%",
+                    padding: "0 13px",
                     backgroundColor: "black",
                     color: "white",
                   }}
