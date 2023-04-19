@@ -11,14 +11,6 @@ const Footer = () => {
 
   return (
     <div id="footer">
-      <div id="footer_left">
-        <img id="footer_logo" src={logo} alt="" />
-        <p>Количество книг: 0</p>
-        <div>
-          <input type="text" placeholder="Введите почту" id="footer_email" />
-          <button id="footer_button">Подписатьcя</button>
-        </div>
-      </div>
       <div>
         <div id="footer_media">
           <p>
@@ -61,14 +53,14 @@ const Footer = () => {
                 type="text"
                 value="0501 619 690"
                 disabled
-                style={{ width: "10em", height: "0.8em" }}
+                style={{ width: "7em", height: "1.2em" }}
               />
               <p>Справочная</p>
               <input
                 type="text"
                 value="0501 619 690"
                 disabled
-                style={{ width: "10em", height: "0.8em" }}
+                style={{ width: "7em", height: "1.2em" }}
               />
             </details>
 

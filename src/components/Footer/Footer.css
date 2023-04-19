@@ -5,7 +5,7 @@
   width: 100%;
   color: white;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   border-top: 2px solid #ffd700;
   text-shadow: #fc0 0px 0 5px;
@@ -102,3 +102,19 @@
 #footer_right {
   margin-right: 30px;
 }
+@media all and (max-width: 769px) {
+  #footer {
+    display: flex;
+    flex-direction: column-reverse;
+    height: min-content;
+  }
+  #footer_right {
+    width: 90%;
+    margin: auto;
+  }
+  iframe {
+    width: 100%;
+  }
+}
+
+/* @media  */
