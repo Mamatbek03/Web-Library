@@ -76,14 +76,15 @@ const ProductCard = ({ item }) => {
       style={{
         boxShadow: "#fc0 0px 0 5px",
         margin: "30px",
-        width: "20em",
-        height: "30em",
+        width: "23em",
+        height: "38em",
         textAlign: "center",
         color: "white",
         display: "flex",
         alignItems: "center",
         flexDirection: "column",
         // justifyContent: "center",
+        padding: "10px",
       }}
     >
       <img
