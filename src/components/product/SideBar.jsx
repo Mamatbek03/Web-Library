@@ -51,7 +51,7 @@ const SideBar = () => {
             aria-labelledby="demo-radio-buttons-group-label"
             defaultValue="all"
             name="radio-buttons-group"
-            onChange={(e) => fetchByParams("Type", e.target.value)}
+            onChange={(e) => fetchByParams("category", e.target.value)}
           >
             <FormControlLabel
               value="Fantasy"

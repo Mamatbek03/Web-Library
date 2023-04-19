@@ -35,20 +35,21 @@ const ProductCard = ({ item }) => {
   const [ownerUserName, setOwnerUserName] = useState(item.owner);
 
   const formData = new FormData();
-  function handleLike() {
+  async function handleLike() {
     formData.append("post", item.id);
     if (!isLiked) {
       setIsLiked(!isLiked);
       setLikesCount(likesCount + 1);
       setTime(Date.now());
-      postLike(formData);
+      await postLike(formData);
+      getProducts();
     } else {
       setIsLiked(!isLiked);
       setLikesCount(likesCount - 1);
       likedUsers.map((like) => {
         const email = localStorage.getItem("email");
         if (like.owner_email == email) {
-          deleteLike(like.id);
+          deleteLike(like.id).then(getProducts());
         }
       });
     }
