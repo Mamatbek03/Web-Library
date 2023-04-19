@@ -8,6 +8,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { useCart } from "../../contexts/CartContexProvider";
 import { Button } from "@mui/material";
+import "./Cart.css";
 
 function createData(name, calories, fat, carbs, protein) {
   return { name, calories, fat, carbs, protein };
@@ -34,7 +35,7 @@ export default function Cart() {
   };
 
   return (
-    <TableContainer component={Paper}>
+    <TableContainer component={Paper} id="cart_main">
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>

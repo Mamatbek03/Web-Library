@@ -9,3 +9,19 @@
     width: 80% !important;
   }
 }
+
+.register_inp {
+  height: 2.5em !important;
+  margin: 20px;
+  border: #fc0 2px solid;
+  border-radius: 10px;
+  background-color: rgba(202, 202, 202, 0.144) !important;
+  outline: none;
+  color: white;
+  padding: 1px;
+  padding-left: 20px;
+}
+
+.register_inp::-webkit-input-placeholder {
+  color: #ffffff;
+}

@@ -129,6 +129,7 @@ export default function Navbar() {
       onClose={handleMenuClose}
     >
       <MenuItem
+        className="navbar_menu"
         onClick={() => {
           handleMenuClose();
           navigate("/register");
@@ -137,6 +138,7 @@ export default function Navbar() {
         Register
       </MenuItem>
       <MenuItem
+        className="navbar_menu"
         onClick={() => {
           handleMenuClose();
           navigate("/login");
@@ -146,6 +148,7 @@ export default function Navbar() {
       </MenuItem>
       <hr />
       <MenuItem
+        className="navbar_menu"
         onClick={() => {
           handleMenuClose();
           handleLogout();
@@ -234,7 +237,11 @@ export default function Navbar() {
             variant="h6"
             noWrap
             component="div"
-            sx={{ display: { xs: "none", sm: "block" }, marginLeft: 10 }}
+            sx={{
+              display: { xs: "none", sm: "block" },
+              marginLeft: 10,
+              cursor: "pointer",
+            }}
           >
             Главная
           </Typography>
@@ -243,7 +250,14 @@ export default function Navbar() {
             variant="h6"
             noWrap
             component="div"
-            sx={{ display: { xs: "none", sm: "block", marginLeft: 30 } }}
+            sx={{
+              display: {
+                xs: "none",
+                sm: "block",
+                marginLeft: 30,
+                cursor: "pointer",
+              },
+            }}
           >
             Хочешь добавить книгу?
           </Typography>
@@ -252,30 +266,36 @@ export default function Navbar() {
             variant="h6"
             noWrap
             component="div"
-            sx={{ display: { xs: "none", sm: "block", marginLeft: 30 } }}
+            sx={{
+              display: {
+                xs: "none",
+                sm: "block",
+                marginLeft: 30,
+                cursor: "pointer",
+              },
+            }}
           >
-            Каталог
+            Библиотека
           </Typography>
           <Typography
             onClick={() => navigate("/favorites")}
             variant="h6"
             noWrap
             component="div"
-            sx={{ display: { xs: "none", sm: "block" } }}
+            sx={{
+              display: {
+                xs: "none",
+                sm: "block",
+                marginLeft: 30,
+                cursor: "pointer",
+              },
+            }}
           >
-            Favorites
+            Избранные
           </Typography>
-
-          {/* <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ "aria-label": "search" }}
-            />
-          </Search> */}
-          <p style={{ marginLeft: "100px" }}>{user ? user : "No auth user"}</p>
+          <p style={{ marginLeft: "200px", marginTop: "20px" }}>
+            {user ? user : "No auth user"}
+          </p>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
             <IconButton>
@@ -296,6 +316,7 @@ export default function Navbar() {
               size="large"
               aria-label="show 4 new mails"
               color="inherit"
+              sx={{ color: "green" }}
             >
               <Badge badgeContent={count} color="error">
                 <ShoppingCartIcon />
@@ -316,7 +337,7 @@ export default function Navbar() {
               size="large"
               aria-label="show 17 new notifications"
               color="inherit"
-              sx={{ color: "pink" }}
+              sx={{ color: "skyblue" }}
             >
               <Badge badgeContent={17} color="error">
                 <NotificationsIcon />

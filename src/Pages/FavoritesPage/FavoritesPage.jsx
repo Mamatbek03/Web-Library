@@ -42,7 +42,7 @@ const ProductList = () => {
   }
 
   return (
-    <div className="list_wrapper" style={{ display: "flex" }}>
+    <div className="list_wrapper" style={{ display: "flex", height: "500px" }}>
       <div className="list_item">
         <div
           className="product-card"

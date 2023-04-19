@@ -186,7 +186,7 @@ const EditProduct = () => {
               className="details_left_btn"
               onClick={() => navigate("/online-read/:id")}
             >
-              online read
+              Читать
             </button>
             <button className="details_left_btn">
               <a
@@ -194,22 +194,24 @@ const EditProduct = () => {
                 // download={oneProduct?.title + ".pdf"}
                 target="_blank"
               >
-                download
+                Скачать
               </a>
             </button>
           </div>
         </div>
         <div className="details_info">
-          <h2>{oneProduct?.title}</h2>
-          <h3>category: {oneProduct?.category_name}</h3>
+          <h2 className="details_title">{oneProduct?.title}</h2>
+          <h3 className="details_category">
+            category: {oneProduct?.category_name}
+          </h3>
           <p>{oneProduct?.body}</p>
           {oneProduct?.price ? (
             <>
-              <h3>${oneProduct?.price}</h3>
-              <button>bay now</button>
+              <h3 className="details_price">${oneProduct?.price}</h3>
+              <button>Купить сейчас</button>
             </>
           ) : (
-            <h3>free</h3>
+            <h3 className="details_price">Бесплатно</h3>
           )}
           <div>
             <IconButton onClick={handleLike}>
@@ -221,16 +223,20 @@ const EditProduct = () => {
             </IconButton>
           </div>
           <div>
-            <button onClick={() => navigate(`/edit/${oneProduct?.id}`)}>
-              Edit
+            <button
+              className="details_btn_edit"
+              onClick={() => navigate(`/edit/${oneProduct?.id}`)}
+            >
+              Изменить
             </button>
             <button
+              className="details_btn_delete"
               onClick={async () => {
                 await deleteProduct(oneProduct?.id);
                 navigate("/product-list");
               }}
             >
-              Delete
+              Удалить
             </button>
           </div>
         </div>
@@ -253,22 +259,31 @@ const EditProduct = () => {
               <p>{item.owner}</p>
               <p>{item.body}</p>
               <p>
-                {" "}
                 {date !== moment(item.created_at).format("DD.MM.YYYY")
                   ? // ! timeDays(item.created_at) -------------------------------
                     timeDays(item.created_at)
                   : timeHours(item.created_at)}
               </p>
               <div>
-                <button onClick={() => handleEditComment(item)}>edit</button>
-                <button onClick={() => handleDeleteComment(item.id)}>
-                  delete
+                <button
+                  className="details_btn_edit"
+                  onClick={() => handleEditComment(item)}
+                >
+                  Изменить
+                </button>
+                <button
+                  className="details_btn_delete"
+                  onClick={() => handleDeleteComment(item.id)}
+                >
+                  Удалить
                 </button>
               </div>
             </div>
           ))}
         </div>
-        <Button onClick={handleOpen}>Open modal</Button>
+        <Button className="details_btn_openmodal" onClick={handleOpen}>
+          Открыть окно
+        </Button>
         <Modal
           open={open}
           onClose={handleClose}
@@ -277,19 +292,20 @@ const EditProduct = () => {
         >
           <Box sx={style}>
             <center>
-              <h3>Edit Comment</h3>
+              <h3 className="details_h3">Изменить комментарии</h3>
               <TextField
                 label="new Comment"
                 defaultValue={commentToEdit?.body}
                 onChange={(e) => setBodyEdit(e.target.value)}
               />
               <Button
+                className="details_btn_save"
                 onClick={() => {
                   saveEditedComment();
                   handleClose();
                 }}
               >
-                save changes
+                Сохранить изменения
               </Button>
             </center>
           </Box>

@@ -1,10 +1,11 @@
 import React from "react";
+import "./Pagination.css";
 
 import { Pagination } from "react-bootstrap";
 
 const PaginationList = ({ getPagesCount, currentPage, setCurrentPage }) => {
   return (
-    <Pagination>
+    <Pagination className="pagination">
       <Pagination.Prev onClick={() => setCurrentPage(currentPage - 1)} />
 
       {getPagesCount().map((item) =>

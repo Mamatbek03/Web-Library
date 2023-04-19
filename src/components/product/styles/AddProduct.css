@@ -34,3 +34,19 @@
 .unrower {
   display: none;
 }
+
+.add-book_places > input {
+  height: 2.5em !important;
+  margin: 20px;
+  border: #fc0 2px solid;
+  border-radius: 10px;
+  background-color: rgba(202, 202, 202, 0.144) !important;
+  outline: none;
+  color: white;
+  padding: 1px;
+  padding-left: 10px;
+}
+
+input[type="input"]::-webkit-input-placeholder {
+  color: #ffffff;
+}

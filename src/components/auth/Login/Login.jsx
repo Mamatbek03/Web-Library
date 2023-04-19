@@ -29,7 +29,11 @@ const Login = () => {
   return (
     <div
       className="register"
-      style={{ height: "1000px", backgroundColor: "gray", padding: "50px 0" }}
+      style={{
+        height: "1000px",
+        padding: "50px 0",
+        backgroundColor: "transparent",
+      }}
     >
       <div
         className="register-places"
@@ -45,13 +49,14 @@ const Login = () => {
         }}
       >
         <center>
-          <h1>Login</h1>
+          <h1>Авторизация</h1>
         </center>
 
-        <TextField
+        <input
+          className="register_inp"
           sx={{ margin: "10px" }}
           id="outlined-basic"
-          label="email"
+          placeholder="Почта @email"
           variant="outlined"
           color="grey"
           name="title"
@@ -59,10 +64,11 @@ const Login = () => {
           onChange={(e) => setEmail(e.target.value)}
         />
 
-        <TextField
+        <input
+          className="register_inp"
           sx={{ margin: "15px" }}
           id="outlined-basic"
-          label="password"
+          placeholder="Пароль"
           variant="outlined"
           color="grey"
           name="title"
@@ -92,12 +98,13 @@ const Login = () => {
             className="forgot-password"
             onClick={() => navigate("/edit-password")}
           >
-            forgot password?
+            Забыли пароль?
           </p>
           <Button
             onClick={handleSave}
             variant="contained"
             size="large"
+            color="success"
             sx={{
               border: "1px solid black",
               color: "white",
@@ -106,7 +113,7 @@ const Login = () => {
               margin: "20px 0 30px 0",
             }}
           >
-            login
+            Войти
           </Button>
         </center>
       </div>

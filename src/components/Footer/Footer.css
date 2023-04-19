@@ -1,7 +1,7 @@
 #footer {
   font-size: 1.8rem;
   background-color: rgba(65, 65, 65, 0.745);
-  height: 380px;
+  height: 500px;
   width: 100%;
   color: white;
   display: flex;
@@ -9,6 +9,7 @@
   align-items: center;
   border-top: 2px solid #ffd700;
   text-shadow: #fc0 0px 0 5px;
+  /* padding-bottom: 50px; */
 }
 
 #footer_left {
@@ -38,6 +39,7 @@
   border: #ffd700 2px solid;
   color: white;
   text-shadow: #fc0 0px 0 5px;
+  margin-top: 10px;
 }
 
 #footer_button:hover {
