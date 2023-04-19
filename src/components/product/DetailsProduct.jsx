@@ -158,7 +158,7 @@ const EditProduct = () => {
   const handleClose = () => setOpen(false);
 
   return (
-    <>
+    <div className="details_main">
       <div className="details">
         <div className="details_left">
           <img className="details_left_img" src={oneProduct?.images} alt="" />
@@ -223,14 +223,18 @@ const EditProduct = () => {
         </div>
       </div>
       <div className="comments">
-        <h2>Comments: {oneProduct?.comments_count}</h2>
-        <input
-          type="text"
-          value={body}
-          placeholder="add comment"
-          onChange={(e) => setBody(e.target.value)}
-        />
-        <button onClick={addComment}>send</button>
+        <h2>Комментарии: {oneProduct?.comments_count}</h2>
+        <div>
+          <input
+            className="details_inp"
+            type="text"
+            value={body}
+            placeholder="комментарии"
+            onChange={(e) => setBody(e.target.value)}
+          />
+          <button onClick={addComment}>send</button>
+        </div>
+
         <div className="comments_list">
           {oneProduct?.comments.map((item) => (
             <div
@@ -275,7 +279,7 @@ const EditProduct = () => {
             <center>
               <h3 className="details_h3">Изменить комментарии</h3>
               <TextField
-                label="new Comment"
+                label="Новый комментарий"
                 defaultValue={commentToEdit?.body}
                 onChange={(e) => setBodyEdit(e.target.value)}
               />
@@ -292,7 +296,7 @@ const EditProduct = () => {
           </Box>
         </Modal>
       </div>
-    </>
+    </div>
   );
 };
 
