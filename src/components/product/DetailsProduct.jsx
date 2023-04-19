@@ -51,6 +51,11 @@ const EditProduct = () => {
   const navigate = useNavigate();
   const { id } = useParams();
 
+  useEffect(() => {
+    getOneProduct(id);
+    getComments();
+    getLikeList(setLikes);
+  }, []);
   const [commentToEdit, setCommentToEdit] = useState(null);
 
   const [bodyEdit, setBodyEdit] = useState(null);
@@ -59,13 +64,35 @@ const EditProduct = () => {
   const [date, setDate] = useState(null);
 
   const [likes, setLikes] = useState(null);
-
+  const [likesCount, setLikesCount] = useState(oneProduct?.likes_count);
   const [isFavorite, setIsFavorite] = useState(oneProduct?.is_favorite);
-
   const [isLiked, setIsLiked] = useState(oneProduct?.is_liked);
+  const [likedUsers, setLikesUsers] = useState(oneProduct?.liked_users);
 
   const post = id;
+  console.log(isLiked);
 
+  async function handleLike() {
+    const formData = new FormData();
+    formData.append("post", id);
+    if (!isLiked) {
+      setIsLiked(!isLiked);
+      setLikesCount(likesCount + 1);
+      await postLike(formData);
+      getOneProduct(id);
+      getOneProduct(id);
+    } else {
+      setIsLiked(!isLiked);
+      setLikesCount(likesCount - 1);
+      likedUsers.map((like) => {
+        const email = localStorage.getItem("email");
+        if (like.owner_email == email) {
+          deleteLike(like.id);
+        }
+      });
+    }
+  }
+  console.log(oneProduct);
   function addComment() {
     const comment = {
       body,
@@ -84,11 +111,9 @@ const EditProduct = () => {
   async function handleDeleteComment(commentId) {
     await deleteComment(commentId);
     getOneProduct(id);
-    console.log(oneProduct);
     getOneProduct(id);
   }
 
-  console.log(oneProduct);
   function handleEditComment(commentEdit) {
     handleOpen();
 
@@ -116,11 +141,6 @@ const EditProduct = () => {
     if (!date) setDate(moment(new Date()).format("DD.MM.YYYY"));
   }, []);
 
-  useEffect(() => {
-    getOneProduct(id);
-    getComments();
-    getLikeList(setLikes);
-  }, []);
   function likeForDelete() {
     const deleteLike = likes?.filter((item) => item.post === id);
     console.log(deleteLike);
@@ -139,7 +159,6 @@ const EditProduct = () => {
       deleteLike(id);
     }
   }
-  console.log(comments);
   // ! Favorite
 
   function handleFavorite() {
@@ -195,7 +214,7 @@ const EditProduct = () => {
           <div>
             <IconButton onClick={handleLike}>
               <FavoriteIcon color={isLiked ? "error" : ""} />
-              <p>{oneProduct?.likes_count}</p>
+              <p>{likesCount}</p>
             </IconButton>
             <IconButton onClick={handleFavorite}>
               <BookmarkIcon color={isFavorite ? "primary" : ""} />

@@ -72,11 +72,11 @@ const ProductList = () => {
           <ProductCard item={item} key={item.id} />
         ))}
       </Box>
-      <PaginationList
+      {/* <PaginationList
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
         getPagesCount={getPagesCount}
-      />
+      /> */}
       <PaginationList2
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
