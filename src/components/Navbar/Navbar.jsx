@@ -304,11 +304,11 @@ export default function Navbar() {
                 className={`favorites ${heartOpen && "active"}`}
                 color="inherit"
               />
-              {heartOpen && (
+              {/* {heartOpen && (
                 <div className="shop-cart">
                   <SideBar />
                 </div>
-              )}
+              )} */}
             </IconButton>
 
             <IconButton

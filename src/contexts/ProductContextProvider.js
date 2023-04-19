@@ -18,6 +18,7 @@ const ProductContextProvider = ({ children }) => {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const [search, setSearch] = useState(searchParams.get("search") || "");
+  const [category, setCategory] = useState(searchParams.get("search") || "");
   const INIT_STATE = {
     products: [],
     categories: [],
@@ -252,6 +253,8 @@ const ProductContextProvider = ({ children }) => {
     setSearch,
     search,
     searchParams,
+    category,
+    setCategory,
     fetchByParams,
   };
   return (
