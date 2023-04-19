@@ -69,7 +69,7 @@ export default function RegisterList() {
           className="register_inp"
           sx={{ margin: "10px" }}
           id="outlined-basic"
-          placeholder="email"
+          placeholder="Email"
           variant="outlined"
           color="grey"
           name="title"
@@ -92,7 +92,7 @@ export default function RegisterList() {
           className="register_inp"
           sx={{ margin: "15px" }}
           id="outlined-basic"
-          placeholder="password"
+          placeholder="Пароль"
           variant="outlined"
           color="grey"
           name="title"

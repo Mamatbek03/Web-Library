@@ -130,7 +130,7 @@ const ProductCard = ({ item }) => {
           onClick={() => navigate(`/edit/${item.id}`)}
           className="product_btn_delete"
         >
-          Edit
+          Изменить
         </button>
         <button
           onClick={() => {
@@ -139,13 +139,13 @@ const ProductCard = ({ item }) => {
           }}
           className="product_btn_delete"
         >
-          Details
+          Детали
         </button>
         <button
           onClick={() => deleteProduct(item.id)}
           className="product_btn_delete"
         >
-          Delete
+          Удалить
         </button>
       </div>
     </div>
