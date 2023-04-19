@@ -19,15 +19,25 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContextProvider";
 import AutoStoriesIcon from "@mui/icons-material/AutoStories";
 import "./Navbar.css";
-
+import Button from "@mui/material/Button";
+import Fade from "@mui/material/Fade";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { useCart } from "../../contexts/CartContexProvider";
 import { getCountProductsInCart } from "../helpers/function";
 import { useState } from "react";
 import SideBar from "../product/SideBar";
+import EditIcon from "@mui/icons-material/Edit";
 
 import { Style } from "@mui/icons-material";
 import logo from "./logo.svg";
+
+// import { styled, alpha } from "@mui/material/styles";
+import Divider from "@mui/material/Divider";
+import ArchiveIcon from "@mui/icons-material/Archive";
+import FileCopyIcon from "@mui/icons-material/FileCopy";
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import BurgerMenu from "./BurgerMenu";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -68,6 +78,49 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
   },
 }));
+// ===============================
+const StyledMenu = styled((props) => (
+  <Menu
+    elevation={0}
+    anchorOrigin={{
+      vertical: "bottom",
+      horizontal: "right",
+    }}
+    transformOrigin={{
+      vertical: "top",
+      horizontal: "right",
+    }}
+    {...props}
+  />
+))(({ theme }) => ({
+  "& .MuiPaper-root": {
+    borderRadius: 6,
+    marginTop: theme.spacing(1),
+    minWidth: 180,
+    color:
+      theme.palette.mode === "light"
+        ? "rgb(55, 65, 81)"
+        : theme.palette.grey[300],
+    boxShadow:
+      "rgb(255, 255, 255) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px",
+    "& .MuiMenu-list": {
+      padding: "4px 0",
+    },
+    "& .MuiMenuItem-root": {
+      "& .MuiSvgIcon-root": {
+        fontSize: 18,
+        color: theme.palette.text.secondary,
+        marginRight: theme.spacing(1.5),
+      },
+      "&:active": {
+        backgroundColor: alpha(
+          theme.palette.primary.main,
+          theme.palette.action.selectedOpacity
+        ),
+      },
+    },
+  },
+}));
 
 export default function Navbar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -101,6 +154,8 @@ export default function Navbar() {
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
+  // aaaaaaaaaaaaaaaa
+
   //
   // корзина//
   const [count, setCount] = React.useState(0);
@@ -239,15 +294,7 @@ export default function Navbar() {
         }}
       >
         <Toolbar>
-          {/* <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            sx={{ mr: 5, ml: 5, margin: 2 }}
-          >
-            <MenuIcon />
-          </IconButton> */}
+          <BurgerMenu />
           <Typography
             onClick={() => navigate("/")}
             variant="h6"
@@ -277,24 +324,9 @@ export default function Navbar() {
           >
             Добавить книгу
           </Typography>
+
           <Typography
             onClick={() => navigate("/product-list")}
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{
-              display: {
-                xs: "none",
-                sm: "block",
-                marginLeft: "30px",
-                cursor: "pointer",
-              },
-            }}
-          >
-            Библиотека
-          </Typography>
-          <Typography
-            onClick={() => navigate("/favorites")}
             variant="h6"
             noWrap
             component="div"
@@ -308,7 +340,7 @@ export default function Navbar() {
               },
             }}
           >
-            Избранные
+            Библиотека
           </Typography>
           <div id="navbar_logo">
             <img id="logotip" src={logo} alt="" />
@@ -326,19 +358,6 @@ export default function Navbar() {
           </p>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
-            {/* <IconButton> */}
-            {/* <SearchIcon
-                onClick={() => setHeartOpen((heartOpen = !heartOpen))}
-                className={`favorites ${heartOpen && "active"}`}
-                color="inherit"
-              /> */}
-            {/* {heartOpen && (
-                <div className="shop-cart">
-                  <SideBar />
-                </div>
-              )} */}
-            {/* </IconButton> */}
-
             <IconButton
               onClick={() => navigate("/cart")}
               size="large"
@@ -351,26 +370,6 @@ export default function Navbar() {
               </Badge>
             </IconButton>
 
-            {/* <IconButton
-              size="large"
-              aria-label="show 4 new mails"
-              color="inherit"
-              sx={{ color: "yellow" }}
-            >
-              <Badge badgeContent={4} color="error">
-                <MailIcon />
-              </Badge>
-            </IconButton>
-            <IconButton
-              size="large"
-              aria-label="show 17 new notifications"
-              color="inherit"
-              sx={{ color: "skyblue" }}
-            >
-              <Badge badgeContent={17} color="error">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton> */}
             <IconButton
               size="large"
               edge="end"
@@ -384,7 +383,7 @@ export default function Navbar() {
                 <button
                   style={{
                     borderRadius: "100%",
-                    padding: "0 13px",
+                    padding: "7px 13px",
                     backgroundColor: "black",
                     color: "white",
                   }}

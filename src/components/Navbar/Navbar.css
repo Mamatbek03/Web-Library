@@ -31,6 +31,9 @@
   z-index: 1000;
   color: red;
 }
+.navbar_menu {
+  display: none;
+}
 
 @media all and (max-width: 1025px) {
   .email-view {
@@ -50,4 +53,20 @@
   }
 }
 @media all and (max-width: 426px) {
+  .navbar_menu {
+    display: block;
+  }
+  #navbar_logo {
+    margin-left: 25%;
+  }
+}
+@media all and (max-width: 376px) {
+  #navbar_logo {
+    margin-left: 20%;
+  }
+}
+@media all and (max-width: 321px) {
+  #navbar_logo {
+    margin-left: 15%;
+  }
 }
