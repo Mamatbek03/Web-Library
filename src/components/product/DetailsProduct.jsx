@@ -189,7 +189,7 @@ const EditProduct = () => {
           {oneProduct?.price ? (
             <>
               <h3 className="details_price">${oneProduct?.price}</h3>
-              <button>Купить сейчас</button>
+              <button className="details_btn_buy">Купить сейчас</button>
             </>
           ) : (
             <h3 className="details_price">Бесплатно</h3>
@@ -224,38 +224,45 @@ const EditProduct = () => {
       </div>
       <div className="comments">
         <h2>Комментарии: {oneProduct?.comments_count}</h2>
-        <div>
+        <div className="comments_all">
           <input
             className="details_inp"
             type="text"
             value={body}
-            placeholder="комментарии"
+            placeholder="Комментарии"
             onChange={(e) => setBody(e.target.value)}
           />
-          <button onClick={addComment}>send</button>
+          <button className="details_btn_inp" onClick={addComment}>
+            Добавить
+          </button>
         </div>
 
         <div className="comments_list">
           {oneProduct?.comments.map((item) => (
             <div
+              className="comments_list_main"
               key={item.created_at}
               // className="comments_item"
             >
               <p>{item.owner}</p>
-              <p>{item.body}</p>
-              <p>
-                {date !== moment(item.created_at).format("DD.MM.YYYY")
-                  ? // ! timeDays(item.created_at) -------------------------------
-                    timeDays(item.created_at)
-                  : timeHours(item.created_at)}
-              </p>
-              <div>
-                <button
-                  className="details_btn_edit"
-                  onClick={() => handleEditComment(item)}
-                >
-                  Изменить
-                </button>
+              <textarea className="details_textarea" readOnly>
+                {item.body}
+              </textarea>
+
+              <div
+                style={{
+                  width: "50%",
+                  display: "flex",
+                  marginTop: "30px",
+                  justifyContent: "space-around",
+                }}
+              >
+                <p style={{ paddingTop: "10px" }}>
+                  {date !== moment(item.created_at).format("DD.MM.YYYY")
+                    ? // ! timeDays(item.created_at) -------------------------------
+                      timeDays(item.created_at)
+                    : timeHours(item.created_at)}
+                </p>
                 <button
                   className="details_btn_delete"
                   onClick={() => handleDeleteComment(item.id)}
@@ -266,9 +273,9 @@ const EditProduct = () => {
             </div>
           ))}
         </div>
-        <Button className="details_btn_openmodal" onClick={handleOpen}>
+        {/* <Button className="details_btn_openmodal" onClick={handleOpen}>
           Открыть окно
-        </Button>
+        </Button> */}
         <Modal
           open={open}
           onClose={handleClose}
