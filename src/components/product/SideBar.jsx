@@ -49,12 +49,24 @@ const SideBar = () => {
   }, [searchParams]);
 
   return (
-    <Grid sx={{ width: "min-content" }} item md={4}>
+    <Grid
+      sx={{
+        width: "min-content",
+        backgroundColor: "silver",
+        height: "min-content",
+        color: "black",
+        opacity: "0.8",
+        border: "gold 3px solid",
+        borderRadius: "0 0 25px 0",
+      }}
+      item
+      md={4}
+    >
       <Paper elevation={1} sx={{ width: "200px", boxShadow: "none" }}>
         <TextField
           fullWidth
           id="standard-basic"
-          label="Search"
+          label="Поиск"
           variant="standard"
           onChange={(e) => setSearch(e.target.value)}
           value={search}
@@ -62,8 +74,8 @@ const SideBar = () => {
       </Paper>
 
       <Grid>
-        <FormControl>
-          <FormLabel id="demo-radio-buttons-group-label">category</FormLabel>
+        <FormControl sx={{ marginLeft: "20px", marginTop: "20px" }}>
+          <FormLabel id="demo-radio-buttons-group-label">категории:</FormLabel>
           <RadioGroup
             aria-labelledby="demo-radio-buttons-group-label"
             defaultValue="all"
