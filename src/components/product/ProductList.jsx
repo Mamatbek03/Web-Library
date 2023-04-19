@@ -9,8 +9,6 @@ import SideBar from "./SideBar";
 import SearchIcon from "@mui/icons-material/Search";
 import IconButton from "@mui/material/IconButton";
 import "./styles/ProductList.css";
-import Search from "./Search";
-import Filter from "./Filter";
 import PaginationList2 from "./PaginationList2";
 
 const ProductList = () => {

@@ -98,12 +98,10 @@ const ProductCard = ({ item }) => {
       <div>
         <h3>{item.title}</h3>
         <p>{item.category_name}</p>
+        <p>Author: {item.owner_username}</p>
       </div>
       <div> {item.price ? <p>${item.price}</p> : <p sx={{}}>free</p>}</div>
 
-      <h3>{item.title}</h3>
-      <p>{item.category_name}</p>
-      {item.price ? <p>${item.price}</p> : <p>free</p>}
       <div>
         <IconButton onClick={handleLike}>
           <FavoriteIcon color={isLiked ? "error" : ""} />

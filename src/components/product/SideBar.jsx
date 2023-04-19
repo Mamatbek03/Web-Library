@@ -21,19 +21,28 @@ const SideBar = () => {
     category,
     setSearchParams,
     fetchByParams,
+    categories,
+    getCategories,
+    products,
+    author,
+    setAuthor,
   } = useProducts();
   const navigate = useNavigate();
 
   useEffect(() => {
-    navigate("/product-list");
+    getCategories();
+  }, []);
+  useEffect(() => {
     setSearchParams({ search: search });
-    getProducts();
+    // getProducts();
   }, [search]);
   useEffect(() => {
-    navigate("/product-list");
     setSearchParams({ category: category });
-    getProducts();
+    // getProducts();
   }, [category]);
+  useEffect(() => {
+    setSearchParams({ author: author });
+  }, [author]);
 
   useEffect(() => {
     getProducts();
@@ -61,22 +70,33 @@ const SideBar = () => {
             name="radio-buttons-group"
             onChange={(e) => fetchByParams("category", e.target.value)}
           >
-            <FormControlLabel value="1" control={<Radio />} label="Fantasy" />
-            <FormControlLabel value="2" control={<Radio />} label="Mystery" />
-            <FormControlLabel value="3" control={<Radio />} label="Romance" />
-            <FormControlLabel value="4" control={<Radio />} label="Western" />
-            <FormControlLabel value="5" control={<Radio />} label="Dystopian" />
-
-            <FormControlLabel value="6" control={<Radio />} label="Thriller" />
-            <FormControlLabel value="7" control={<Radio />} label="Horror" />
-            <FormControlLabel value="8" control={<Radio />} label="Classic" />
-            <FormControlLabel value="9" control={<Radio />} label="History" />
-            <FormControlLabel
-              value="10"
-              control={<Radio />}
-              label="Children`s"
-            />
+            {categories.map((item) => (
+              <FormControlLabel
+                value={item.id}
+                control={<Radio />}
+                label={item.name}
+              />
+            ))}
           </RadioGroup>
+          {/* <FormControl>
+            <FormLabel id="demo-radio-buttons-group-label">Author</FormLabel>
+            <RadioGroup
+              aria-labelledby="demo-radio-buttons-group-label"
+              defaultValue="all"
+              name="radio-buttons-group"
+              onChange={(e) => fetchByParams("owner", e.target.value)}
+            >
+              {products.map((item) => {
+                return (
+                  <FormControlLabel
+                    value={item.owner}
+                    control={<Radio />}
+                    label={item.owner_username}
+                  />
+                );
+              })}
+            </RadioGroup>
+          </FormControl> */}
         </FormControl>
       </Grid>
     </Grid>
