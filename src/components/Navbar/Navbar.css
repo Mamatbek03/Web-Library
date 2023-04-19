@@ -9,6 +9,16 @@
   color: #dc3d3d;
   transform: scale(1.5);
 }
+#navbar_logo {
+  margin-right: -40px;
+  width: 100px;
+}
+#logtip {
+  display: flex;
+  justify-content: end;
+  width: 5em;
+  margin: 5px;
+}
 
 .shop-cart {
   position: absolute;
@@ -20,4 +30,43 @@
   background-color: #fafafa;
   z-index: 1000;
   color: red;
+}
+.navbar_menu {
+  display: none;
+}
+
+@media all and (max-width: 1025px) {
+  .email-view {
+    margin-left: 10% !important;
+  }
+}
+@media all and (max-width: 772px) {
+  .email-view {
+    display: none;
+  }
+  #navbar_inputs {
+    margin-left: 15px;
+  }
+  .navbar_favorite {
+    margin-left: 10px !important;
+    margin-right: 5% !important;
+  }
+}
+@media all and (max-width: 426px) {
+  .navbar_menu {
+    display: block;
+  }
+  #navbar_logo {
+    margin-left: 25%;
+  }
+}
+@media all and (max-width: 376px) {
+  #navbar_logo {
+    margin-left: 20%;
+  }
+}
+@media all and (max-width: 321px) {
+  #navbar_logo {
+    margin-left: 15%;
+  }
 }

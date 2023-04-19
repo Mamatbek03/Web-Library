@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useProducts } from "../../contexts/ProductContextProvider";
-import "./EditProductStyle.css";
-
+import "./styles/EditProductStyle.css";
 const EditProduct = () => {
   const {
     getCategories,

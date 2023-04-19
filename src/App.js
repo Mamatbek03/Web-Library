@@ -7,7 +7,6 @@ import Footer from "./components/Footer/Footer";
 import CommentContextProvider from "./contexts/CommentContextProvider";
 import CartContextProvider from "./contexts/CartContexProvider";
 import "./App.css";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 const App = () => {
   return (

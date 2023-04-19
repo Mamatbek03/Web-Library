@@ -213,15 +213,7 @@ const EditProduct = () => {
           ) : (
             <h3 className="details_price">Бесплатно</h3>
           )}
-          <div>
-            <IconButton onClick={handleLike}>
-              <FavoriteIcon color={isLiked ? "error" : ""} />
-              <p>{likesCount}</p>
-            </IconButton>
-            <IconButton onClick={handleFavorite}>
-              <BookmarkIcon color={isFavorite ? "primary" : ""} />
-            </IconButton>
-          </div>
+
           <div>
             <button
               className="details_btn_edit"

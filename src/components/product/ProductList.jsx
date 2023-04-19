@@ -4,11 +4,11 @@ import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useProducts } from "../../contexts/ProductContextProvider";
 import ProductCard from "./ProductCard";
-import PaginationList from "./PaginationList";
 import SideBar from "./SideBar";
 import SearchIcon from "@mui/icons-material/Search";
 import IconButton from "@mui/material/IconButton";
 import "./styles/ProductList.css";
+import Filter from "./Filter";
 import PaginationList2 from "./PaginationList2";
 
 const ProductList = () => {
