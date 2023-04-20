@@ -129,6 +129,8 @@ export default function Navbar() {
   const { handleLogout, user, updateAuth } = useAuth();
   const navigate = useNavigate();
 
+  const { getCart } = useCart();
+
   React.useEffect(() => {
     if (localStorage.getItem("tokens")) {
       updateAuth();
@@ -205,9 +207,13 @@ export default function Navbar() {
       <hr />
       <MenuItem
         className="navbar_menu"
-        onClick={() => {
+        onClick={async () => {
           handleMenuClose();
-          handleLogout();
+          await handleLogout();
+          if (JSON.parse(localStorage.getItem("cart"))) {
+            await localStorage.removeItem("cart");
+          }
+          getCart();
         }}
       >
         Logout
