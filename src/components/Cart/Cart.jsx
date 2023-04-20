@@ -61,7 +61,9 @@ export default function Cart() {
               <TableCell align="right">{row.item.title}</TableCell>
               <TableCell align="right">{row.item.category_name}</TableCell>
               <TableCell align="right">{row.item.owner_username}</TableCell>
-              <TableCell align="right">{row.item.price}</TableCell>
+              <TableCell align="right">
+                {row.item.price ? row.item.price : "free"}
+              </TableCell>
               <TableCell align="right">
                 <input
                   type="number"
