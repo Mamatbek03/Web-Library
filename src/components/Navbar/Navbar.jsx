@@ -350,7 +350,6 @@ export default function Navbar() {
           </Typography>
           <div id="navbar_logo">
             <img id="logotip" src={logo} alt="" />
-            Salamat 30
           </div>
           <p
             className="email-view"
