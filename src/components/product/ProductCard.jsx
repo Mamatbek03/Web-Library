@@ -92,7 +92,7 @@ const ProductCard = ({ item }) => {
         style={{
           width: "80%",
           margin: "15px 30px 20px",
-          height: "200px",
+          height: "300px",
         }}
         src={item.images}
         alt=""
